@@ -2,6 +2,10 @@
     padding: 10px;
 }
 
+.textarea textarea {
+    resize: none;
+}
+
 .button button {
     padding: 3px 13px;
 }

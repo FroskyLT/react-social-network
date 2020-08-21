@@ -9,7 +9,7 @@ const MyPosts = (props) => {
   return (
     <div className={p.myPosts}>
       <div className={p.textarea}>
-        <textarea name="" id="" cols="30" rows="4"></textarea>
+        <textarea name="" id="" cols="50" rows="4"></textarea>
       </div>
       <div className={p.button}>
         <button>add</button>
