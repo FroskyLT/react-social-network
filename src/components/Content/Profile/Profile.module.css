@@ -1,0 +1,8 @@
+.profile {
+    background-color:#F9F9F9;
+    grid-area: c;
+}
+
+.info {
+    margin: 0 0 20px 0;
+}

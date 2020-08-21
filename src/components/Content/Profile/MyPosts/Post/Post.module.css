@@ -1,0 +1,15 @@
+.post {
+    background-color: transparent;
+}
+.postBody {
+    display: flex;
+    align-items: center;
+}
+.postImage img {
+    margin: 5px;
+    width: 50px;
+}
+
+.postText {
+    min-width: 250px;
+}

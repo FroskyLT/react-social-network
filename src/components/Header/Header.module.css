@@ -1,0 +1,24 @@
+.header {
+    background-color:rgb(64, 118, 163);
+    grid-area: h;
+}
+
+.brandContainer {
+    margin: 10px;  
+    background-color: #DDD;
+    border-radius: 50%;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    padding: 3px 0 0 2px;
+    box-sizing: border-box;
+}
+
+.brand a{
+    font-weight: 500;
+    color: snow;
+    font-size: 25px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+}
