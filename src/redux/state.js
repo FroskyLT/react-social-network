@@ -1,10 +1,12 @@
+import { renderEntrieTree } from "../render";
+
 let state = {
     profilePage: {
         postData: [
-            { id: '1', name: 'Hello world', likesCount: '11', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' },
-            { id: '2', name: 'This is my first post!', likesCount: '5', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' },
-            { id: '3', name: 'Today I am tired.', likesCount: '1', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' },
-            { id: '4', name: 'Happy holidays', likesCount: '91', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' }
+            { id: '1', content: 'Hello world', likesCount: '11', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' },
+            { id: '2', content: 'This is my first post!', likesCount: '5', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' },
+            { id: '3', content: 'Today I am tired.', likesCount: '1', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' },
+            { id: '4', content: 'Happy holidays', likesCount: '91', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' }
         ]
     },
     messagesPage: {
@@ -30,6 +32,28 @@ let state = {
             { imgUrl: "https://image.flaticon.com/icons/svg/145/145843.svg", name: "Vladimir" }
         ]
     }
+}
+
+export let addNewPost = (newPostText) => {
+    let newPost = {
+        id: 5,
+        content: newPostText,
+        likesCount: 0,
+        imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png'
+    }
+    state.profilePage.postData.push(newPost);
+    renderEntrieTree(state);
+}
+
+export let addNewMessage = (newMessageText) => {
+    let newMessage = {
+        id: 1,
+        name: 'David',
+        imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png',
+        text: newMessageText
+    }
+    state.messagesPage.conversationData.push(newMessage);
+    renderEntrieTree(state); 
 }
 
 export default state;

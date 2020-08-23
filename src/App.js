@@ -16,8 +16,8 @@ function App(props) {
         <Header />
         <Navbar state = {props.state.navbarPage}/>
         <div className='content' >
-          <Route path = '/profile' render = { () => <Profile state = {props.state.profilePage}/> }/>
-          <Route path = '/dialogs' render = { () => <Dialogs state = {props.state.messagesPage}/> }/>
+          <Route path = '/profile' render = { () => <Profile state = {props.state.profilePage} addNewPost = {props.addNewPost}/> }/>
+          <Route path = '/dialogs' render = { () => <Dialogs state = {props.state.messagesPage} addNewMessage = {props.addNewMessage}/> }/>
           <Route path = '/news' render = { () => <News/> }/>
           <Route path = '/music' render = { () => <Music/> }/>
           <Route path = '/settings' render = { () => <Settings/> }/>
