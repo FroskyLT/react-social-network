@@ -55,7 +55,7 @@
     flex: 0 1 65%;
 }
 .message__wrapper {
-    max-height: 500px;
+    max-height: 80vh;
     overflow: auto;
 }
 .message {

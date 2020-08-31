@@ -7,7 +7,8 @@ let state = {
             { id: '2', content: 'This is my first post!', likesCount: '5', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' },
             { id: '3', content: 'Today I am tired.', likesCount: '1', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' },
             { id: '4', content: 'Happy holidays', likesCount: '91', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' }
-        ]
+        ],
+        newPostText: 'Hello world!'
     },
     messagesPage: {
         peopleData: [
@@ -23,7 +24,8 @@ let state = {
             { id: 1, name: 'David', text: 'Hello Dmitry.', imgUrl: "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png" },
             { id: 0, name: 'Dmitry', text: 'How are you?', imgUrl: "https://cdn.icon-icons.com/icons2/1736/PNG/512/4043260-avatar-male-man-portrait_113269.png" },
             { id: 1, name: 'David', text: 'I am good, and how are you?', imgUrl: "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png" }
-        ]
+        ],
+        newMessageText: 'Hello world!'
     },
     navbarPage: {
         friendsData: [
@@ -34,26 +36,37 @@ let state = {
     }
 }
 
-export let addNewPost = (newPostText) => {
+export let addNewPost = () => {
     let newPost = {
         id: 5,
-        content: newPostText,
+        content: state.profilePage.newPostText,
         likesCount: 0,
         imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png'
     }
     state.profilePage.postData.push(newPost);
+    state.profilePage.newPostText = '';
+    renderEntrieTree(state);
+}
+export let updateNewPostElement = (newText) => {
+    state.profilePage.newPostText = newText;
     renderEntrieTree(state);
 }
 
-export let addNewMessage = (newMessageText) => {
+export let addNewMessage = () => {
     let newMessage = {
         id: 1,
         name: 'David',
         imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png',
-        text: newMessageText
+        text: state.messagesPage.newMessageText
     }
     state.messagesPage.conversationData.push(newMessage);
+    state.messagesPage.newMessageText = '';
     renderEntrieTree(state); 
+}
+
+export let updateNewMessageElement = (newText) => {
+    state.messagesPage.newMessageText = newText;
+    renderEntrieTree(state);
 }
 
 export default state;

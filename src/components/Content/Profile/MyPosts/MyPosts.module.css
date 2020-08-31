@@ -13,3 +13,8 @@
 .posts {
     margin: 10px 0;
 }
+
+.myPosts {
+    max-height: 57vh;
+    overflow: auto;
+}
