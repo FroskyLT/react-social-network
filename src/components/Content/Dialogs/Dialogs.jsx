@@ -2,6 +2,7 @@ import React from 'react';
 import d from './Dialogs.module.css';
 import People from './People/People';
 import Message from './Message/Message';
+import {addMessageActionCreator, updateNewMessageElementActionCreator} from './../../../redux/state';
 
 const Dialogs = (props) => {
     let peopleElements = props.messagesPage.peopleData.map(d => <People id={d.id} name={d.name} imgUrl={d.imgUrl} />);
@@ -12,13 +13,11 @@ const Dialogs = (props) => {
 
     let newMessageElement = React.createRef();
     let newMessage = () => {
-        let action = { type: 'ADD-NEW-MESSAGE' };
-        props.dispatch(action);
+        props.dispatch(addMessageActionCreator());
     }
     let onMessageChange = () => {
         let text = newMessageElement.current.value;
-        let action = { type: 'UPDATE-NEW-MESSAGE-ELEMENT', newText: text };
-        props.dispatch(action);
+        props.dispatch(updateNewMessageElementActionCreator(text));
     }
 
     return (
