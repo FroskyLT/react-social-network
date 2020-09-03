@@ -42,40 +42,45 @@ let store = {
     getState() {
         return this._state;
     },
- 
-    addNewPost() {
-        let newPost = {
-            id: 5,
-            content: this._state.profilePage.newPostText,
-            likesCount: 0,
-            imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png'
-        }
-        this._state.profilePage.postData.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-    updateNewPostElement(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-    addNewMessage() {
-        let newMessage = {
-            id: 1,
-            name: 'David',
-            imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png',
-            text: this._state.messagesPage.newMessageText
-        }
-        this._state.messagesPage.conversationData.push(newMessage);
-        this._state.messagesPage.newMessageText = '';
-        this._callSubscriber(this._state); 
-    },
-    updateNewMessageElement(newText) {
-        this._state.messagesPage.newMessageText = newText;
-        this._callSubscriber(this._state);
-    },
     subscribe(observer) {
         this._callSubscriber = observer;
     },
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD-NEW-POST':
+                let newPost = {
+                    id: 5,
+                    content: this._state.profilePage.newPostText,
+                    likesCount: 0,
+                    imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png'
+                }
+                this._state.profilePage.postData.push(newPost);
+                this._state.profilePage.newPostText = '';
+                this._callSubscriber(this._state);
+                break;
+            case 'UPDATE-NEW-POST-ELEMENT':
+                this._state.profilePage.newPostText = action.newText;
+                this._callSubscriber(this._state);
+                break;
+            case 'ADD-NEW-MESSAGE':
+                let newMessage = {
+                    id: 1,
+                    name: 'David',
+                    imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png',
+                    text: this._state.messagesPage.newMessageText
+                }
+                this._state.messagesPage.conversationData.push(newMessage);
+                this._state.messagesPage.newMessageText = '';
+                this._callSubscriber(this._state);
+                break;
+            case 'UPDATE-NEW-MESSAGE-ELEMENT':
+                this._state.messagesPage.newMessageText = action.newText;
+                this._callSubscriber(this._state);
+                break;
+        }
+    }
+
 }
 
 export default store;
