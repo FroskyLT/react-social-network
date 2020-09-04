@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-NEW-POST';
-const UPDATE_POST = 'UPDATE-NEW-POST-ELEMENT';
-const ADD_MESSAGE = 'ADD-NEW-MESSAGE';
-const UPDATE_MESSAGE = 'UPDATE-NEW-MESSAGE-ELEMENT';
+import messagesReducer from './messagesReducer';
+import profileReducer from './profileReducer';
+import navbarReducer from './navbarReducer';
 
 let store = {
     _callSubscriber() {
@@ -51,47 +50,11 @@ let store = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST:
-                let newPost = {
-                    id: 5,
-                    content: this._state.profilePage.newPostText,
-                    likesCount: 0,
-                    imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png'
-                }
-                this._state.profilePage.postData.push(newPost);
-                this._state.profilePage.newPostText = '';
-                this._callSubscriber(this._state);
-                break;
-            case UPDATE_POST:
-                this._state.profilePage.newPostText = action.newText;
-                this._callSubscriber(this._state);
-                break;
-            case ADD_MESSAGE:
-                let newMessage = {
-                    id: 1,
-                    name: 'David',
-                    imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png',
-                    text: this._state.messagesPage.newMessageText
-                }
-                this._state.messagesPage.conversationData.push(newMessage);
-                this._state.messagesPage.newMessageText = '';
-                this._callSubscriber(this._state);
-                break;
-            case UPDATE_MESSAGE:
-                this._state.messagesPage.newMessageText = action.newText;
-                this._callSubscriber(this._state);
-                break;
-        }
+        profileReducer(this._state.profilePage, action);
+        messagesReducer(this._state.messagesPage, action);
+        navbarReducer(this._state.navbarPage, action);
+        this._callSubscriber(this._state);
     }
 }
-
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostElementActionCreator = text =>
-    ({ type: UPDATE_POST, newText: text });
-
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
-export const updateNewMessageElementActionCreator = text =>
-    ({ type: UPDATE_MESSAGE, newText: text });
 
 export default store;
