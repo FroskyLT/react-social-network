@@ -2,7 +2,6 @@ import React from 'react';
 import d from './Dialogs.module.css';
 import People from './People/People';
 import Message from './Message/Message';
-import {addMessageActionCreator, updateNewMessageElementActionCreator} from './../../../redux/messagesReducer';
 
 const Dialogs = (props) => {
     let peopleElements = props.messagesPage.peopleData.map(d => <People id={d.id} name={d.name} imgUrl={d.imgUrl} />);
@@ -10,18 +9,17 @@ const Dialogs = (props) => {
         <div className={d.right}><Message name={c.name} text={c.text} imgUrl={c.imgUrl} /></div> :
         <Message name={c.name} text={c.text} imgUrl={c.imgUrl} />
     );
-
     let newMessage = () => {
-        props.dispatch(addMessageActionCreator());
+        props.addMessage();
     }
     let onMessageChange = (e) => {
         let text = e.target.value;
-        props.dispatch(updateNewMessageElementActionCreator(text));
+        props.updateNewMessageElement(text);
     }
 
     return (
         <div className={d.dialogs}>
-            <h1>DIALOGS</h1>    
+            <h1>DIALOGS</h1>
             <div className={d.main}>
                 <div className={d.people}>
                     <div className={d.people__container}>
