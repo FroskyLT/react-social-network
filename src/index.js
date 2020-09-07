@@ -3,14 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import store from './redux/store';
-import {BrowserRouter} from 'react-router-dom';
+import store from './redux/reduxStore';
+import { BrowserRouter } from 'react-router-dom';
 
 export let renderEntireTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} dispatch={store.dispatch.bind(store)}/>
+        <App state={state} dispatch={store.dispatch.bind(store)} />
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
@@ -19,6 +19,8 @@ export let renderEntireTree = (state) => {
 
 renderEntireTree(store.getState());
 
-store.subscribe(renderEntireTree);
+store.subscribe(() => {
+  renderEntireTree(store.getState());
+});
 
 serviceWorker.unregister();
