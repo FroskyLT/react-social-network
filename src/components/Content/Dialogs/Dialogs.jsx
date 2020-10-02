@@ -31,16 +31,13 @@ const Dialogs = (props) => {
                     </div>
                 </div>
                 <div className={d.conversation}>
-                    <div className={d.conversation__container}>
-                        <div className={d.conversation__body}>
-                            <div className={d.message__wrapper}>{conversationElements}</div>
-                            <div className={d.textarea}>
-                                <div className={d.textarea__container}>
-                                    <div className={d.textarea__body}>
-                                        <textarea value={props.messagesPage.newMessageText} onChange={onMessageChange} />
-                                        <button onClick={newMessage}>send</button>
-                                    </div>
-                                </div>
+
+                    <div className={d.message__wrapper}>{conversationElements}</div>
+                    <div className={d.textarea}>
+                        <div className={d.textarea__container}>
+                            <div className={d.textarea__body}>
+                                <textarea value={props.messagesPage.newMessageText} onChange={onMessageChange} />
+                                <button onClick={newMessage}>send</button>
                             </div>
                         </div>
                     </div>

@@ -22,15 +22,15 @@ let initialState = {
 const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
-            let stateCopy = { ...state };
-            stateCopy.conversationData = [...state.conversationData];
             let newMessage = {
                 id: 1,
                 name: 'David',
                 imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png',
-                text: stateCopy.newMessageText
+                text: state.newMessageText
             }
 
+            let stateCopy = { ...state };
+            stateCopy.conversationData = [...state.conversationData];
             stateCopy.conversationData.push(newMessage);
             stateCopy.newMessageText = '';
             return stateCopy;

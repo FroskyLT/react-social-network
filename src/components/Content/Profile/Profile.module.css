@@ -1,6 +1,7 @@
 .profile {
     background-color:#F9F9F9;
     grid-area: c;
+    height: 100%;
 }
 
 .info {
