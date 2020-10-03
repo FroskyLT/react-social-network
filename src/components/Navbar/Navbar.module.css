@@ -8,6 +8,7 @@
     background-color: steelblue;
     grid-area: n;
     padding: 15px;
+    height: 100%;
 }
 
 .navigation {
