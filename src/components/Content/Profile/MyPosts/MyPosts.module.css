@@ -1,5 +1,6 @@
 .myPosts {
     padding: 10px;
+    height: 100%;
 }
 
 .textarea textarea {
@@ -16,5 +17,4 @@
 
 .myPosts {
     max-height: 57vh;
-    overflow: auto;
 }
