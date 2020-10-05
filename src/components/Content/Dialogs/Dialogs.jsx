@@ -19,7 +19,6 @@ const Dialogs = (props) => {
 
     return (
         <div className={d.dialogs}>
-            <h1>DIALOGS</h1>
             <div className={d.main}>
                 <div className={d.people}>
                     <div className={d.people__container}>

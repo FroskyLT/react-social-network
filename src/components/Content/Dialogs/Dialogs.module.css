@@ -7,11 +7,6 @@
     color: #555;
     background-color:#FDFDFD;
 }
-.dialogs h1 {
-    font-weight: 500;
-    font-size: 18px;
-}
-
 
 .main {
     display: flex;
@@ -21,7 +16,7 @@
 
 .people {
     flex: 0 1 35%;
-    border-right: 1px solid black;
+    border-right: 1px solid #555;
 }
 .people__container {
     padding: 0 30px;
@@ -132,6 +127,7 @@
     color: #FFF;
     border: hidden;
     border-radius: 0 10px 10px 0;
+    outline: none;
 }
 .textarea__body button:hover {
     background-color: rgb(59, 118, 206);
