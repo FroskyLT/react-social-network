@@ -1,3 +1,8 @@
+.users__wrapper {
+    max-height: 92vh;
+    overflow: auto;
+}
+
 .singleUser {
     margin: 20px 5%;
     display: flex;

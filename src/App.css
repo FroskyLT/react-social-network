@@ -15,4 +15,5 @@
 
 .content {
     grid-area: c;
+    height: 100%;
 }
