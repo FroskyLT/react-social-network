@@ -14,6 +14,7 @@ class Users extends React.Component {
                 })
         }
     }
+    
     render() {
         let singleUser = this.props.users.map((u) =>
             <SingleUser key={u.id} id={u.id} imgUrl={u.photos.small} name={u.name} status={u.status}
