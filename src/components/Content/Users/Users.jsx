@@ -28,3 +28,12 @@ class Users extends React.Component {
 }
 
 export default Users;
+
+// axios.get("https://social-network.samuraijs.com/api/1.0/users")
+// .then(response => {
+//     props.setUsers(response.data.items);
+// })
+// {
+//     imgUrl: "https://microhealth.com/assets/images/illustrations/personal-user-illustration-@2x.png",
+//     id: 1, name: "Dmitry K.", status: "I am looking for a job right now", country: "Belarus", city: "Minsk", follow: false
+// }
