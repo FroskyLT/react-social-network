@@ -1,8 +1,8 @@
 let initialState = {
     friendsData: [
-        { id: 1, imgUrl: "https://image.flaticon.com/icons/svg/145/145843.svg", name: "Dmitry" },
-        { id: 2, imgUrl: "https://image.flaticon.com/icons/svg/145/145843.svg", name: "Zheka" },
-        { id: 3, imgUrl: "https://image.flaticon.com/icons/svg/145/145843.svg", name: "Vladimir" }
+        { id: 1, imgUrl: "https://image.flaticon.com/icons/svg/145/145843.svg", name: "Justinas" },
+        { id: 2, imgUrl: "https://image.flaticon.com/icons/svg/145/145843.svg", name: "Roma" },
+        { id: 3, imgUrl: "https://image.flaticon.com/icons/svg/145/145843.svg", name: "Denis" }
     ]
 }
 
