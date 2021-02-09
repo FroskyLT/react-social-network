@@ -79,3 +79,38 @@
     align-items: center;
     justify-content: flex-end;
 }
+
+.users__pagination {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.users__paginationItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    border-radius: 5px;
+    border: 2px solid #555;
+    font-weight: 700;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.users__paginationItem_selected {
+    background-color: #164f91;
+    color: #fff;
+    border-color: #fff;
+}
+
+.users__paginationItem:active {
+    background-color: #85a5ca;
+    color: #fff;
+}
