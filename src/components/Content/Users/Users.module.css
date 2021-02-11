@@ -20,7 +20,7 @@
 }
 
 .imgNbutton__img img{
-    height: 70px;
+    max-width: 70px;
 }
 .imgNbutton__button button{
     font-size: 15px;
