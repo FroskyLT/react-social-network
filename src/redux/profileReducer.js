@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-NEW-POST';
 const UPDATE_POST = 'UPDATE-NEW-POST-ELEMENT';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState = {
     postData: [
@@ -8,14 +9,16 @@ let initialState = {
         { id: '3', content: 'Today I am tired.', likesCount: '1', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' },
         { id: '4', content: 'Happy holidays', likesCount: '91', imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png' }
     ],
-    newPostText: 'Hello world!'
+    newPostText: 'Hello world!',
+    profile: null,
+    lastId: 4,
 }
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
-                id: 5,
+                id: state.lastId + 1,
                 content: state.newPostText,
                 likesCount: 0,
                 imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png'
@@ -23,7 +26,8 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 postData: [...state.postData, newPost],
-                newPostText: ''
+                newPostText: '',
+                lastId: state.lastId + 1
             };
         }
         case UPDATE_POST: {
@@ -32,13 +36,19 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: action.newText
             }
         }
+        case SET_USER_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile
+            }
+        }
         default:
             return state;
     }
 }
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostElementActionCreator = text =>
-    ({ type: UPDATE_POST, newText: text });
+export const addPost = () => ({ type: ADD_POST });
+export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile });
+export const updateNewPostElement = text => ({ type: UPDATE_POST, newText: text });
 
 export default profileReducer;

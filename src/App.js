@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header.jsx';
 import NavbarContainer from './components/Navbar/NavbarContainer';
-import Profile from './components/Content/Profile/Profile';
+import ProfileContainer from './components/Content/Profile/ProfileContainer';
 import DialogsContainer from './components/Content/Dialogs/DialogsContainer';
 import UsersContainer from './components/Content/Users/UsersContainer';
 import News from './components/Content/News/News';
@@ -16,7 +16,7 @@ function App() {
       <Header />
       <NavbarContainer />
       <div className='content' >
-        <Route path='/profile' render={() => <Profile />} />
+        <Route path='/profile' render={() => <ProfileContainer />} />
         <Route path='/dialogs' render={() => <DialogsContainer />} />
         <Route path='/users' render={() => <UsersContainer />} />
         <Route path='/news' render={() => <News />} />

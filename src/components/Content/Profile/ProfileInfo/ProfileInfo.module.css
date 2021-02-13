@@ -1,34 +1,37 @@
-.wallpaper {
-    position: relative;
-}
-
-.wallpaper img{
-    width: 100%;
-    max-height: 250px;
-    object-fit: cover;
-}
-
-.about {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    display: flex;
-    align-items: center;
-}
-
-.about img {
-    max-width: 150px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-}
-
-.name {
-    margin: 0 0 0 15px;
-    font-size: 2em;
-    font-weight: 500;
-    color: #333;
-}
-
 .main {
     margin: 10px;
+}
+
+.aboutMe, .lookingJob {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 30px 0;
+}
+
+.aboutMe__header, .lookingJob__header, .contacts__header {
+    font-weight: 700;
+        text-transform: uppercase;
+}
+
+.aboutMe__desc {
+    
+}
+
+.lookingJob__header {
+    color: green;
+}
+
+.lookingJob__desc {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.contacts__items {
+    display: flex;
+    gap: 5px;
+}
+
+.contacts__item > img {
+    width: 40px;
+    height: 40px;
 }

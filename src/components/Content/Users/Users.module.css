@@ -23,6 +23,7 @@
     max-width: 70px;
 }
 .imgNbutton__button button{
+    cursor: pointer;
     font-size: 15px;
     font-weight: 500;
     background-color: rgb(64, 118, 163);
