@@ -6,8 +6,8 @@ import ProfilePreview from './ProfilePreview/ProfilePreview';
 import LoaderSpinner from '../../common/LoaderSpinner/LoaderSpinner';
 
 const Profile = (props) => {
-    if (!props.profile) return <LoaderSpinner />
 
+    if (!props.profile) return <LoaderSpinner />
     return (
         <div className={p.profile}>
             <div className={p.preview}>

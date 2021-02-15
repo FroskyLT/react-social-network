@@ -14,7 +14,7 @@ const SingleUser = (props) => {
     return (
         <div className={s.singleUser}>
             <div className={s.imgNbutton}>
-                <NavLink to="/profile/2">
+                <NavLink to={`/profile/${props.id}`}>
                     <div className={s.imgNbutton__img}><img src={props.imgUrl || userImg} alt="" /></div>
                 </NavLink>
                 <div className={s.imgNbutton__button}>{toggleFollow()}</div>
