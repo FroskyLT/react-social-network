@@ -22,16 +22,25 @@
 .imgNbutton__img img{
     max-width: 70px;
 }
+
+.imgNbutton__button {
+    margin-top: 5px;
+}
 .imgNbutton__button button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     font-size: 15px;
     font-weight: 500;
     background-color: rgb(64, 118, 163);
     color: #FFF;
     min-width: 66px;
+    min-height: 20px;
     border: none;
     outline: none;
     transition: 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-radius: 2px;
 }
 .imgNbutton__button button:hover, .imgNbutton__button button:active {
     background-color: rgb(43, 93, 134);
