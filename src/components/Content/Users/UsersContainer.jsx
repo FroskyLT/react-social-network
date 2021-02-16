@@ -1,41 +1,58 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { followToggle, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching } from '../../../redux/usersReducer';
+
 import Users from './Users';
-import * as axios from "axios";
+import { followToggle, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching } from '../../../redux/usersReducer';
+import { followUser, getUsers, unfollowUser } from '../../../api/api';
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-            withCredentials: true
-        })
-            .then(response => {
+
+        getUsers(this.props.currentPage, this.props.pageSize)
+            .then(data => {
                 this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
+                this.props.setUsers(data.items);
+                this.props.setTotalUsersCount(data.totalCount);
             });
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-            withCredentials: true
-        })
-            .then(response => {
+        getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
                 this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-            }
-            )
+                this.props.setUsers(data.items);
+            });
     }
+
+    onFollow = (userId) => {
+        followUser(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    this.props.followToggle(userId);
+                }
+            });
+    }
+
+    onUnfollow = (userId) => {
+        unfollowUser(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    this.props.followToggle(userId);
+                }
+            })
+    }
+
     render() {
         return <Users
             users={this.props.users}
             totalUsersCount={this.props.totalUsersCount}
             pageSize={this.props.pageSize}
-            followToggle={this.props.followToggle}
+            onFollow={this.onFollow}
+            onUnfollow={this.onUnfollow}
             currentPage={this.props.currentPage}
             onPageChanged={this.onPageChanged}
             isFetching={this.props.isFetching}

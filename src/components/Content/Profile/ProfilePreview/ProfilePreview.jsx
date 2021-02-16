@@ -1,6 +1,6 @@
 import React from 'react';
 import p from './ProfilePreview.module.css';
-import profileBG from '../../../assets/images/profileBG.png';
+import profileBG from '../../../../assets/images/profileBG.png';
 
 const ProfilePreview = (props) => {
     return (

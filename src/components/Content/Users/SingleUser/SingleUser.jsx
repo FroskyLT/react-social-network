@@ -1,38 +1,14 @@
 import React from 'react';
 import s from "../Users.module.css";
-import userImg from "../../../assets/images/user.png"
+import userImg from "../../../../assets/images/user.png"
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
-
 
 const SingleUser = (props) => {
 
     let toggleFollow = () => {
-        return !props.follow
-            ? <button onClick={() => {
-                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, {
-                    withCredentials: true,
-                    headers: {"API-KEY": "b1b3d12d-b124-4d30-94fb-f0e6e3e02305"}
-                })
-                    .then(response => {
-                        if (response.data.resultCode === 0) {
-                            props.followToggle(props.id);
-                        }
-                    });
-
-            }}>follow</button>
-            : <button onClick={() => {
-                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {
-                    withCredentials: true,
-                    headers: {"API-KEY": "b1b3d12d-b124-4d30-94fb-f0e6e3e02305"}
-                })
-                    .then(response => {
-                        if (response.data.resultCode === 0) {
-                            props.followToggle(props.id);
-                        }
-                    });
-
-            }}>unfollow</button>
+        return !props.isFollowed
+            ? <button onClick={() => props.onFollow(props.id)}>follow</button>
+            : <button onClick={() => props.onUnfollow(props.id)}>unfollow</button>
     }
     return (
         <div className={s.singleUser}>

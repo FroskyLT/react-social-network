@@ -1,6 +1,6 @@
 import React from 'react';
 import p from './Post.module.css';
-import myuser from '../../../../assets/images/myuser.png';
+import myuser from '../../../../../assets/images/myuser.png';
 
 const Post = (props) => {
   return (

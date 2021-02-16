@@ -13,7 +13,7 @@ export const Users = (props) => {
 
     let singleUser = props.users.map((u, index) =>
         <SingleUser key={index} id={u.id} imgUrl={u.photos.small} name={u.name} status={u.status}
-            country={u.country} city={u.city} follow={u.followed} followToggle={props.followToggle}
+            country={u.country} city={u.city} isFollowed={u.followed} onFollow={props.onFollow} onUnfollow={props.onUnfollow}
         />
     )
 
