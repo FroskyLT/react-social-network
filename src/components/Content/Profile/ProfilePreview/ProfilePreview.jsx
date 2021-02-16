@@ -3,7 +3,6 @@ import p from './ProfilePreview.module.css';
 import profileBG from '../../../assets/images/profileBG.png';
 
 const ProfilePreview = (props) => {
-    console.log(props.profileData);
     return (
         <div className={p.profileInfo}>
             <div className={p.wallpaper}>

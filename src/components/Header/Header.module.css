@@ -1,16 +1,17 @@
 .header {
     background-color:rgb(64, 118, 163);
     grid-area: h;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
 }
 
 .brandContainer {
-    margin: 10px;  
     background-color: #DDD;
     border-radius: 50%;
-    text-align: center;
     width: 40px;
     height: 40px;
-    padding: 3px 0 0 2px;
     box-sizing: border-box;
 }
 
@@ -18,7 +19,30 @@
     font-weight: 500;
     color: snow;
     font-size: 25px;
-    text-align: center;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
+}
+
+.login__text, .login__text a {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.login__image {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.login__image img {
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
 }
