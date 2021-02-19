@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import Profile from './Profile';
 import { setUserProfile } from '../../../redux/profileReducer';
 import { withRouter } from 'react-router-dom';
-import { getSelectedUserProfile } from '../../../api/api';
+import { ProfileAPI } from '../../../api/api';
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
         const userId = this.props.match.params.userId || "2";
-        getSelectedUserProfile(userId)
+        ProfileAPI.getSelectedUserProfile(userId)
             .then(data => {
                 this.props.setUserProfile(data);
             });

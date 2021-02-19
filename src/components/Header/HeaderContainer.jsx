@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import { setAuthUserData, clearAuthUserData } from '../../redux/authReducer';
 import Header from './Header';
-import { authenticateMe } from '../../api/api';
+import { AuthAPI } from '../../api/api';
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        authenticateMe()
+        AuthAPI.authenticateMe()
             .then(responseData => {
                 if (responseData.resultCode === 0) {
                     const { email, id, login } = responseData.data;
@@ -18,7 +18,7 @@ class HeaderContainer extends React.Component {
     }
 
     onLoginClick = () => {
-        authenticateMe()
+        AuthAPI.authenticateMe()
             .then(responseData => {
                 if (responseData.resultCode === 0) {
                     const { email, id, login } = responseData.data;
