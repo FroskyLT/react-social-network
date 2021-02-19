@@ -11,9 +11,19 @@ export const Users = (props) => {
         pages.push(i);
     }
 
-    let singleUser = props.users.map((u, index) =>
-        <SingleUser key={index} id={u.id} imgUrl={u.photos.small} name={u.name} status={u.status}
-            country={u.country} city={u.city} isFollowed={u.followed} onFollow={props.onFollow} onUnfollow={props.onUnfollow}
+    let singleUser = props.users.map(u =>
+        <SingleUser
+            key={u.id}
+            id={u.id}
+            imgUrl={u.photos.small}
+            name={u.name}
+            status={u.status}
+            country={u.country}
+            city={u.city}
+            isFollowed={u.followed}
+            onFollow={props.onFollow}
+            onUnfollow={props.onUnfollow}
+            isFollowInProgress={props.followInProgress.some(userId => userId === u.id)}
         />
     )
 

@@ -7,8 +7,22 @@ const SingleUser = (props) => {
 
     let toggleFollow = () => {
         return !props.isFollowed
-            ? <button onClick={() => props.onFollow(props.id)}>follow</button>
-            : <button onClick={() => props.onUnfollow(props.id)}>unfollow</button>
+            ? <button
+                className={props.isFollowInProgress
+                    ? `${s.imgNbutton__button} ${s.imgNbutton__button_disabled}`
+                    : s.imgNbutton__button
+                }
+                disabled={props.isFollowInProgress}
+                onClick={() => props.onFollow(props.id)}
+            >follow</button>
+            : <button
+                className={props.isFollowInProgress
+                    ? `${s.imgNbutton__button} ${s.imgNbutton__button_disabled}`
+                    : s.imgNbutton__button
+                }
+                disabled={props.isFollowInProgress}
+                onClick={() => props.onUnfollow(props.id)}
+            >unfollow</button>
     }
     return (
         <div className={s.singleUser}>
@@ -16,7 +30,8 @@ const SingleUser = (props) => {
                 <NavLink to={`/profile/${props.id}`}>
                     <div className={s.imgNbutton__img}><img src={props.imgUrl || userImg} alt="" /></div>
                 </NavLink>
-                <div className={s.imgNbutton__button}>{toggleFollow()}</div>
+                {/* <div className={s.imgNbutton__button}>{toggleFollow()}</div> */}
+                {toggleFollow()}
             </div>
             <div className={s.box}>
                 <div className={s.box__leftside}>

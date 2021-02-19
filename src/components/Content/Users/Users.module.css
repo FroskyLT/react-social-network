@@ -23,10 +23,8 @@
     max-width: 70px;
 }
 
-.imgNbutton__button {
+.imgNbutton__button{
     margin-top: 5px;
-}
-.imgNbutton__button button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,8 +40,15 @@
     transition: 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
     border-radius: 2px;
 }
-.imgNbutton__button button:hover, .imgNbutton__button button:active {
+.imgNbutton__button:hover, .imgNbutton__button:active {
     background-color: rgb(43, 93, 134);
+}
+
+.imgNbutton__button_disabled{
+    background-color: rgb(155, 155, 155);
+}
+.imgNbutton__button_disabled:hover, .imgNbutton__button_disabled:active {
+    background-color: rgb(145, 145, 145);
 }
 
 .box {
