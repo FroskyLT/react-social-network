@@ -1,31 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setAuthUserData, clearAuthUserData } from '../../redux/authReducer';
+import { clearAuthUserData, authenticateMe } from '../../redux/authReducer';
 import Header from './Header';
-import { AuthAPI } from '../../api/api';
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        AuthAPI.authenticateMe()
-            .then(responseData => {
-                if (responseData.resultCode === 0) {
-                    const { email, id, login } = responseData.data;
-                    this.props.setAuthUserData(id, email, login);
-                }
-            }
-            )
+        this.props.authenticateMe();
     }
 
     onLoginClick = () => {
-        AuthAPI.authenticateMe()
-            .then(responseData => {
-                if (responseData.resultCode === 0) {
-                    const { email, id, login } = responseData.data;
-                    this.props.setAuthUserData(id, email, login);
-                }
-            }
-            )
+        this.props.authenticateMe();
     }
     onLogoutClick = () =>  this.props.clearAuthUserData();
 
@@ -42,4 +27,4 @@ const mapStateToProps = (state) => ({
     isLogged: state.auth.isLogged
 });
 
-export default connect(mapStateToProps, { setAuthUserData, clearAuthUserData })(HeaderContainer);
+export default connect(mapStateToProps, { authenticateMe, clearAuthUserData })(HeaderContainer);
