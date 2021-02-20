@@ -9,6 +9,7 @@ import News from './components/Content/News/News';
 import Music from './components/Content/Music/Music';
 import Settings from './components/Content/Settings/Settings';
 import { Route } from 'react-router-dom';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/news' render={() => <News />} />
         <Route path='/music' render={() => <Music />} />
         <Route path='/settings' render={() => <Settings />} />
+        <Route path='/login' render={() => <Login />} />
       </div>
     </div>
   );
