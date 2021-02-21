@@ -2,7 +2,6 @@ import React from 'react';
 import d from './Dialogs.module.css';
 import People from './People/People';
 import Message from './Message/Message';
-import { Redirect } from 'react-router-dom';
 
 const Dialogs = (props) => {
     let peopleElements = props.messagesPage.peopleData.map(d => <People id={d.id} name={d.name} imgUrl={d.imgUrl} key={d.id} />);
@@ -17,8 +16,6 @@ const Dialogs = (props) => {
         let text = e.target.value;
         props.updateNewMessageElement(text);
     }
-
-    if(!props.isLogged) return <Redirect to="/login" />
 
     return (
         <div className={d.dialogs}>
