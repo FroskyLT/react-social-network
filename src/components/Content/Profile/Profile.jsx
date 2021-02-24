@@ -11,7 +11,7 @@ const Profile = (props) => {
     return (
         <div className={p.profile}>
             <div className={p.preview}>
-                <ProfilePreview profileData={props.profile} />
+                <ProfilePreview profileData={props.profile} status={props.status} updateUserStatus={props.updateUserStatus} />
             </div>
             <div className={p.main}>
                 <div className={p.info}>
