@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import HeaderContainer from './components/Header/HeaderContainer';
 import NavbarContainer from './components/Navbar/NavbarContainer';
 import ProfileContainer from './components/Content/Profile/ProfileContainer';
@@ -9,7 +9,7 @@ import News from './components/Content/News/News';
 import Music from './components/Content/Music/Music';
 import Settings from './components/Content/Settings/Settings';
 import { Route } from 'react-router-dom';
-import Login from './components/Login/Login';
+import LoginContainer from './components/Login/LoginContainer';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route path='/news' render={() => <News />} />
         <Route path='/music' render={() => <Music />} />
         <Route path='/settings' render={() => <Settings />} />
-        <Route path='/login' render={() => <Login />} />
+        <Route path='/login' render={() => <LoginContainer />} />
       </div>
     </div>
   );

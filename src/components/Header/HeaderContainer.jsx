@@ -12,16 +12,12 @@ class HeaderContainer extends React.Component {
     render() {
         return <Header
             isLogged={this.props.isLogged}
-            loginHandler={this.props.authenticateMe}
             logoutHandler={this.props.clearAuthUserData}
         />
     };
 }
 
 const mapStateToProps = (state) => ({
-    userId: state.auth.userId,
-    email: state.auth.email,
-    login: state.auth.login,
     isLogged: state.auth.isLogged
 });
 

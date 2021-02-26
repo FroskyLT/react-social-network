@@ -1,7 +1,6 @@
-import * as serviceWorker from './serviceWorker';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/index.scss';
 import App from './App';
 import store from './redux/reduxStore';
 import { BrowserRouter } from 'react-router-dom';
@@ -18,5 +17,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-serviceWorker.unregister();

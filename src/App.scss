@@ -1,15 +1,25 @@
+@import './styles/base/base';
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 .App {
+    font-family: $main-font;
+    
     display: grid;
     grid-template-areas: 
     "h h"
     "n c";
-    grid-template-rows: 60px 1fr;
+    grid-template-rows: 80px 1fr;
     grid-template-columns: 2fr 10fr;
     
     height: 100vh;
     max-width: 100%;
     margin: 0 auto;
-    /* grid-gap: 10px; */
+    // grid-gap: 10px;
     overflow: hidden;
 }
 

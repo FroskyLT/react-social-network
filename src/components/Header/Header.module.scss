@@ -1,0 +1,74 @@
+@import '../../styles/base/base';
+
+.header {
+    background-color: $color-tuna;
+    grid-area: h;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    letter-spacing: 1px;    
+}
+
+.brandContainer {
+    background-color: #DDD;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.brand a{
+    font-weight: $weight-light;
+    color: $color-white;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: linear 300ms;
+}
+
+.brand a:hover{
+    color: $color-shiraz;
+}
+
+.menu__login {
+    border: 1px solid $color-shiraz;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: linear 300ms;
+}
+
+.menu__login a {
+    letter-spacing: 2px;
+    display: flex;
+    padding: 8px 20px;
+    text-transform: uppercase;
+    color: $color-white;
+    text-decoration: none;
+}
+
+.menu__login:hover {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.548);
+    background-color: $color-shiraz;
+}
+
+.menu__login:active {
+    border-color: $color-monarch;
+    background-color: $color-monarch;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.548);
+}
+
+.login__image {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.login__image img {
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
