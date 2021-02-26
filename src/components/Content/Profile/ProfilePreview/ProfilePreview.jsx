@@ -3,20 +3,26 @@ import p from './ProfilePreview.module.css';
 import profileBG from '../../../../assets/images/profileBG.png';
 
 class ProfilePreview extends React.Component {
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.status !== prevProps.status) {
+            this.setState({ status: this.props.status });
+        }
+    }
+
     state = {
         editMode: false,
         status: this.props.status
     };
-    
+
     _onEditModeEnter() {
         this.setState({ editMode: true });
     }
-    
+
     _onEditModeClose() {
         this.setState({ editMode: false });
         this.props.updateUserStatus(this.state.status);
     }
-    
+
     _statusChangeHandler(event) {
         this.setState({ status: event.target.value });
     }
