@@ -28,8 +28,3 @@ export default compose(
     withRouter,
     // withAuthRedirect
 )(ProfileContainer);
-
-// const withRedirectProfileContainer = withAuthRedirect(ProfileContainer);
-// const ProfileContainerWithUrl = withRouter(withRedirectProfileContainer);
-
-// export default connect(mapStateToProps, { getUserProfile })(ProfileContainerWithUrl);

@@ -46,5 +46,3 @@ export default compose(
     withAuthRedirect,
     connect(mapStateToProps, { getUsers, getUsersOnPageChange, followUser, unfollowUser })
 )(UsersContainer);
-
-// export default withAuthRedirect(connect(mapStateToProps, { getUsers, getUsersOnPageChange, followUser, unfollowUser })(UsersContainer));

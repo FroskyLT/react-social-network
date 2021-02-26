@@ -3,7 +3,7 @@ import p from './ProfilePreview.module.css';
 import profileBG from '../../../../assets/images/profileBG.png';
 
 class ProfilePreview extends React.Component {
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (this.props.status !== prevProps.status) {
             this.setState({ status: this.props.status });
         }

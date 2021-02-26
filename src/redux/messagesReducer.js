@@ -1,5 +1,5 @@
-const ADD_MESSAGE = 'ADD-NEW-MESSAGE';
-const UPDATE_MESSAGE = 'UPDATE-NEW-MESSAGE-ELEMENT';
+const ADD_MESSAGE = 'ADD_NEW_MESSAGE';
+const UPDATE_MESSAGE = 'UPDATE_NEW_MESSAGE_ELEMENT';
 
 let initialState = {
     peopleData: [
@@ -46,8 +46,8 @@ const messagesReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
-export const updateNewMessageElementActionCreator = text =>
-    ({ type: UPDATE_MESSAGE, newText: text });
+// AC
+export const addMessage = () => ({ type: ADD_MESSAGE });
+export const updateNewMessageElement = text => ({ type: UPDATE_MESSAGE, newText: text });
 
 export default messagesReducer;

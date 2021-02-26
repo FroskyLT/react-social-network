@@ -1,8 +1,8 @@
 import { ProfileAPI } from "../api/api";
 
-const ADD_POST = 'ADD-NEW-POST';
-const UPDATE_POST = 'UPDATE-NEW-POST-ELEMENT';
-const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const ADD_POST = 'ADD_NEW_POST';
+const UPDATE_POST = 'UPDATE_NEW_POST_ELEMENT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
 let initialState = {

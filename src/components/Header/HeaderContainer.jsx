@@ -9,14 +9,12 @@ class HeaderContainer extends React.Component {
         this.props.authenticateMe();
     }
 
-    onLoginClick = () => {
-        this.props.authenticateMe();
-    }
-    onLogoutClick = () =>  this.props.clearAuthUserData();
-
-
     render() {
-        return <Header isLogged={this.props.isLogged} loginHandler={this.onLoginClick} logoutHandler={this.onLogoutClick} />
+        return <Header
+            isLogged={this.props.isLogged}
+            loginHandler={this.props.authenticateMe}
+            logoutHandler={this.props.clearAuthUserData}
+        />
     };
 }
 
