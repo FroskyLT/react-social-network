@@ -6,34 +6,13 @@ import { NavLink } from 'react-router-dom';
 const Navbar = (props) => {
     // let friendsElements = props.friendsData.map(d => <Friends name={d.name} imgUrl={d.imgUrl} key={d.id} />);
     return (
-        <div className={styles.navbar}>
-            <ul className={styles.navigation}>
-                <li className={styles.navigation__item}><NavLink to="/profile" activeClassName={styles.active}>Profile</NavLink></li>
-                <li className={styles.navigation__item}><NavLink to="/dialogs" activeClassName={styles.active}>Messages</NavLink></li>
-                <li className={styles.navigation__item}><NavLink to="/users" activeClassName={styles.active}>Users</NavLink></li>
-                <li className={styles.navigation__item}><NavLink to="/news" activeClassName={styles.active}>News</NavLink></li>
-                <li className={styles.navigation__item}><NavLink to="/music" activeClassName={styles.active}>Music</NavLink></li>
-                {/* <li className={styles.navigation__item}><NavLink to="/settings" activeClassName={styles.active}>Settings</NavLink></li> */}
-            </ul>
-            {/* <div className={styles.navigation}>
-                <ul>
-                    <li><NavLink to="/profile" activeClassName={styles.active}>Profile</NavLink></li>
-                    <li><NavLink to="/dialogs" activeClassName={styles.active}>Messages</NavLink></li>
-                    <li><NavLink to="/users" activeClassName={styles.active}>Users</NavLink></li>
-                    <li><NavLink to="/news" activeClassName={styles.active}>News</NavLink></li>
-                    <li><NavLink to="/music" activeClassName={styles.active}>Music</NavLink></li>
-                    <li><NavLink to="/settings" activeClassName={styles.active}>Settings</NavLink></li>
-                </ul>
-            </div>
-            <div className={styles.friends}>
-                <h1>Friends</h1>
-                <div className={styles.friends__container}>
-                    <div className={styles.friends__body}>
-                        {friendsElements}
-                    </div>
-                </div>
-            </div> */}
-        </div>
+            <nav className={styles.navigation}>
+                <NavLink exact to="/" className={styles.navigation__item} activeClassName={styles.active}>Home</NavLink>
+                <NavLink to="/profile" className={styles.navigation__item} activeClassName={styles.active}>Profile</NavLink>
+                <NavLink to="/dialogs" className={styles.navigation__item} activeClassName={styles.active}>Messages</NavLink>
+                <NavLink to="/users" className={styles.navigation__item} activeClassName={styles.active}>Users</NavLink>
+                <NavLink to="/music" className={styles.navigation__item} activeClassName={styles.active}>Music</NavLink>
+        </nav>
     );
 }
 

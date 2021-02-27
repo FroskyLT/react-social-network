@@ -11,10 +11,9 @@
     
     display: grid;
     grid-template-areas: 
-    "h h"
-    "n c";
+    "h"
+    "c";
     grid-template-rows: 80px 1fr;
-    grid-template-columns: 2fr 10fr;
     
     height: 100vh;
     max-width: 100%;
@@ -24,6 +23,7 @@
 }
 
 .content {
+    background-color: $color-shark;
     grid-area: c;
     height: 100%;
 }

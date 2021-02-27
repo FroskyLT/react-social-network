@@ -1,73 +1,49 @@
 @import '../../styles/base/base';
 
-.navbar {
-    // background-color: steelblue;
-    // grid-area: n;
-    // padding: 15px;
-    // height: 100%;
-    display: flex;
-}
-
 .navigation {
-    // margin: 0 0 50px 0;
+    height: 100%;
     display: flex;
-    list-style-type: none;
+    padding: 4px 0 0;
 }
 
 .navigation__item {
-    margin: 0 20px;
-}
-
-.navigation__item a {
+    position: relative;
     color: $color_white;
+    margin: 0 5px 3px;
+    padding: 0 15px;
     text-decoration: none;
-}
-
-// .navigation ul{
-//     list-style-type: none;
-// }
-
-// .navigation ul li {
-//     margin: 5px;
-// }
-// .navigation ul li a {
-//     color: white;
-//     text-decoration: none;
-// }
-
-// .navigation ul li .active , .navigation ul li a:hover {
-//     color: gold;
-// }
-
-.friends {
-    padding: 10px;
-    text-align: center;
-}
-.friends h1 {
-    color: #F3F3F3;
-    font-weight: 400;
-}
-.friends__container {
-    margin: 5px 0 10px 0;
-}
-.friends__body {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: linear 300ms;
 }
 
-.friends__item a{
-    text-decoration: none;
+.navigation__item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background-color: $color-tuna;
+    transition: linear 300ms;
 }
 
-.friends__item_body {
-    text-decoration: none;
+.navigation__item:hover {
+    background-color: $color-abbey;
 }
-.friends__img {
-    width: 55px;
-    margin: 0 0 -5px 0;
+
+.active {
+    color: $color-shiraz;
 }
-.friends__name {
-    color: #F3F3F3;
-    word-wrap: wrap;
+
+
+.active:hover {
+    background-color: $color-tuna;
+}
+
+.active::after {
+    content: "";
+    background-color: $color-crown-of-thorns;
 }
