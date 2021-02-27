@@ -1,9 +1,9 @@
 import React from 'react';
-import n from './home.module.css'
+import styles from './home.module.css'
 
 const Home = () => {
     return (
-        <div className={n.home}>
+        <div className={styles.home}>
             <h1>Home</h1>
         </div>
     );

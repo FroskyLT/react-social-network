@@ -1,0 +1,57 @@
+@import '../../../../styles/base/base';
+
+.profilePreview {
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wallpaper {
+    position: absolute;
+}
+
+.wallpaper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(26,26,29,1) 0%, rgba(13,13,14,0.25) 50%, rgba(0,0,0,0) 100%);
+}
+
+.wallpaper img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.about {
+    color: $color-white;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.about__description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about img {
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+
+
+.about__name {
+    font-size: 2em;
+    font-weight: 500;
+}

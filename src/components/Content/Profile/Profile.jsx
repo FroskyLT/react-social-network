@@ -1,5 +1,5 @@
 import React from 'react';
-import p from './Profile.module.css';
+import styles from './profile.module.scss';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfilePreview from './ProfilePreview/ProfilePreview';
@@ -9,15 +9,15 @@ const Profile = (props) => {
 
     if (!props.profile) return <LoaderSpinner />
     return (
-        <div className={p.profile}>
-            <div className={p.preview}>
+        <div className={styles.profile}>
+            <div className={styles.preview}>
                 <ProfilePreview profileData={props.profile} status={props.status} updateUserStatus={props.updateUserStatus} />
             </div>
-            <div className={p.main}>
-                <div className={p.info}>
+            <div className={styles.main}>
+                <div className={styles.info}>
                     <ProfileInfo profileData={props.profile} />
                 </div>
-                <div className={p.posts}>
+                <div className={styles.posts}>
                     <MyPostsContainer profileData={props.profile} />
                 </div>
             </div>

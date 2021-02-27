@@ -1,6 +1,7 @@
 import React from 'react';
-import p from './ProfilePreview.module.css';
+import styles from './profilePreview.module.scss';
 import profileBG from '../../../../assets/images/profileBG.png';
+import Button from '../../../common/Button/Button';
 
 class ProfilePreview extends React.Component {
     componentDidUpdate(prevProps) {
@@ -29,16 +30,17 @@ class ProfilePreview extends React.Component {
 
     render() {
         return (
-            <div className={p.profileInfo}>
-                <div className={p.wallpaper}>
-                    <img src={"https://blood.am/images/blood-center/78.png" || profileBG} alt="" />
-                    <div className={p.about}>
-                        <img src={this.props.profileData.photos.large || "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"} alt="" />
-                        <div>
-                            <div className={p.name}>{this.props.profileData.fullName ?? "David G."}</div>
-                            {this.state.editMode && <div><input type="text" value={this.state.status} autoFocus onBlur={this._onEditModeClose.bind(this)} onChange={this._statusChangeHandler.bind(this)} /></div>}
-                            {!this.state.editMode && <div onDoubleClick={this._onEditModeEnter.bind(this)}>{this.props.status || "double click on me"}</div>}
-                        </div>
+            <div className={styles.profilePreview}>
+                <div className={styles.wallpaper}>
+                    <img src={"https://images.hdqwalls.com/wallpapers/red-lake-mountains-minimal-4k-1u.jpg" || profileBG} alt="" />
+                </div>
+                <div className={styles.about}>
+                    <img src={this.props.profileData.photos.large || "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"} alt="" />
+                    <div className={styles.about__description}>
+                        <div className={styles.about__name}>{this.props.profileData.fullName ?? "No Name"}</div>
+                        <Button>{"follow"}</Button>
+                        {/* {this.state.editMode && <div><input type="text" value={this.state.status} autoFocus onBlur={this._onEditModeClose.bind(this)} onChange={this._statusChangeHandler.bind(this)} /></div>} */}
+                        {/* {!this.state.editMode && <div onDoubleClick={this._onEditModeEnter.bind(this)}>{this.props.status || "double click on me"}</div>} */}
                     </div>
                 </div>
             </div>
