@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './profilePreview.module.scss';
+import styles from './profile-preview.module.scss';
 import profileBG from '../../../../assets/images/profileBG.png';
 import Button from '../../../common/Button/Button';
 
@@ -39,6 +39,7 @@ class ProfilePreview extends React.Component {
                     <div className={styles.about__description}>
                         <div className={styles.about__name}>{this.props.profileData.fullName ?? "No Name"}</div>
                         <Button>{"follow"}</Button>
+                        {/* <Button>{"unfollow"}</Button> */}
                         {/* {this.state.editMode && <div><input type="text" value={this.state.status} autoFocus onBlur={this._onEditModeClose.bind(this)} onChange={this._statusChangeHandler.bind(this)} /></div>} */}
                         {/* {!this.state.editMode && <div onDoubleClick={this._onEditModeEnter.bind(this)}>{this.props.status || "double click on me"}</div>} */}
                     </div>

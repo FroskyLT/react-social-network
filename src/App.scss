@@ -6,20 +6,25 @@
     box-sizing: border-box;
 }
 
-.App {
+html,
+body,
+body > div,
+.app {
     font-family: $main-font;
-    
+    height: 100%;
+}
+
+.app {    
     display: grid;
     grid-template-areas: 
     "h"
     "c";
     grid-template-rows: 80px 1fr;
     
-    height: 100vh;
     max-width: 100%;
     margin: 0 auto;
     // grid-gap: 10px;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 .content {

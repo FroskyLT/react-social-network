@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.scss';
+import './app.scss';
 import HeaderContainer from './components/Header/HeaderContainer';
 import ProfileContainer from './components/Content/Profile/ProfileContainer';
 import DialogsContainer from './components/Content/Dialogs/DialogsContainer';
@@ -12,7 +12,7 @@ import LoginContainer from './components/Login/LoginContainer';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='app'>
       <HeaderContainer />
       <div className='content' >
         <Route exact path='/' render={() => <Home />} />
