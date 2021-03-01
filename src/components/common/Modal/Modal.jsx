@@ -5,7 +5,11 @@ const Modal = (props) => {
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
-                {props.children}
+                <div className={styles.modal__header}>{props.title}</div>
+                {/* <Divider /> */}
+                <div className={styles.modal__content}>
+                    {props.children}
+                </div>
             </div>
         </div>
     );
