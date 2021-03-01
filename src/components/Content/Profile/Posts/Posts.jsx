@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './posts.module.scss';
+import Modal from '../../../common/Modal/Modal';
 
 export const PostTextfield = () => {
     return (
@@ -29,6 +30,7 @@ const Posts = (props) => {
     return (
         <div className={styles.posts}>
             <PostTextfield />
+            <Modal>Test</Modal>
         </div>
     );
 }

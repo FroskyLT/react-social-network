@@ -31,7 +31,7 @@
 
 .about {
     color: $color-white;
-    z-index: 1;
+    z-index: $z-index-inner-core;
     display: flex;
     flex-direction: column;
     align-items: center;
