@@ -30,7 +30,7 @@ const Posts = (props) => {
     return (
         <div className={styles.posts}>
             <PostTextfield />
-            <Modal>Test</Modal>
+            <Modal title="Title">Test</Modal>
         </div>
     );
 }
