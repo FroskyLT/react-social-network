@@ -29,6 +29,16 @@
             background-color: $color-abbey;
         }
     }
+
+    &__textfield {
+        font-family: $main-font;
+        font-size: 1.3rem;
+        color: $color-white;
+        width: 100%;
+        resize: none;
+        background-color: $color-shark;
+        border: none;
+    }
 }
 
 .postTextfield__link{

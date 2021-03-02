@@ -1,22 +1,36 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Divider from '../Divider/Divider';
+import Icon from '../Icon/Icon';
 import styles from './modal.module.scss';
 
 const Modal = (props) => {
+    const modalRef = useRef();
+
+    const closeModal = e => {
+        if(modalRef.current === e.target) {
+            props.closeModal();
+        }
+    }
     return (
-        <div className={styles.modalOverlay}>
-            <div className={styles.modal}>
-                <div className={styles.modal__header}>
-                    <div className={styles.modal__headerTitle}>
-                        {props.title}
+        <>
+            { props.showModal ?
+                <div className={styles.modalOverlay} tabIndex={-1} ref={modalRef} onClick={closeModal}>
+                    <div className={styles.modal}>
+                        <div className={styles.modal__header}>
+                            <div className={styles.modal__headerTitle}>{props.title}</div>
+                            <button className={styles.modal__closeIcon} onClick={props.closeModal}>
+                                <Icon name="close" />
+                            </button>
+                        </div>
+                        <Divider />
+                        <div className={styles.modal__content} role="button">
+                            {props.children}
+                        </div>
                     </div>
                 </div>
-                <Divider />
-                <div className={styles.modal__content}>
-                    {props.children}
-                </div>
-            </div>
-        </div>
+                : null
+            }
+        </>
     );
 }
 
