@@ -14,7 +14,15 @@ let initialState = {
     ],
     newPostText: 'Hello world!',
     profile: null,
-    lastId: 4,
+    // profile: {
+    //     aboutMe: null,
+    //     contacts: {facebook: null, github: null, instagram: null, mainLink: null, twitter: null, vk: null, website: null, youtube: null,  fullName: null},
+    //     lookingForAJob: null,
+    //     lookingForAJobDescription: null,
+    //     photos: {small: null, large: null},
+    //     userId: 14984,
+    // },
+    totalPosts: 4,
     status: ""
 }
 
@@ -22,7 +30,7 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
-                id: state.lastId + 1,
+                id: state.totalPosts + 1,
                 content: state.newPostText,
                 likesCount: 0,
                 imgUrl: 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png'
@@ -31,7 +39,7 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 postData: [...state.postData, newPost],
                 newPostText: '',
-                lastId: state.lastId + 1
+                totalPosts: state.totalPosts + 1
             };
         }
         case UPDATE_POST: {

@@ -7,7 +7,7 @@ const Modal = (props) => {
     const modalRef = useRef();
 
     const closeModal = e => {
-        if(modalRef.current === e.target) {
+        if (modalRef.current === e.target) {
             props.closeModal();
         }
     }
@@ -23,9 +23,7 @@ const Modal = (props) => {
                             </button>
                         </div>
                         <Divider />
-                        <div className={styles.modal__content} role="button">
-                            {props.children}
-                        </div>
+                        {props.children}
                     </div>
                 </div>
                 : null

@@ -1,0 +1,42 @@
+@import '../../../../styles/base/base';
+
+.sectionTitle {
+    font-size: 1.3rem;
+    font-weight: $weight-semibold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+// .main {
+//     margin: 10px;
+// }
+
+// .aboutMe, .lookingJob {
+//     display: flex;
+//     flex-direction: column;
+//     margin: 0 0 30px 0;
+// }
+
+// .aboutMe__header, .lookingJob__header, .contacts__header {
+//     font-weight: 700;
+//         text-transform: uppercase;
+// }
+
+// .lookingJob__header {
+//     color: green;
+// }
+
+// .lookingJob__desc {
+//     font-size: 14px;
+//     font-style: italic;
+// }
+
+// .contacts__items {
+//     display: flex;
+//     gap: 5px;
+// }
+
+// .contacts__item > img {
+//     width: 40px;
+//     height: 40px;
+// }

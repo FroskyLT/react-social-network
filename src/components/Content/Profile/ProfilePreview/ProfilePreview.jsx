@@ -4,29 +4,29 @@ import profileBG from '../../../../assets/images/profileBG.png';
 import Button from '../../../common/Button/Button';
 
 class ProfilePreview extends React.Component {
-    componentDidUpdate(prevProps) {
-        if (this.props.status !== prevProps.status) {
-            this.setState({ status: this.props.status });
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.status !== prevProps.status) {
+    //         this.setState({ status: this.props.status });
+    //     }
+    // }
 
-    state = {
-        editMode: false,
-        status: this.props.status
-    };
+    // state = {
+    //     editMode: false,
+    //     status: this.props.status
+    // };
 
-    _onEditModeEnter() {
-        this.setState({ editMode: true });
-    }
+    // _onEditModeEnter() {
+    //     this.setState({ editMode: true });
+    // }
 
-    _onEditModeClose() {
-        this.setState({ editMode: false });
-        this.props.updateUserStatus(this.state.status);
-    }
+    // _onEditModeClose() {
+    //     this.setState({ editMode: false });
+    //     this.props.updateUserStatus(this.state.status);
+    // }
 
-    _statusChangeHandler(event) {
-        this.setState({ status: event.target.value });
-    }
+    // _statusChangeHandler(event) {
+    //     this.setState({ status: event.target.value });
+    // }
 
     render() {
         return (

@@ -1,5 +1,17 @@
 @import '../../../../styles/base/base';
 
+$_gap-size: 15px;
+
 .profileMain {
     color: $color-white;
+    display: flex;
+    gap: $_gap-size;
+}
+
+.profileMain__info {
+    flex: 0 0 40%;
+}
+
+.profileMain__posts {
+    flex: 0 0 calc(60% - #{$_gap-size});
 }

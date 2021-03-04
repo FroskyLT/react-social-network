@@ -10,10 +10,10 @@ const Profile = (props) => {
     return (
         <div className={styles.profile}>
             <div className={styles.preview}>
-                <ProfilePreview profileData={props.profile} status={props.status} updateUserStatus={props.updateUserStatus} />
+                <ProfilePreview profileData={props.profile} />
             </div>
             <div className={styles.main}>
-                <ProfileMain />
+                <ProfileMain {...props} />
             </div>
         </div>
     );
