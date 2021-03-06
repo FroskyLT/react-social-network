@@ -11,7 +11,7 @@ export const PostTextfield = () => {
     }
     return (
         <div className={styles.postTextField}>
-            <Link to="./profile" className={styles.postTextfield__link}>
+            <Link to="/profile" className={styles.postTextfield__link}>
                 <img className={styles.postTextField__image} src="https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png" alt="profile" />
             </Link>
             <button onClick={toggleModal} className={styles.postTextField__button}>{"What's on your mind?"}</button>

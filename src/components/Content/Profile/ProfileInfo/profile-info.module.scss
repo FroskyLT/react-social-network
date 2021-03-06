@@ -4,7 +4,32 @@
     font-size: 1.3rem;
     font-weight: $weight-semibold;
     letter-spacing: 1px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.sectionStatus__textfield {
+    background-color: $color-tuna;
+    font-family: $main-font;
+    color: $color-white;
+    border: none;
+    font-size: 0.95rem;
+    line-height: 1.2rem;
+    padding: 0 2px;
+}
+
+.sectionStatus__text {
+    cursor: pointer;
+
+    &_nonEditable {
+        cursor: default;
+    }
+}
+
+.profileInfo__content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.95rem;
 }
 
 // .main {

@@ -4,30 +4,6 @@ import profileBG from '../../../../assets/images/profileBG.png';
 import Button from '../../../common/Button/Button';
 
 class ProfilePreview extends React.Component {
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.status !== prevProps.status) {
-    //         this.setState({ status: this.props.status });
-    //     }
-    // }
-
-    // state = {
-    //     editMode: false,
-    //     status: this.props.status
-    // };
-
-    // _onEditModeEnter() {
-    //     this.setState({ editMode: true });
-    // }
-
-    // _onEditModeClose() {
-    //     this.setState({ editMode: false });
-    //     this.props.updateUserStatus(this.state.status);
-    // }
-
-    // _statusChangeHandler(event) {
-    //     this.setState({ status: event.target.value });
-    // }
-
     render() {
         return (
             <div className={styles.profilePreview}>
@@ -40,8 +16,6 @@ class ProfilePreview extends React.Component {
                         <div className={styles.about__name}>{this.props.profileData.fullName ?? "No Name"}</div>
                         <Button>{"follow"}</Button>
                         {/* <Button>{"unfollow"}</Button> */}
-                        {/* {this.state.editMode && <div><input type="text" value={this.state.status} autoFocus onBlur={this._onEditModeClose.bind(this)} onChange={this._statusChangeHandler.bind(this)} /></div>} */}
-                        {/* {!this.state.editMode && <div onDoubleClick={this._onEditModeEnter.bind(this)}>{this.props.status || "double click on me"}</div>} */}
                     </div>
                 </div>
             </div>
