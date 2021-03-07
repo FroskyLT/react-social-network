@@ -10,7 +10,7 @@ const Profile = (props) => {
     return (
         <div className={styles.profile}>
             <div className={styles.preview}>
-                <ProfilePreview profileData={props.profile} />
+                <ProfilePreview profileData={props.profile} currUserId={props.currUserId} />
             </div>
             <div className={styles.main}>
                 <ProfileMain {...props} />

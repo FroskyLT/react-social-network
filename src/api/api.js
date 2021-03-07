@@ -22,6 +22,12 @@ export const UsersAPI = {
             instance.get(`users?page=${currentPage}&count=${pageSize}`)
                 .then(response => response.data)
         );
+    },
+    getUserInfo(userName) {
+        return (
+            instance.get(`users?term=${userName}`)
+                .then(response => response.data)
+        );
     }
 };
 

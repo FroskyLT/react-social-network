@@ -1,8 +1,9 @@
-import { ProfileAPI } from "../api/api";
+import { ProfileAPI, UsersAPI } from "../api/api";
 
 const ADD_POST = 'ADD_NEW_POST';
 const UPDATE_POST = 'UPDATE_NEW_POST_ELEMENT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_USER_INFORMATION = 'SET_USER_INFORMATION';
 const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
@@ -15,13 +16,14 @@ let initialState = {
     newPostText: 'Hello world!',
     profile: null,
     // profile: {
-    //     aboutMe: null,
-    //     contacts: {facebook: null, github: null, instagram: null, mainLink: null, twitter: null, vk: null, website: null, youtube: null,  fullName: null},
-    //     lookingForAJob: null,
-    //     lookingForAJobDescription: null,
-    //     photos: {small: null, large: null},
-    //     userId: 14984,
-    // },
+        //     aboutMe: null,
+        //     contacts: {facebook: null, github: null, instagram: null, mainLink: null, twitter: null, vk: null, website: null, youtube: null,  fullName: null},
+        //     lookingForAJob: null,
+        //     lookingForAJobDescription: null,
+        //     photos: {small: null, large: null},
+        //     userId: 14984,
+        // },
+    userInfo: null,
     totalPosts: 4,
     status: ""
 }
@@ -54,6 +56,12 @@ const profileReducer = (state = initialState, action) => {
                 profile: action.profile
             }
         }
+        case SET_USER_INFORMATION: {
+            return {
+                ...state,
+                userInfo: action.userInfo
+            }
+        }
         case SET_STATUS: {
             return {
                 ...state,
@@ -68,6 +76,7 @@ const profileReducer = (state = initialState, action) => {
 // AC
 export const addPost = () => ({ type: ADD_POST });
 export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile });
+export const setUserInformation = userInfo => ({ type: SET_USER_INFORMATION, userInfo });
 export const updateNewPostElement = text => ({ type: UPDATE_POST, newText: text });
 export const setStatus = status => ({ type: SET_STATUS, status });
 
@@ -76,6 +85,11 @@ export const getUserProfile = (userId) => (dispatch) => {
     ProfileAPI.getSelectedUserProfile(userId)
         .then(data => {
             dispatch(setUserProfile(data));
+
+            UsersAPI.getUserInfo(data.fullName).then(userResponse => userResponse.items.forEach(user => {
+                if (user.name === data.fullName)
+                    dispatch(setUserInformation(user));
+            }));
         });
 }
 

@@ -5,6 +5,8 @@ import Button from '../../../common/Button/Button';
 
 class ProfilePreview extends React.Component {
     render() {
+        const currUserProfile = this.props.currUserId === this.props.profileData.userId;
+
         return (
             <div className={styles.profilePreview}>
                 <div className={styles.wallpaper}>
@@ -14,8 +16,11 @@ class ProfilePreview extends React.Component {
                     <img src={this.props.profileData.photos.large || "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"} alt="" />
                     <div className={styles.about__description}>
                         <div className={styles.about__name}>{this.props.profileData.fullName ?? "No Name"}</div>
-                        <Button>{"follow"}</Button>
-                        {/* <Button>{"unfollow"}</Button> */}
+                        { !currUserProfile
+                            ? <Button>{"follow"}</Button>
+                            : <div className={styles.about__followPlaceholder} />
+                            /* <Button>{"unfollow"}</Button> */
+                        }
                     </div>
                 </div>
             </div>
