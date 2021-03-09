@@ -11,13 +11,24 @@
     border-radius: 5px;
     border: 1px solid $color-monarch;
     transition: linear 300ms;
-}
-
-.button:hover {
-    border-color :$color-crown-of-thorns;
-    background: $color-crown-of-thorns;
-}
-.button:active {
-    outline: none;
-    background: $transparent;
+    
+    &:hover {
+        border-color :$color-crown-of-thorns;
+        background: $color-crown-of-thorns;
+    }
+    
+    &:active {
+        outline: none;
+        background: $transparent;
+    }
+    
+        &__disabled {
+            background: $color-bombay;
+            border-color: $color-bombay;
+    
+            &:hover, &:active {
+                background: $color-bombay;
+                border-color: $color-bombay;   
+            }
+        }
 }

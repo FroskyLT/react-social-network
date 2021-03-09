@@ -1,5 +1,5 @@
 import Dialogs from './Dialogs';
-import { addMessage, updateNewMessageElement } from '../../../redux/messagesReducer';
+import { addMessage, updateNewMessageElement } from '../../../redux/reducers/messagesReducer';
 import { connect } from 'react-redux';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';

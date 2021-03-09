@@ -10,7 +10,14 @@ const Profile = (props) => {
     return (
         <div className={styles.profile}>
             <div className={styles.preview}>
-                <ProfilePreview profileData={props.profile} currUserId={props.currUserId} />
+                <ProfilePreview
+                    profileData={props.profile}
+                    currUserId={props.currUserId}
+                    userInfo={props.userInfo}
+                    followInProgress={props.followInProgress}
+                    onFollow={props.onFollow}
+                    onUnfollow={props.onUnfollow}
+                />
             </div>
             <div className={styles.main}>
                 <ProfileMain {...props} />

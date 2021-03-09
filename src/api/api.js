@@ -66,5 +66,10 @@ export const FollowAPI = {
             instance.delete(`follow/${userId}`)
                 .then(response => response.data)
         );
+    },
+    checkIsFollowingUser(userId) {
+        return (
+            instance.get(`follow/${userId}`)
+        );
     }
 };

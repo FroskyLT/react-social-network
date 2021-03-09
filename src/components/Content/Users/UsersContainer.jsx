@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Users from './Users';
-import { getUsers, getUsersOnPageChange, followUser, unfollowUser } from '../../../redux/usersReducer';
+import { getUsers, getUsersOnPageChange, followUser, unfollowUser } from '../../../redux/reducers/usersReducer';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 

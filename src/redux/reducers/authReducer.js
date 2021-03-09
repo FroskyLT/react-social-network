@@ -1,4 +1,4 @@
-import { AuthAPI } from "../api/api";
+import { AuthAPI } from "../../api/api";
 
 const SET_USER_DATA = "SET_USER_DATA";
 const CLEAR_USER_DATA = "CLEAR_USER_DATA";

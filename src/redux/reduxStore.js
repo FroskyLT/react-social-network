@@ -1,9 +1,10 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
-import profileReducer from './profileReducer';
-import messagesReducer from './messagesReducer';
-import navbarReducer from './navbarReducer';
-import usersReducer from './usersReducer';
-import authReducer from './authReducer';
+import profileReducer from './reducers/profileReducer';
+import messagesReducer from './reducers/messagesReducer';
+import navbarReducer from './reducers/navbarReducer';
+import usersReducer from './reducers/usersReducer';
+import authReducer from './reducers/authReducer';
+import followReducer from './reducers/followReducer';
 import ThunkMiddleware from 'redux-thunk'
 
 let reducers = combineReducers({
@@ -11,7 +12,8 @@ let reducers = combineReducers({
     messagesPage: messagesReducer,
     navbarPage: navbarReducer,
     usersPage: usersReducer,
-    auth: authReducer
+    auth: authReducer,
+    follow: followReducer
 });
 
 let store = createStore(reducers, applyMiddleware(ThunkMiddleware));

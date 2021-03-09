@@ -5,7 +5,36 @@ import Button from '../../../common/Button/Button';
 
 class ProfilePreview extends React.Component {
     render() {
-        const currUserProfile = this.props.currUserId === this.props.profileData.userId;
+        const profileId = this.props.profileData.userId;
+        const isFollowInProgress = this.props.followInProgress.some(userId => userId === profileId)
+        const currUserProfile = this.props.currUserId === profileId;
+        const isFollowed = this.props.userInfo?.followed;
+
+        // const toggleFollow = () => {
+        //     return !props.isFollowed
+        //         ? <button
+        //             className={props.isFollowInProgress ? `${s.imgNbutton__button} ${s.imgNbutton__button_disabled}` : s.imgNbutton__button }
+        //             disabled={props.isFollowInProgress}
+        //             onClick={() => props.onFollow(props.id)}
+        //         >follow</button>
+        //         : <button
+        //             className={props.isFollowInProgress ? `${s.imgNbutton__button} ${s.imgNbutton__button_disabled}` : s.imgNbutton__button }
+        //             disabled={props.isFollowInProgress}
+        //             onClick={() => props.onUnfollow(props.id)}
+        //         >unfollow</button>
+        // }
+
+        const followButton = () => {
+            return isFollowed
+                ? <Button
+                    // clickHandler={() => this.props.onUnfollow(profileId)}
+                    disabled={isFollowInProgress}
+                >{"unfollow"}</Button>
+                : <Button
+                    // clickHandler={() => this.props.onFollow(profileId)}
+                    disabled={isFollowInProgress}
+                >{"follow"}</Button>
+        }
 
         return (
             <div className={styles.profilePreview}>
@@ -16,10 +45,9 @@ class ProfilePreview extends React.Component {
                     <img src={this.props.profileData.photos.large || "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"} alt="" />
                     <div className={styles.about__description}>
                         <div className={styles.about__name}>{this.props.profileData.fullName ?? "No Name"}</div>
-                        { !currUserProfile
-                            ? <Button>{"follow"}</Button>
-                            : <div className={styles.about__followPlaceholder} />
-                            /* <Button>{"unfollow"}</Button> */
+                        {currUserProfile
+                            ? <div className={styles.about__followPlaceholder} />
+                            : followButton()
                         }
                     </div>
                 </div>

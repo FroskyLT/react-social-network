@@ -1,4 +1,4 @@
-import { ProfileAPI, UsersAPI } from "../api/api";
+import { ProfileAPI, UsersAPI } from "../../api/api";
 
 const ADD_POST = 'ADD_NEW_POST';
 const UPDATE_POST = 'UPDATE_NEW_POST_ELEMENT';
@@ -22,6 +22,14 @@ let initialState = {
         //     lookingForAJobDescription: null,
         //     photos: {small: null, large: null},
         //     userId: 14984,
+        // },
+        // userInfo: {
+        //     followed: false,
+        //     id: 2,
+        //     name: "samurai dimych",
+        //     photos: {small: "https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=1", large: "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=1"},
+        //     status: "ghgdddsdsd sd",
+        //     uniqueUrlName: null,
         // },
     userInfo: null,
     totalPosts: 4,
@@ -84,11 +92,11 @@ export const setStatus = status => ({ type: SET_STATUS, status });
 export const getUserProfile = (userId) => (dispatch) => {
     ProfileAPI.getSelectedUserProfile(userId)
         .then(data => {
-            dispatch(setUserProfile(data));
-
             UsersAPI.getUserInfo(data.fullName).then(userResponse => userResponse.items.forEach(user => {
-                if (user.name === data.fullName)
+                if (user.name === data.fullName) {
+                    dispatch(setUserProfile(data));
                     dispatch(setUserInformation(user));
+                }
             }));
         });
 }
