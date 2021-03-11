@@ -1,5 +1,7 @@
 @import '../../../styles/base/base';
 
+$_disabled-color: #cccccc;
+
 .button {
     cursor: pointer;
     background: $color-monarch;
@@ -21,14 +23,15 @@
         outline: none;
         background: $transparent;
     }
-    
+
         &__disabled {
-            background: $color-bombay;
-            border-color: $color-bombay;
+            color: $_disabled-color;
+            background: $color-manatee;
+            border-color: $color-manatee;
     
             &:hover, &:active {
-                background: $color-bombay;
-                border-color: $color-bombay;   
+                background: $color-manatee;
+                border-color: $color-manatee;   
             }
         }
 }

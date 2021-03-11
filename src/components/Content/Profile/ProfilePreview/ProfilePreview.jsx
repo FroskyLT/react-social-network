@@ -8,30 +8,16 @@ class ProfilePreview extends React.Component {
         const profileId = this.props.profileData.userId;
         const isFollowInProgress = this.props.followInProgress.some(userId => userId === profileId)
         const currUserProfile = this.props.currUserId === profileId;
-        const isFollowed = this.props.userInfo?.followed;
-
-        // const toggleFollow = () => {
-        //     return !props.isFollowed
-        //         ? <button
-        //             className={props.isFollowInProgress ? `${s.imgNbutton__button} ${s.imgNbutton__button_disabled}` : s.imgNbutton__button }
-        //             disabled={props.isFollowInProgress}
-        //             onClick={() => props.onFollow(props.id)}
-        //         >follow</button>
-        //         : <button
-        //             className={props.isFollowInProgress ? `${s.imgNbutton__button} ${s.imgNbutton__button_disabled}` : s.imgNbutton__button }
-        //             disabled={props.isFollowInProgress}
-        //             onClick={() => props.onUnfollow(props.id)}
-        //         >unfollow</button>
-        // }
+        const isFollowed = this.props.isFollowingUser;
 
         const followButton = () => {
             return isFollowed
                 ? <Button
-                    // clickHandler={() => this.props.onUnfollow(profileId)}
+                    clickHandler={() => this.props.onUnfollow(profileId)}
                     disabled={isFollowInProgress}
                 >{"unfollow"}</Button>
                 : <Button
-                    // clickHandler={() => this.props.onFollow(profileId)}
+                    clickHandler={() => this.props.onFollow(profileId)}
                     disabled={isFollowInProgress}
                 >{"follow"}</Button>
         }

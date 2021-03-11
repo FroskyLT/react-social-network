@@ -25,43 +25,22 @@
     }
 }
 
-.profileInfo__content {
+.profileInfo__intro {
     display: flex;
     flex-direction: column;
     gap: 5px;
     font-size: 0.95rem;
 }
 
-// .main {
-//     margin: 10px;
-// }
+.profileInfo__friends {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 
-// .aboutMe, .lookingJob {
-//     display: flex;
-//     flex-direction: column;
-//     margin: 0 0 30px 0;
-// }
-
-// .aboutMe__header, .lookingJob__header, .contacts__header {
-//     font-weight: 700;
-//         text-transform: uppercase;
-// }
-
-// .lookingJob__header {
-//     color: green;
-// }
-
-// .lookingJob__desc {
-//     font-size: 14px;
-//     font-style: italic;
-// }
-
-// .contacts__items {
-//     display: flex;
-//     gap: 5px;
-// }
-
-// .contacts__item > img {
-//     width: 40px;
-//     height: 40px;
-// }
+    div {
+        border-radius: 5px;
+        background-color: #f0f0f0;
+        height: 100px;
+        flex: 0 0 30.5%;
+    }
+}

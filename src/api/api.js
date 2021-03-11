@@ -23,6 +23,12 @@ export const UsersAPI = {
                 .then(response => response.data)
         );
     },
+    getFollowedUsers() {
+        return (
+            instance.get(`users?count=100&friend=true`)
+                .then(response => response.data)
+        );
+    },
     getUserInfo(userName) {
         return (
             instance.get(`users?term=${userName}`)
@@ -70,6 +76,7 @@ export const FollowAPI = {
     checkIsFollowingUser(userId) {
         return (
             instance.get(`follow/${userId}`)
+                .then(response => response.data)
         );
     }
 };

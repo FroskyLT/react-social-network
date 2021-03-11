@@ -13,10 +13,10 @@ const Profile = (props) => {
                 <ProfilePreview
                     profileData={props.profile}
                     currUserId={props.currUserId}
-                    userInfo={props.userInfo}
                     followInProgress={props.followInProgress}
                     onFollow={props.onFollow}
                     onUnfollow={props.onUnfollow}
+                    isFollowingUser={props.isFollowingUser}
                 />
             </div>
             <div className={styles.main}>

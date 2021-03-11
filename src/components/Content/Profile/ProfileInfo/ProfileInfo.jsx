@@ -67,12 +67,12 @@ const SectionStatus = ({ status, updateUserStatus, canEdit }) => {
                 : <div
                     onDoubleClick={enableEditMode}
                     className={canEdit ? styles.sectionStatus__text : `${styles.sectionStatus__text} ${styles.sectionStatus__text_nonEditable}`}
-                >{status || "double click me!"}</div>
+                >{status ? status : canEdit ? "double click me!" : ""}</div>
             }
         </>
     );
 }
-const SectionContacts = () => { }
+// const SectionContacts = () => { }
 
 const ProfileInfo = (props) => {
     const { profile, status, currUserId, updateUserStatus } = props;
@@ -80,31 +80,30 @@ const ProfileInfo = (props) => {
     const canEdit = currUserId === profile.userId;
 
     return (
+        <>
         <CardContainer className={styles.profileInfo}>
             <SectionTitle>{"Intro"}</SectionTitle>
-            <div className={styles.profileInfo__content}>
+            <div className={styles.profileInfo__intro}>
                 <SectionAboutMe aboutMe={profile.aboutMe} />
                 <SectionJob isOpenToWork={profile.lookingForAJob} description={profile.lookingForAJobDescription} />
                 <SectionStatus status={status} updateUserStatus={updateUserStatus} canEdit={canEdit} />
             </div>
-            {/*
-                {props.profileData.contacts &&
-                    <div className={styles.contacts}>
-                        <div className={styles.contacts__header}>{"contacts"}</div>
-                        <div className={styles.contacts__items}>
-                            {props.profileData.contacts.facebook && <a className={styles.contacts__item} href={props.profileData.contacts.facebook}><img src="https://image.flaticon.com/icons/png/512/124/124010.png" alt="facebook" /></a>}
-                            {props.profileData.contacts.github && <a className={styles.contacts__item} href={props.profileData.contacts.github}><img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-512.png" alt="github" /></a>}
-                            {props.profileData.contacts.instagram && <a className={styles.contacts__item} href={props.profileData.contacts.instagram}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png" alt="instagram" /></a>}
-                            {props.profileData.contacts.twitter && <a className={styles.contacts__item} href={props.profileData.contacts.twitter}><img src="https://www.lter-europe.net/document-archive/image-gallery/albums/logos/TwitterLogo_55acee.png/image" alt="twitter" /></a>}
-                            {props.profileData.contacts.vk && <a className={styles.contacts__item} href={props.profileData.contacts.vk}><img src="https://cdn.worldvectorlogo.com/logos/vk-1.svg" alt="vk" /></a>}
-                            {props.profileData.contacts.website && <a className={styles.contacts__item} href={props.profileData.contacts.website}><img src="https://cdn4.iconfinder.com/data/icons/software-line/32/software-line-02-512.png" alt="website" /></a>}
-                            {props.profileData.contacts.youtube && <a className={styles.contacts__item} href={props.profileData.contacts.youtube}><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-512.png" alt="youtube" /></a>}
-                        </div>
-                    </div>
-
-                }
-            } */}
         </CardContainer>
+        <CardContainer className={styles.profileInfo}>
+            <SectionTitle>{"Friends"}</SectionTitle>
+            <div className={styles.profileInfo__friends}>
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+            </div>
+        </CardContainer>
+        </>
     );
 }
 
