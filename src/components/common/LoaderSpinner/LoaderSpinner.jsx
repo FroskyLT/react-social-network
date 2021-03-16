@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './loader-spinner.module.css';
+import styles from './loader-spinner.module.scss';
 
-export const LoaderSpinner = (props) => (
+export const LoaderSpinner = () => (
 <div className={styles.loader} />
 );
 
