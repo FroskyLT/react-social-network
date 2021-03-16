@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './posts.module.scss';
 import Modal from '../../../common/Modal/Modal';
+import Post from './Post/Post';
 
 export const PostTextfield = () => {
     const [showModal, setShowModal] = useState(false);
@@ -23,13 +24,12 @@ export const PostTextfield = () => {
 }
 
 const Posts = (props) => {
-    //show modal
 
-    // const postElements = props.profilePage.postData.map(d => <Post text={d.content} likesCount={d.likesCount} imgUrl={props.profileData?.photos?.large || d.imgUrl} key={d.id} />);
+    const postElements = props.profilePage.postData.slice(0).reverse().map(post => <Post post={post} profile={props.profilePage.profile} key={post.id} />);
 
     // const NewPost = () => {
     //     props.addPost();
-    // }
+    // }S
     // const onPostChange = (e) => {
     //     const text = e.target.value;
     //     props.updateNewPostElement(text);
@@ -38,6 +38,9 @@ const Posts = (props) => {
     return (
         <div className={styles.posts}>
             <PostTextfield />
+            <div className={styles.posts__content}>
+                {postElements}
+            </div>
         </div>
     );
 }

@@ -13,7 +13,7 @@ const TOGGLE_FOLLOW_IN_PROGRESS = "TOGGLE_FOLLOW_IN_PROGRESS";
 
 let initialState = {
     users: [],
-    followedUsers: [],
+    followedUsersId: [],
     totalUsersCount: 0,
     isFollowingUser: null,
 
@@ -41,7 +41,7 @@ const usersReducer = (state = initialState, action) => {
         case CHECK_IS_FOLLOWING_USER: {
             return {
                 ...state,
-                isFollowingUser: state.followedUsers
+                isFollowingUser: state.followedUsersId
                     .some(friend => friend === Number(action.selectedUserId))
             }
         }
@@ -66,19 +66,19 @@ const usersReducer = (state = initialState, action) => {
         case SET_FOLLOWED_USERS: {
             return {
                 ...state,
-                followedUsers: action.selectedUsers.map(user => user.id)
+                followedUsersId: action.selectedUsers.map(user => user.id)
             }
         }
         case ADD_FOLLOWED_USER: {
             return {
                 ...state,
-                followedUsers: [...state.followedUsers, action.selectedUserId]
+                followedUsers: [...state.followedUsersId, action.selectedUserId]
             }
         }
         case DELETE_FOLLOWED_USER: {
             return {
                 ...state,
-                followedUsers: state.followedUsers.filter(user => user !== action.selectedUserId)
+                followedUsers: state.followedUsersId.filter(user => user !== action.selectedUserId)
             }
         }
         case TOGGLE_IS_FETCH: {

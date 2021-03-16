@@ -1,16 +1,48 @@
+@import '../../../../../styles/base/base';
+
 .post {
-    background-color: transparent;
-}
-.postBody {
-    display: flex;
-    align-items: center;
-}
-.postImage img {
-    margin: 5px;
-    width: 50px;
-    border-radius: 25px;
+    padding: 0;
 }
 
-.postText {
-    min-width: 250px;
+.postHeader {
+    display: flex;
+    margin-bottom: 5px;
+
+    &__photo {
+        width: 45px;
+        height: 45px;
+        border-radius: 25px;
+    }
+
+    &__status {
+        padding-left: 5px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__statusAuthor {
+        font-weight: $weight-semibold;
+    }
+    
+    &__statusDate {
+        // font-weight: $weight-light;
+        font-size: 0.8rem;
+        color: $color-bombay;
+    }
+}
+
+.postContent {
+    &__text {
+        margin-bottom: 5px;
+        
+        &_large {
+            font-size: 1.5rem;
+            font-weight: $weight-light;
+        }
+    }
+
+    &__photo {
+        margin-bottom: 5px;
+        width: 100%;
+    }
 }

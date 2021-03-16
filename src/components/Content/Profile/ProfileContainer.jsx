@@ -56,7 +56,7 @@ const mapStateToProps = (state) => ({
     currUserId: state.auth.userId,
     followInProgress: state.usersPage.followInProgress,
     isFollowingUser: state.usersPage.isFollowingUser,
-    followedUsers: state.usersPage.followedUsers
+    followedUsersId: state.usersPage.followedUsersId
 });
 
 export default compose(
