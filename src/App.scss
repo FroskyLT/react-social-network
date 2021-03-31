@@ -33,3 +33,25 @@ body > div,
     grid-area: c;
     height: 100%;
 }
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    border-left: 1px solid $color-tuna;
+    background-color: $color-shark;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: lighten($color-tuna, 5%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: lighten($color-tuna, 10%);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: lighten($color-tuna, 15%);
+}
