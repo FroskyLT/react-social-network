@@ -1,0 +1,81 @@
+@import '../../styles/base/base';
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+.login {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // overflow: hidden;
+
+    &__background {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
+
+    &__form {
+        z-index: $z-index-outer-core;
+        background:$color-transparent-black-75;
+        color: $color-white;
+        backdrop-filter: blur(6px);
+        width: 350px;
+        padding: 20px;
+    }
+}
+
+.form__group {
+    position: relative;
+    margin: 0 0 10px;
+    padding: 15px 0 0;
+}
+
+.form__field {
+    font-family: $main-font;
+    font-weight: $weight-semibold;
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    padding: 10px 0;
+    color: $color-white;
+    border-bottom: 2px solid $color-manatee;
+    transition: 300ms;
+
+    &::placeholder {
+        color: transparent;
+    }
+
+    &:placeholder-shown ~ .form__label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 25px;
+    }
+}
+
+.form__label {
+    color: $color-manatee;
+    position: absolute;
+    top: 0;
+    display: block;
+    font-size: 1rem;
+    transition: 300ms;
+}
+
+
+.form__field:focus {
+    ~ .form__label {
+        top: 0;
+        font-size: 1rem;
+        color: $color-shiraz;
+        font-weight: $weight-bold;
+    }
+
+    border-color: $color-shiraz;
+}
