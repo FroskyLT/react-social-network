@@ -11,14 +11,14 @@ const Login = (props) => {
                 Your browser does not support the video tag.
             </video>
             <CardContainer className={styles.login__form}>
-                <h1>Welcome!</h1>
+                <h1 className={styles.login__heading}>Welcome home <span className={styles.login__heading_colored}>samurai</span></h1>
                 <div className={styles.form__group}>
                     <input id="login" className={styles.form__field} type="text" placeholder="login" />
-                    <label for="login" className={styles.form__label}>login</label>
+                    <label htmlFor="login" className={styles.form__label}>login</label>
                 </div>
                 <div className={styles.form__group}>
                     <input id="password" className={styles.form__field} type="password" placeholder="password" />
-                    <label for="password" className={styles.form__label}>password</label>
+                    <label htmlFor="password" className={styles.form__label}>password</label>
                 </div>
                 <button onClick={props.loginHandler}>sign in</button>
             </CardContainer>
