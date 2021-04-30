@@ -20,7 +20,7 @@ const Login = (props) => {
                     <input id="password" className={styles.form__field} type="password" placeholder="password" />
                     <label htmlFor="password" className={styles.form__label}>password</label>
                 </div>
-                <button onClick={props.loginHandler}>sign in</button>
+                <button className={styles.form__submit} onClick={props.loginHandler}>sign in</button>
             </CardContainer>
         </div>
     );
