@@ -63,11 +63,11 @@
         color: transparent;
     }
 
-    &:placeholder-shown ~ .form__label {
-        font-size: 1.3rem;
-        cursor: text;
-        top: 25px;
-    }
+    // &:placeholder-shown ~ .form__label {
+    //     font-size: 1.3rem;
+    //     cursor: text;
+    //     top: 25px;
+    // }
 }
 
 .form__label {
@@ -76,6 +76,7 @@
     top: 0;
     display: block;
     font-size: 1rem;
+    cursor: pointer;
     transition: 300ms;
 }
 
@@ -91,6 +92,11 @@
     border-color: $color-shiraz;
 }
 
+.form__label_big {
+    top: 25px;
+    font-size: 1.3rem;
+}
+
 .form__submit {
     margin: 20px 0 0;
     padding: 15px 0;
@@ -104,6 +110,7 @@
     background-color: $color-monarch;
     color: $color-white;
     transition: 300ms linear;
+    width: 100%;
     
     &:hover {
         background-color: $color-shiraz;

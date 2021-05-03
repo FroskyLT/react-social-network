@@ -23,7 +23,7 @@
 }
 
 .brand {
-    width: 200px;
+    min-width: 200px;
 }
 
 .brand a{
@@ -46,26 +46,45 @@
 }
 
 .menu {
-    width: 200px;
+    min-width: 200px;
     display: flex;
     justify-content: flex-end;
 }
 
 .menu__login {
     border: 1px solid $color-shiraz;
-    display: inline-flex;
     border-radius: 5px;
     cursor: pointer;
     transition: linear 300ms;
-}
-
-.menu__login a {
     letter-spacing: 2px;
     display: flex;
     padding: 8px 20px;
     text-transform: uppercase;
     color: $color-white;
     text-decoration: none;
+}
+
+.menu__dropdown {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    width: 300px;
+    background-color: $color-tuna;
+    border: 1px solid $color-abbey;
+    border-radius: 5px;
+    padding: 5px;
+    list-style-type: none;
+    color: $color-white;
+}
+
+.dropdown__item {
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: $color-abbey;
+    }
 }
 
 .menu__login:hover {
@@ -81,15 +100,8 @@
 
 .login__image {
     cursor: pointer;
-}
-
-.login__imageLink {
     display: flex;
     align-items: center;
-}
-
-.login__image img {
-    text-align: center;
     height: 50px;
     width: 50px;
     border-radius: 25px;

@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './header.module.scss';
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import NavbarContainer from '../Navbar/NavbarContainer';
 
+const useClickOutside = (handler) => {
+    const domNode = useRef();
+
+    useEffect (() => {
+        const outsideHandle = (event) => {
+            if (domNode.current &&  !domNode.current.contains(event.target)) {
+                handler();
+            }
+        };
+
+        document.addEventListener("mousedown", outsideHandle);
+        
+        return () => {
+            document.removeEventListener("mousedown", outsideHandle);
+        }
+    });
+
+    return domNode;
+}
+
 const Header = (props) => {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const dropdownNode = useClickOutside(() => {setDropdownOpen(false)});
+
+    const logoutHandler = () => {
+        props.logoutHandler().then(() => {
+            setDropdownOpen(false);
+        })
+    }
+
     return (
         <div className={styles.header}>
             <div className={styles.brand}>
@@ -14,14 +43,23 @@ const Header = (props) => {
             </div>
             <div className={styles.menu}>
                 {props.isLogged
-                    ? <div className={styles.login__image} onClick={props.logoutHandler}>
-                        <Link to="/profile" className={styles.login__imageLink}>
-                            <img src={"https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"} alt="" />
-                        </Link>
+                    ? <div ref={dropdownNode} className={styles.menu__buttons}>
+                        <img
+                            src={"https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"}
+                            className={styles.login__image}
+                            alt=""
+                            onClick={() => setDropdownOpen((dropdownOpen) => !dropdownOpen)}
+                        />
+                        {dropdownOpen &&
+                            <ul className={styles.menu__dropdown}>
+                                <li className={styles.dropdown__item}>{"Profile"}</li>
+                                <li className={styles.dropdown__item}>{"Settings"}</li>
+                                <li className={styles.dropdown__item}>{"Help"}</li>
+                                <li className={styles.dropdown__item} onClick={logoutHandler}>{"Log out"}</li>
+                            </ul>
+                        }
                     </div>
-                    : <div className={styles.menu__login}>
-                        <NavLink to='/login'> {"sign in"} </NavLink>
-                    </div>
+                    : <NavLink to='/login' className={styles.menu__login}> {"sign in"} </NavLink>
                 }
             </div>
         </div>
