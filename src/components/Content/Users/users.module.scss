@@ -1,0 +1,103 @@
+@import "../../../styles/base/base";
+@import "../../../styles/mixins/mixins";
+
+.users {
+  padding: 15px 0;
+  height: 100%;
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__pagination {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  &__paginationItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    background-color: $color-tuna;
+    border-radius: 5px;
+    border: 2px solid $color-tuna;
+    font-weight: $weight-bold;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    user-select: none;
+
+    &_selected {
+      background-color: $color-monarch;
+      color: $color-white;
+      border-color: $color-monarch;
+    }
+
+    &:active {
+      background-color: $color-shiraz;
+      border-color: $color-shiraz;
+    }
+  }
+}
+
+.singleUser {
+  color: $color-white;
+  background-color: $color-tuna;
+  border-radius: 15px;
+  margin: 10px;
+  display: inline-flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 15px;
+
+  &__avatar {
+    @include flexCenter;
+  }
+
+  &__avatarImage {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__title {
+    @include textOverflow;
+    text-align: center;
+    font-weight: $weight-semibold;
+    font-size: 1.3rem;
+  }
+
+  &__description {
+    @include textOverflow;
+    color: $color-bombay;
+    text-align: center;
+    margin-bottom: 10px;
+
+    &_none {
+      text-align: center;
+      margin-bottom: 10px;
+      color: $color-manatee;
+    }
+  }
+
+  &__follow {
+    @include flexCenter;
+  }
+}
+
+.follow__button {
+  border-radius: 20px;
+  width: 100%;
+  &__disabled {
+    background-color: gray;
+  }
+}

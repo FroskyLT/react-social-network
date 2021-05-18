@@ -1,67 +1,50 @@
 import React from "react";
-import s from "../Users.module.css";
+import styles from "../users.module.scss";
 import userImg from "../../../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
+import Button from "../../../common/Button/Button";
 
 const SingleUser = (props) => {
-  let toggleFollow = () => {
-    return !props.isFollowed ? (
-      <button
-        className={
-          props.isFollowInProgress
-            ? `${s.imgNbutton__button} ${s.imgNbutton__button_disabled}`
-            : s.imgNbutton__button
-        }
-        disabled={props.isFollowInProgress}
-        onClick={() => props.onFollow(props.id)}
-      >
-        follow
-      </button>
-    ) : (
-      <button
-        className={
-          props.isFollowInProgress
-            ? `${s.imgNbutton__button} ${s.imgNbutton__button_disabled}`
-            : s.imgNbutton__button
-        }
-        disabled={props.isFollowInProgress}
-        onClick={() => props.onUnfollow(props.id)}
-      >
-        unfollow
-      </button>
-    );
-  };
+  const followButton = () => (
+    <Button
+      styleName={
+        props.isFollowInProgress
+          ? `${styles.follow__button} ${styles.follow__button_disabled}`
+          : styles.follow__button
+      }
+      disabled={props.isFollowInProgress}
+      clickHandler={
+        props.isFollowed
+          ? () => props.onUnfollow(props.id)
+          : () => props.onFollow(props.id)
+      }
+    >
+      {props.isFollowed ? "unfollow" : "follow"}
+    </Button>
+  );
 
   return (
-    <div className={s.singleUser}>
-      <div className={s.imgNbutton}>
+    <div className={styles.singleUser}>
+      <div className={styles.singleUser__avatar}>
         <NavLink to={`/profile/${props.id}`}>
-          <div className={s.imgNbutton__img}>
-            <img src={props.imgUrl || userImg} alt="" />
-          </div>
+          <img
+            className={styles.singleUser__avatarImage}
+            src={props.imgUrl || userImg}
+            alt=""
+          />
         </NavLink>
-        {/* <div className={s.imgNbutton__button}>{toggleFollow()}</div> */}
-        {toggleFollow()}
       </div>
-      <div className={s.box}>
-        <div className={s.box__leftside}>
-          <div className={s.name__wrapper}>
-            <div className={s.name__body}>{props.name}</div>
-          </div>
-          <div className={s.status__wrapper}>
-            <div className={s.status__body}>{props.status}</div>
-          </div>
-        </div>
-        <div className={s.box__rightside}>
-          <div className={s.country__wrapper}>
-            <div className={s.country__body}>{props.country ?? "Country"},</div>
-          </div>
-          <div className={s.city__wrapper}>
-            <div className={s.city__body}>{props.city ?? "City"}</div>
-          </div>
-        </div>
+      <div className={styles.singleUser__title}>{props.name}</div>
+      <div
+        className={
+          props.status
+            ? styles.singleUser__description
+            : styles.singleUser__description_none
+        }
+      >
+        {props.status ? props.status : "no description"}
       </div>
-      <div></div>
+      <div className={styles.singleUser__follow}>{followButton()}</div>
     </div>
   );
 };

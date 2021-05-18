@@ -1,7 +1,7 @@
 import React from "react";
 import LoaderSpinner from "../../common/LoaderSpinner/LoaderSpinner";
 import SingleUser from "./SingleUser/SingleUser";
-import s from "./Users.module.css";
+import styles from "./users.module.scss";
 
 export const Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -34,11 +34,11 @@ export const Users = (props) => {
       {props.isFetching ? (
         <LoaderSpinner />
       ) : (
-        <div className={s.users__wrapper}>
-          <div className={s.users__pagination}>
+        <div className={styles.users}>
+          <div className={styles.users__pagination}>
             {props.currentPage > 1 && (
               <div
-                className={s.users__paginationItem}
+                className={styles.users__paginationItem}
                 onClick={() => props.onPageChanged(props.currentPage - 1)}
               >
                 {"❮"}
@@ -56,8 +56,8 @@ export const Users = (props) => {
                     key={page}
                     className={
                       props.currentPage === page
-                        ? `${s.users__paginationItem} ${s.users__paginationItem_selected}`
-                        : s.users__paginationItem
+                        ? `${styles.users__paginationItem} ${styles.users__paginationItem_selected}`
+                        : styles.users__paginationItem
                     }
                     onClick={() => props.onPageChanged(page)}
                   >
@@ -70,14 +70,14 @@ export const Users = (props) => {
             })}
             {props.currentPage < pagesCount && (
               <div
-                className={s.users__paginationItem}
+                className={styles.users__paginationItem}
                 onClick={() => props.onPageChanged(props.currentPage + 1)}
               >
                 {"❯"}
               </div>
             )}
           </div>
-          {singleUser}
+          <div className={styles.users__container}>{singleUser}</div>
         </div>
       )}
     </>
