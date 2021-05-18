@@ -1,137 +1,135 @@
-@import '../../../styles/base/_base.scss';
+@import "../../../styles/base/_base.scss";
 
 .dialogs {
-    height: 100%;
-    color: $color-white;
-    background-color: $color-shark;
+  height: 100%;
+  color: $color-white;
+  background-color: $color-shark;
 }
 
 .main {
-    display: flex;
-    list-style-position: inside;
-    height: 100%;
+  display: flex;
+  list-style-position: inside;
+  height: 100%;
 }
 
 .people {
-    flex: 0 1 35%;
-    border-right: 1px solid #555;
+  flex: 0 1 35%;
+  border-right: 1px solid #555;
 }
 .people__container {
-    padding: 0 30px;
+  padding: 0 30px;
 }
 .people__body {
-    line-height: 55px;
+  line-height: 55px;
 }
 
 .people__body_item {
-    display: flex;
-    align-items: center;
-    line-height: 70px;
+  display: flex;
+  align-items: center;
+  line-height: 70px;
 }
 
 .people__body_item img {
-    max-width: 50px;
-    margin: 0 10px 0 0;
+  max-width: 50px;
+  margin: 0 10px 0 0;
 }
 
 .people__body_item li a {
-    color: $color-white;
-    text-decoration: none;
-    font-size: 15px;
+  color: $color-white;
+  text-decoration: none;
+  font-size: 15px;
 }
-.people__body_item  li a.active {
-    color: #000;
-    font-size: 18px;
+.people__body_item li a.active {
+  color: #000;
+  font-size: 18px;
 }
-
 
 .conversation {
-    flex: 0 1 65%;
-    display: flex;
-    flex-direction: column;
+  flex: 0 1 65%;
+  display: flex;
+  flex-direction: column;
 }
 .message__wrapper {
-    max-height: 80vh;
-    overflow: auto;
-    flex: 1 0 auto;
+  max-height: 80vh;
+  overflow: auto;
+  flex: 1 0 auto;
 }
 .message {
-    max-height: 200px;
+  max-height: 200px;
 }
 .message__container {
-    margin: 0 0 10px 0;
+  margin: 0 0 10px 0;
 }
 .message__body {
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: 2fr 8fr 2fr;
-    grid-template-areas: 
-    "a1 t a2"
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 2fr 8fr 2fr;
+  grid-template-areas: "a1 t a2";
 }
 .message__avatar {
-    display: grid;
-    align-items: end;
-    grid-template-columns: auto;
-    grid-template-rows: 1fr 15px;
-    grid-area: a1;
+  display: grid;
+  align-items: end;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 15px;
+  grid-area: a1;
 }
-.message__avatar_photo{
-    text-align: center;
+.message__avatar_photo {
+  text-align: center;
 }
-.message__avatar_photo img{
-    text-align: center;
-    max-height: 65px;
+.message__avatar_photo img {
+  text-align: center;
+  max-height: 65px;
 }
 .message__avatar_name {
-    line-height: 15px;
-    text-align: center;
-    font-weight: 600;
+  line-height: 15px;
+  text-align: center;
+  font-weight: 600;
 }
 .message__text {
-    padding: 10px;
-    border-radius: 20px 20px 20px 0;
-    border: 1.5px solid #777;   
-    justify-self: left;
-    align-self: center;
-    max-width: 90%;
-    word-wrap: break-word;
-    grid-area: t;
+  padding: 10px;
+  border-radius: 20px 20px 20px 0;
+  border: 1.5px solid #777;
+  justify-self: left;
+  align-self: center;
+  max-width: 90%;
+  word-wrap: break-word;
+  grid-area: t;
 }
 
 .right .message__avatar {
-    grid-area: a2;
+  grid-area: a2;
 }
 
 .right .message__text {
-    border-radius: 20px 20px 0 20px;
-    justify-self: right;
-    background-color: $color-crown-of-thorns;
-    border-color: $color-crown-of-thorns;
+  border-radius: 20px 20px 0 20px;
+  justify-self: right;
+  background-color: $color-crown-of-thorns;
+  border-color: $color-crown-of-thorns;
 }
 
 .textarea {
-    padding: 10px;
-    flex-shrink: 0;
+  padding: 10px;
+  flex-shrink: 0;
 }
 .textarea__body {
-    display: grid;
-    grid-template-columns: 10fr 2fr;
+  display: grid;
+  grid-template-columns: 10fr 2fr;
 }
 .textarea__body textarea {
-    resize: none;
-    border-radius: 10px 0 0 10px;
+  resize: none;
+  border-radius: 10px 0 0 10px;
 }
 .textarea__body button {
-    background-color: rgb(69, 127, 214);
-    padding: 0 15px;
-    color: #FFF;
-    border: hidden;
-    border-radius: 0 10px 10px 0;
-    outline: none;
+  background-color: rgb(69, 127, 214);
+  padding: 0 15px;
+  color: #fff;
+  border: hidden;
+  border-radius: 0 10px 10px 0;
+  outline: none;
 }
 .textarea__body button:hover {
-    background-color: rgb(59, 118, 206);
+  background-color: rgb(59, 118, 206);
 }
 .textarea__body button:active {
-    background-color: rgb(75, 139, 235);
+  background-color: rgb(75, 139, 235);
 }

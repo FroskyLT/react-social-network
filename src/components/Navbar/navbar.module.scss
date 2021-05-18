@@ -1,49 +1,48 @@
-@import '../../styles/base/base';
+@import "../../styles/base/base";
 
 .navigation {
-    height: 100%;
-    display: flex;
-    padding: 4px 0 0;
+  height: 100%;
+  display: flex;
+  padding: 4px 0 0;
 }
 
 .navigation__item {
-    position: relative;
-    color: $color_white;
-    margin: 0 5px 3px;
-    padding: 0 15px;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    transition: linear 300ms;
+  position: relative;
+  color: $color_white;
+  margin: 0 5px 3px;
+  padding: 0 15px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: linear 300ms;
 }
 
 .navigation__item::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 4px;
-    background-color: $color-tuna;
-    transition: linear 300ms;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: $color-tuna;
+  transition: linear 300ms;
 }
 
 .navigation__item:hover {
-    background-color: $color-abbey;
+  background-color: $color-abbey;
 }
 
 .active {
-    color: $color-shiraz;
+  color: $color-shiraz;
 }
 
-
 .active:hover {
-    background-color: $color-tuna;
+  background-color: $color-tuna;
 }
 
 .active::after {
-    content: "";
-    background-color: $color-crown-of-thorns;
+  content: "";
+  background-color: $color-crown-of-thorns;
 }

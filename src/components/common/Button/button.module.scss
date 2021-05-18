@@ -1,37 +1,38 @@
-@import '../../../styles/base/base';
+@import "../../../styles/base/base";
 
 $_disabled-color: #cccccc;
 
 .button {
-    cursor: pointer;
-    background: $color-monarch;
-    // background: $color-shiraz;
-    color: $color-white;
-    padding: 8px 20px;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    border-radius: 5px;
-    border: 1px solid $color-monarch;
-    transition: linear 300ms;
-    
-    &:hover {
-        border-color :$color-crown-of-thorns;
-        background: $color-crown-of-thorns;
-    }
-    
-    &:active {
-        outline: none;
-        background: $transparent;
-    }
+  cursor: pointer;
+  background: $color-monarch;
+  // background: $color-shiraz;
+  color: $color-white;
+  padding: 8px 20px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  border: 1px solid $color-monarch;
+  transition: linear 300ms;
 
-        &__disabled {
-            color: $_disabled-color;
-            background: $color-manatee;
-            border-color: $color-manatee;
-    
-            &:hover, &:active {
-                background: $color-manatee;
-                border-color: $color-manatee;   
-            }
-        }
+  &:hover {
+    border-color: $color-crown-of-thorns;
+    background: $color-crown-of-thorns;
+  }
+
+  &:active {
+    outline: none;
+    background: $transparent;
+  }
+
+  &__disabled {
+    color: $_disabled-color;
+    background: $color-manatee;
+    border-color: $color-manatee;
+
+    &:hover,
+    &:active {
+      background: $color-manatee;
+      border-color: $color-manatee;
+    }
+  }
 }

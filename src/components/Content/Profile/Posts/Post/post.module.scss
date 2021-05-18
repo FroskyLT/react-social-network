@@ -1,148 +1,147 @@
-@import '../../../../../styles/base/base';
+@import "../../../../../styles/base/base";
 
 .post {
-    padding: 0;
+  padding: 0;
 }
 
 .postHeader {
+  display: flex;
+  margin-bottom: 5px;
+
+  &__photo {
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+  }
+
+  &__status {
+    padding-left: 5px;
     display: flex;
-    margin-bottom: 5px;
+    flex-direction: column;
+  }
 
-    &__photo {
-        width: 45px;
-        height: 45px;
-        border-radius: 25px;
-    }
+  &__statusAuthor {
+    font-weight: $weight-semibold;
+  }
 
-    &__status {
-        padding-left: 5px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    &__statusAuthor {
-        font-weight: $weight-semibold;
-    }
-    
-    &__statusDate {
-        // font-weight: $weight-light;
-        font-size: 0.8rem;
-        color: $color-bombay;
-    }
+  &__statusDate {
+    // font-weight: $weight-light;
+    font-size: 0.8rem;
+    color: $color-bombay;
+  }
 }
 
 .postContent {
-    &__text {
-        margin-bottom: 5px;
-        
-        &_large {
-            font-size: 1.5rem;
-            font-weight: $weight-light;
-        }
-    }
+  &__text {
+    margin-bottom: 5px;
 
-    &__photo {
-        margin-bottom: 5px;
-        width: 100%;
+    &_large {
+      font-size: 1.5rem;
+      font-weight: $weight-light;
     }
+  }
+
+  &__photo {
+    margin-bottom: 5px;
+    width: 100%;
+  }
 }
 
 .postFooter {
+  display: flex;
+  flex-direction: column;
+
+  &__likes {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 0.9rem;
+    color: $color-bombay;
+  }
+
+  &__buttons {
+    padding: 5px;
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+  }
+
+  &__singleButton {
+    padding: 5px 0;
+    flex: 0 1 50%;
+    background-color: $color-tuna;
+    border: none;
+    color: $color-bombay;
+    font-family: $main-font;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: linear 300ms;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: $color-abbey;
+    }
+  }
+
+  &__comments {
     display: flex;
     flex-direction: column;
+    padding: 5px;
+    gap: 5px;
+  }
 
-    &__likes {
-        display: flex;
-        align-items: center;
-        padding: 5px 0;
-        font-size: 0.9rem;
-        color: $color-bombay;
-    }
+  &__comment {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
 
-    &__buttons {
-        padding: 5px;
-        display: flex;
-        gap: 5px;
-        justify-content: space-between;
-    }
-    
-    &__singleButton {
-        padding: 5px 0;
-        flex: 0 1 50%;
-        background-color: $color-tuna;
-        border: none;
-        color: $color-bombay;
-        font-family: $main-font;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: linear 300ms;
-        border-radius: 5px;
+  &__commentImage {
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+  }
 
-        &:hover {
-            background-color: $color-abbey;
-        }
-    }
-    
-    &__comments {
-        display: flex;
-        flex-direction: column;
-        padding: 5px;
-        gap: 5px;
-    }
+  &__commentContainer {
+    border-radius: 15px;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    color: $color-bombay;
+    background-color: $color-abbey;
+  }
 
-    
-    &__comment {
-        display: flex;
-        gap: 5px;
-        align-items: center;
-    }
+  &__commentTitle {
+    color: $color-white;
+    font-weight: $weight-semibold;
+  }
 
-    &__commentImage {
-        display: flex;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 20px;
-    }
-    
-    &__commentContainer {
-        border-radius: 15px;
-        padding: 5px 10px;
-        display: flex;
-        flex-direction: column;
-        font-size: 0.8rem;
-        color: $color-bombay;
-        background-color: $color-abbey;
-    }
+  &__newComment {
+    padding: 15px 0 0;
+    display: flex;
+    gap: 10px;
+  }
 
-    &__commentTitle {
-        color: $color-white;
-        font-weight: $weight-semibold;
-    }
+  &__newCommentLink {
+    display: flex;
+    align-items: center;
+  }
 
-    &__newComment {
-        padding: 15px 0 0;
-        display: flex;
-        gap: 10px;
-    }
+  &__newCommentImage {
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+  }
 
-    &__newCommentLink {
-        display: flex;
-        align-items: center;
-    }
-
-    &__newCommentImage {
-        width: 45px;
-        height: 45px;
-        border-radius: 25px;
-    }
-
-    &__newCommentTextfield {
-        width: 100%;
-        background-color: $color-abbey;
-        border-radius: 25px;
-        padding: 0 10px;
-        color: $color-white;
-        border: none;
-    }
+  &__newCommentTextfield {
+    width: 100%;
+    background-color: $color-abbey;
+    border-radius: 25px;
+    padding: 0 10px;
+    color: $color-white;
+    border: none;
+  }
 }

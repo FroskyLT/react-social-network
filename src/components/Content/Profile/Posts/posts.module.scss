@@ -1,53 +1,55 @@
-@import '../../../../styles/base/base';
+@import "../../../../styles/base/base";
 
-.postTextField, .postTextField__image, .postTextField__button {
-    height: 50px;
+.postTextField,
+.postTextField__image,
+.postTextField__button {
+  height: 50px;
 }
 
 .postTextField {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 
-    &__image {
-        width: 50px;
+  &__image {
+    width: 50px;
+  }
+
+  &__button {
+    cursor: pointer;
+    flex-grow: 1;
+    text-align: left;
+    color: $color-white;
+    border: none;
+    padding: 0 10px;
+    border-radius: 25px;
+    font-family: $main-font;
+    font-size: 1rem;
+    background-color: $color-tuna;
+    transition: 100ms linear;
+
+    &:hover {
+      background-color: $color-abbey;
     }
+  }
 
-    &__button {
-        cursor: pointer;
-        flex-grow: 1;
-        text-align: left;
-        color: $color-white;
-        border: none;
-        padding: 0 10px;
-        border-radius: 25px;
-        font-family: $main-font;
-        font-size: 1rem;
-        background-color: $color-tuna;
-        transition: 100ms linear;
-
-        &:hover {
-            background-color: $color-abbey;
-        }
-    }
-
-    &__textfield {
-        font-family: $main-font;
-        font-size: 1.3rem;
-        color: $color-white;
-        width: 100%;
-        resize: none;
-        background-color: $color-shark;
-        border: none;
-    }
+  &__textfield {
+    font-family: $main-font;
+    font-size: 1.3rem;
+    color: $color-white;
+    width: 100%;
+    resize: none;
+    background-color: $color-shark;
+    border: none;
+  }
 }
 
-.postTextfield__link{
-    display: flex;
-    align-items: center;
+.postTextfield__link {
+  display: flex;
+  align-items: center;
 }
 
 .posts {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }

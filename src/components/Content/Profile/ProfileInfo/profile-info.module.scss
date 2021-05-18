@@ -1,46 +1,46 @@
-@import '../../../../styles/base/base';
+@import "../../../../styles/base/base";
 
 .sectionTitle {
-    font-size: 1.3rem;
-    font-weight: $weight-semibold;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: $weight-semibold;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
 }
 
 .sectionStatus__textfield {
-    background-color: $color-tuna;
-    font-family: $main-font;
-    color: $color-white;
-    border: none;
-    font-size: 0.95rem;
-    line-height: 1.2rem;
-    padding: 0 2px;
+  background-color: $color-tuna;
+  font-family: $main-font;
+  color: $color-white;
+  border: none;
+  font-size: 0.95rem;
+  line-height: 1.2rem;
+  padding: 0 2px;
 }
 
 .sectionStatus__text {
-    cursor: pointer;
+  cursor: pointer;
 
-    &_nonEditable {
-        cursor: default;
-    }
+  &_nonEditable {
+    cursor: default;
+  }
 }
 
 .profileInfo__intro {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.95rem;
 }
 
 .profileInfo__friends {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 
-    div {
-        border-radius: 5px;
-        background-color: $color-shark;
-        height: 100px;
-        flex: 0 0 30.5%;
-    }
+  div {
+    border-radius: 5px;
+    background-color: $color-shark;
+    height: 100px;
+    flex: 0 0 30.5%;
+  }
 }

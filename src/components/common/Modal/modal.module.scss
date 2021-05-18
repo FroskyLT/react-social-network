@@ -1,65 +1,65 @@
-@import '../../../styles/base/base';
+@import "../../../styles/base/base";
 
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $color-transparent-black-75;
-    z-index: $z-index-continental-crust;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color-transparent-black-75;
+  z-index: $z-index-continental-crust;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal {
-    position: relative;
-    width: 500px;
-    max-height: 500px;
-    overflow: auto;
-    background-color: #1a1a1d;
-    border-radius: 5px;
-    padding: 15px;
+  position: relative;
+  width: 500px;
+  max-height: 500px;
+  overflow: auto;
+  background-color: #1a1a1d;
+  border-radius: 5px;
+  padding: 15px;
 
-    &__header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  &__headerTitle {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: $weight-semibold;
+    letter-spacing: 1px;
+  }
+
+  &__closeIcon {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    color: $color-manatee;
+    font-size: 1.5rem;
+    background-color: $color-tuna;
+    transition: 300ms linear;
+    border: none;
+
+    &:hover {
+      background-color: $color-abbey;
+      color: $color-bombay;
     }
 
-    &__headerTitle {
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.3rem;
-        font-weight: $weight-semibold;
-        letter-spacing: 1px;
+    &:active {
+      color: $color-manatee;
+      background-color: $color-tuna;
     }
-
-    &__closeIcon {
-        position: absolute;
-        right: 15px;
-        cursor: pointer;
-        padding: 5px;
-        display: flex;
-        align-items: center;
-        border-radius: 50%;
-        color: $color-manatee;
-        font-size: 1.5rem;
-        background-color: $color-tuna;
-        transition: 300ms linear;
-        border: none;
-
-        &:hover {
-            background-color: $color-abbey;
-            color: $color-bombay;
-        }
-
-        &:active {
-            color: $color-manatee;
-            background-color: $color-tuna;
-        }
-    }
+  }
 }
