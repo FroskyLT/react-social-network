@@ -5,25 +5,43 @@ import video from '../../assets/videos/Samurai.webm';
 import { Formik, Form, Field, ErrorMessage } from 'formik'; 
 
 const LoginForm = (props) => {
+
+    const validate = values => {
+        const errors = {};
+
+        if (!values.email) {
+            errors.email = "Required";
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+            errors.email = "Invalid email address";
+        }
+
+        if (!values.password) {
+            errors.password = "Required"
+        }
+
+        return errors;
+    }
+
     return (
         <Formik
             initialValues={{ email: '', password: '' }}
+            validate={validate}
             onSubmit={(values, { setSubmitting }) => {
                 props.loginHandler(values);
                 setSubmitting(false);
             }}
         >
             {({ isSubmitting, values }) => (
-                <Form>
+                <Form className={styles.form}>
                     <div className={styles.form__group}>
                         <Field id="email" type="email" name="email" className={styles.form__field} required />
                         <label htmlFor="email" className={ values.email ? styles.form__label : `${styles.form__label} ${styles.form__label_big}`}>email</label>
-                        {/* <ErrorMessage name="email" component="div" /> */}
+                        <div className={styles.form__error}><ErrorMessage name="email" component="div" className={styles.form__error} /></div>
                     </div>
                     <div className={styles.form__group}>
                         <Field id="password" type="password" name="password" className={styles.form__field} required />
                         <label htmlFor="password" className={ values.password ? styles.form__label : `${styles.form__label} ${styles.form__label_big}`}>password</label>
-                        {/* <ErrorMessage name="password" component="div" /> */}
+                        <div className={styles.form__error}><ErrorMessage name="password" component="div" className={styles.form__error} /></div>
                     </div>
                     <button type="submit" disabled={isSubmitting} className={styles.form__submit}>sign in</button>
                 </Form>
@@ -41,15 +59,6 @@ const Login = (props) => {
             </video>
             <CardContainer className={styles.login__form}>
                 <h1 className={styles.login__heading}>Welcome home <span className={styles.login__heading_colored}>samurai</span></h1>
-                {/* <div className={styles.form__group}>
-                    <input id="login" className={styles.form__field} type="text" placeholder="login" />
-                    <label htmlFor="login" className={styles.form__label}>login</label>
-                </div>
-                <div className={styles.form__group}>
-                    <input id="password" className={styles.form__field} type="password" placeholder="password" />
-                    <label htmlFor="password" className={styles.form__label}>password</label>
-                </div>
-                <button className={styles.form__submit} onClick={props.loginHandler}>sign in</button> */}
                 <LoginForm loginHandler={props.loginHandler} />
             </CardContainer>
         </div>

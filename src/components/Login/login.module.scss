@@ -32,7 +32,8 @@
         font-size: 2.8rem;
         text-transform: uppercase;
         text-align: center;
-        
+        user-select: none;
+
         &_colored {
             font-size: 3rem;
             color: $color-shiraz;
@@ -40,79 +41,85 @@
     }
 }
 
-.form__group {
-    position: relative;
-    margin: 0 0 10px;
+.form {
     padding: 15px 0 0;
-}
 
-.form__field {
-    font-family: $main-font;
-    font-weight: $weight-semibold;
-    width: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1.3rem;
-    padding: 10px 0;
-    color: $color-white;
-    border-bottom: 2px solid $color-manatee;
-    transition: 300ms;
-
-    &::placeholder {
-        color: transparent;
+    &__group {
+        position: relative;
+        padding: 15px 0 0;
     }
 
-    // &:placeholder-shown ~ .form__label {
-    //     font-size: 1.3rem;
-    //     cursor: text;
-    //     top: 25px;
-    // }
-}
-
-.form__label {
-    color: $color-manatee;
-    position: absolute;
-    top: 0;
-    display: block;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 300ms;
-}
-
-
-.form__field:focus {
-    ~ .form__label {
-        top: 0;
-        font-size: 1rem;
-        color: $color-shiraz;
-        font-weight: $weight-bold;
-    }
-
-    border-color: $color-shiraz;
-}
-
-.form__label_big {
-    top: 25px;
-    font-size: 1.3rem;
-}
-
-.form__submit {
-    margin: 20px 0 0;
-    padding: 15px 0;
-    border: none;
-    border-radius: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: $main-font;
-    font-weight: $weight-semibold;
-    font-size: 1.1rem;
-    background-color: $color-monarch;
-    color: $color-white;
-    transition: 300ms linear;
-    width: 100%;
+    &__field {
+        font-family: $main-font;
+        font-weight: $weight-semibold;
+        width: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1.3rem;
+        padding: 10px 0;
+        color: $color-white;
+        border-bottom: 2px solid $color-manatee;
+        transition: 300ms;
     
-    &:hover {
-        background-color: $color-shiraz;
+        &::placeholder {
+            color: transparent;
+        }
+    }
+
+    &__label {
+        color: $color-manatee;
+        position: absolute;
+        top: 0;
+        display: block;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 300ms;
+    }
+
+    &__field:focus {
+        ~ .form__label {
+            top: 0;
+            font-size: 1rem;
+            color: $color-shiraz;
+            font-weight: $weight-bold;
+        }
+    
+        border-color: $color-shiraz;
+    }
+
+    &__label_big {
+        top: 25px;
+        font-size: 1.3rem;
+    }
+    
+    &__submit {
+        margin: 20px 0 0;
+        padding: 15px 0;
+        border: none;
+        border-radius: 10px;
+        text-transform: uppercase;
+        cursor: pointer;
+        letter-spacing: 1px;
+        font-family: $main-font;
+        font-weight: $weight-semibold;
+        font-size: 1.1rem;
+        background-color: $color-monarch;
+        color: $color-white;
+        transition: 300ms linear;
+        width: 100%;
+        
+        &:hover {
+            background-color: $color-shiraz;
+        }
+    }
+    
+    &__error {
+        display: flex;
+        align-items: center;
+        height: 25px;
+        color: $color-shiraz;
+        font-weight: 600;
+        text-shadow: 0 0 1px $color-shiraz;
     }
 }
