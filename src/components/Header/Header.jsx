@@ -30,9 +30,8 @@ const Header = (props) => {
   });
 
   const logoutHandler = () => {
-    props.logoutHandler().then(() => {
-      setDropdownOpen(false);
-    });
+    props.logoutHandler();
+    setDropdownOpen(false);
   };
 
   return (
