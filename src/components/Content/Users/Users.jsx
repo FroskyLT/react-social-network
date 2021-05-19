@@ -46,8 +46,8 @@ export const Users = (props) => {
             )}
             {pages.map((page) => {
               if (
-                (props.currentPage - 2 < page &&
-                  page < props.currentPage + 2) ||
+                (props.currentPage - 4 < page &&
+                  page < props.currentPage + 4) ||
                 (props.currentPage === 1 && page === 3) ||
                 (props.currentPage === pagesCount && page === pagesCount - 3)
               ) {
@@ -65,7 +65,7 @@ export const Users = (props) => {
                   </div>
                 );
               } else {
-                return false;
+                return null;
               }
             })}
             {props.currentPage < pagesCount && (

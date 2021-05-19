@@ -42,7 +42,7 @@ const SingleUser = (props) => {
             : styles.singleUser__description_none
         }
       >
-        {props.status ? props.status : "no description"}
+        {props.status && props.status}
       </div>
       <div className={styles.singleUser__follow}>{followButton()}</div>
     </div>
