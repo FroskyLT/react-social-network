@@ -8,6 +8,7 @@ class LoginContainer extends React.Component {
   render() {
     return (
       <Login
+        error={this.props.error}
         loginHandler={this.props.login}
         authenticateHandler={this.props.authenticateMe}
       />
@@ -15,7 +16,9 @@ class LoginContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  error: state.auth.error,
+});
 
 export default connect(mapStateToProps, { authenticateMe, login })(
   LoginContainer

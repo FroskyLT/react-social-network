@@ -86,6 +86,7 @@ const LoginForm = (props) => {
               />
             </div>
           </div>
+          <div className={styles.form__error}>{props.error && props.error}</div>
           <button
             type="submit"
             disabled={isSubmitting}
@@ -102,7 +103,7 @@ const LoginForm = (props) => {
 const Login = (props) => {
   return (
     <div className={styles.login}>
-      <video autoPlay className={styles.login__background}>
+      <video autoPlay muted className={styles.login__background}>
         <source src={video} type="video/webm" />
         Your browser does not support the video tag.
       </video>
@@ -111,7 +112,7 @@ const Login = (props) => {
           Welcome home{" "}
           <span className={styles.login__heading_colored}>samurai</span>
         </h1>
-        <LoginForm loginHandler={props.loginHandler} />
+        <LoginForm loginHandler={props.loginHandler} error={props.error} />
       </CardContainer>
     </div>
   );

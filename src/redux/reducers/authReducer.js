@@ -1,14 +1,15 @@
 import { AuthAPI } from "../../api/api";
 
 const SET_USER_DATA = "SET_USER_DATA";
-const SET_USER_ID = "SET_USER_ID";
 const CLEAR_USER_DATA = "CLEAR_USER_DATA";
+const SET_ERROR = "SET_ERROR";
 
 let initialState = {
   userId: null,
   email: null,
   login: null,
   isLogged: false,
+  error: "",
 };
 
 const authReducer = (state = initialState, action) => {
@@ -17,13 +18,6 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.userData,
-        isLogged: true,
-      };
-    }
-    case SET_USER_ID: {
-      return {
-        ...state,
-        userId: action.userId,
         isLogged: true,
       };
     }
@@ -36,6 +30,12 @@ const authReducer = (state = initialState, action) => {
         isLogged: false,
       };
     }
+    case SET_ERROR: {
+      return {
+        ...state,
+        error: action.errorMessage,
+      };
+    }
     default:
       return state;
   }
@@ -46,8 +46,8 @@ export const setAuthUserData = (userId, email, login) => ({
   type: SET_USER_DATA,
   userData: { userId, email, login },
 });
-export const setUserId = (userId) => ({ type: SET_USER_ID, userId });
 export const clearAuthUserData = () => ({ type: CLEAR_USER_DATA });
+export const setError = (errorMessage) => ({ type: SET_ERROR, errorMessage });
 
 //TC
 export const authenticateMe = () => (dispatch) => {
@@ -62,8 +62,10 @@ export const authenticateMe = () => (dispatch) => {
 export const login = (loginData) => (dispatch) => {
   AuthAPI.login(loginData.email, loginData.password).then((responseData) => {
     if (responseData.resultCode === 0) {
-      const { userId } = responseData.data;
-      dispatch(setUserId(userId));
+      dispatch(setError(""));
+      dispatch(authenticateMe());
+    } else {
+      dispatch(setError(responseData.messages[0]));
     }
   });
 };
