@@ -103,7 +103,7 @@ const LoginForm = (props) => {
 const Login = (props) => {
   return (
     <div className={styles.login}>
-      <video autoPlay muted className={styles.login__background}>
+      <video autoPlay muted loop className={styles.login__background}>
         <source src={video} type="video/webm" />
         Your browser does not support the video tag.
       </video>
