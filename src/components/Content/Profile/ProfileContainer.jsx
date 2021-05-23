@@ -41,6 +41,7 @@ class ProfileContainer extends React.Component {
         isFollowingUser={this.props.isFollowingUser}
         onFollow={this.props.followUser}
         onUnfollow={this.props.unfollowUser}
+        isFollowing={this.props.checkIsFollowingSelectedUser}
       />
     );
   }

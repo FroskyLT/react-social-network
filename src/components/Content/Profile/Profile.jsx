@@ -16,6 +16,7 @@ const Profile = (props) => {
           onFollow={props.onFollow}
           onUnfollow={props.onUnfollow}
           isFollowingUser={props.isFollowingUser}
+          isFollowing={props.isFollowing}
         />
       </div>
       <div className={styles.main}>

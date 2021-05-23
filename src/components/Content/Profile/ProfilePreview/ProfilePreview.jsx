@@ -12,6 +12,8 @@ class ProfilePreview extends React.Component {
     const currUserProfile = this.props.currUserId === profileId;
     const isFollowed = this.props.isFollowingUser;
 
+    if (!currUserProfile) this.props.isFollowing(profileId);
+
     const followButton = () => {
       return isFollowed ? (
         <Button
