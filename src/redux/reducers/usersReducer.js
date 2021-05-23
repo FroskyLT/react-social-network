@@ -2,6 +2,7 @@ import { FollowAPI, UsersAPI } from "../../api/api";
 
 const FOLLOW_TOGGLE = "FOLLOW_TOGGLE";
 const CHECK_IS_FOLLOWING_USER = "CHECK_IS_FOLLOWING_USER";
+const SET_IS_FOLLOWING_USER = "SET_IS_FOLLOWING_USER";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
@@ -45,6 +46,12 @@ const usersReducer = (state = initialState, action) => {
         isFollowingUser: state.followedUsersId.some(
           (friend) => friend === Number(action.selectedUserId)
         ),
+      };
+    }
+    case SET_IS_FOLLOWING_USER: {
+      return {
+        ...state,
+        isFollowingUser: action.isFollowing,
       };
     }
     case SET_USERS: {
@@ -123,6 +130,10 @@ export const checkIsFollowingUser = (selectedUserId) => ({
   type: CHECK_IS_FOLLOWING_USER,
   selectedUserId,
 });
+export const setIsFollowingUser = (isFollowing) => ({
+  type: SET_IS_FOLLOWING_USER,
+  isFollowing,
+});
 export const setFollowedUsers = (selectedUsers) => ({
   type: SET_FOLLOWED_USERS,
   selectedUsers,
@@ -196,6 +207,12 @@ export const unfollowUser = (userId) => (dispatch) => {
     .finally(() => {
       dispatch(toggleFollowInProgress(false, userId));
     });
+};
+
+export const checkIsFollowingSelectedUser = (userId) => (dispatch) => {
+  FollowAPI.checkIsFollowingUser(userId).then((data) => {
+    dispatch(setIsFollowingUser(data));
+  });
 };
 
 export default usersReducer;

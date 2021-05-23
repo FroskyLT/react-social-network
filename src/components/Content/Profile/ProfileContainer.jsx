@@ -9,7 +9,7 @@ import {
 import {
   followUser,
   unfollowUser,
-  checkIsFollowingUser,
+  checkIsFollowingSelectedUser,
 } from "../../../redux/reducers/usersReducer";
 import { withRouter } from "react-router-dom";
 // import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
@@ -23,7 +23,7 @@ class ProfileContainer extends React.Component {
       this.props.getCurrentUserStatus(userId);
 
       if (userId !== this.props.currUserId) {
-        this.props.checkIsFollowingUser(userId);
+        this.props.checkIsFollowingSelectedUser(userId);
       }
     } else {
       this.props.history.push("/login");
@@ -63,7 +63,7 @@ export default compose(
     setCurrentUserStatus,
     followUser,
     unfollowUser,
-    checkIsFollowingUser,
+    checkIsFollowingSelectedUser,
   }),
   withRouter
   // withAuthRedirect

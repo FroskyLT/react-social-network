@@ -53,7 +53,7 @@ class ProfilePreview extends React.Component {
             <div className={styles.about__name}>
               {this.props.profileData.fullName ?? "No Name"}
             </div>
-            {currUserProfile ? (
+            {!this.props.currUserId || currUserProfile ? (
               <div className={styles.about__followPlaceholder} />
             ) : (
               followButton()
