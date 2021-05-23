@@ -51,7 +51,7 @@ export const setError = (errorMessage) => ({ type: SET_ERROR, errorMessage });
 
 //TC
 export const authenticateMe = () => (dispatch) => {
-  AuthAPI.authenticateMe().then((responseData) => {
+  return AuthAPI.authenticateMe().then((responseData) => {
     if (responseData.resultCode === 0) {
       const { email, id, login } = responseData.data;
       dispatch(setAuthUserData(id, email, login));

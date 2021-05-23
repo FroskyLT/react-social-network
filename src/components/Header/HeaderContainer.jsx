@@ -1,16 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { logout, authenticateMe } from "../../redux/reducers/authReducer";
-import { getFollowedUsers } from "../../redux/reducers/usersReducer";
+import { logout } from "../../redux/reducers/authReducer";
 import Header from "./Header";
 
 class HeaderContainer extends React.Component {
-  componentDidMount() {
-    this.props.authenticateMe();
-    this.props.getFollowedUsers();
-  }
-
   render() {
     return (
       <Header
@@ -26,7 +20,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  authenticateMe,
-  getFollowedUsers,
   logout,
 })(HeaderContainer);
