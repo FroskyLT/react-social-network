@@ -25,24 +25,8 @@ class ProfileContainer extends React.Component {
       if (userId !== this.props.currUserId) {
         this.props.checkIsFollowingUser(userId);
       }
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    if (
-      (!this.props.match.params.userId &&
-        this.props.currUserId !== prevProps.currUserId) ||
-      prevProps.followedUsers !== this.props.followedUsers
-    ) {
-      const userId = this.props.match.params.userId || this.props.currUserId; // "2";
-      if (userId) {
-        this.props.getUserProfile(userId);
-        this.props.getCurrentUserStatus(userId);
-
-        if (userId !== this.props.currUserId) {
-          this.props.checkIsFollowingUser(userId);
-        }
-      }
+    } else {
+      this.props.history.push("/login");
     }
   }
 
