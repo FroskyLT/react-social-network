@@ -33,12 +33,12 @@ export const PostTextfield = () => {
 };
 
 const Posts = (props) => {
-  const postElements = props.profilePage.postData
+  const currUserProfile = props.currUserId === props.profile.userId;
+
+  const postElements = props.postData
     .slice(0)
     .reverse()
-    .map((post) => (
-      <Post post={post} profile={props.profilePage.profile} key={post.id} />
-    ));
+    .map((post) => <Post post={post} profile={props.profile} key={post.id} />);
 
   // const NewPost = () => {
   //     props.addPost();
@@ -50,7 +50,7 @@ const Posts = (props) => {
 
   return (
     <div className={styles.posts}>
-      <PostTextfield />
+      {currUserProfile && <PostTextfield />}
       <div className={styles.posts__content}>{postElements}</div>
     </div>
   );

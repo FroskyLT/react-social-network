@@ -1,0 +1,3 @@
+export const getPostDataSelector = (state) => state.profilePage.postData;
+export const getProfileSelector = (state) => state.profilePage.profile;
+export const getUserIdSelector = (state) => state.auth.userId;
