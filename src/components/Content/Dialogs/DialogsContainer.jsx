@@ -7,16 +7,16 @@ import { connect } from "react-redux";
 import { withAuthRedirect } from "../../../hoc/withAuthRedirect";
 import { compose } from "redux";
 import {
-  getConversationData,
-  getNewMessageText,
-  getPeopleData,
+  getConversationDataSelector,
+  getNewMessageTextSelector,
+  getPeopleDataSelector,
 } from "../../../selectors/dialogs-selectors";
 
 const mapStateToProps = (state) => {
   return {
-    peopleData: getPeopleData(state),
-    conversationData: getConversationData(state),
-    newMessageText: getNewMessageText(state),
+    peopleData: getPeopleDataSelector(state),
+    conversationData: getConversationDataSelector(state),
+    newMessageText: getNewMessageTextSelector(state),
   };
 };
 

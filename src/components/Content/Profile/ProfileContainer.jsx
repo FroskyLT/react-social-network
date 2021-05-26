@@ -14,6 +14,15 @@ import {
 import { withRouter } from "react-router-dom";
 // import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from "redux";
+import {
+  getFollowedUsersIdSelector,
+  getFollowInProgressSelector,
+  getIsFollowingUserSelector,
+  getProfileSelector,
+  getStatusSelector,
+  getUserIdSelector,
+  getUserInfoSelector,
+} from "../../../selectors/profile-selectors";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -48,13 +57,13 @@ class ProfileContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  profile: state.profilePage.profile,
-  userInfo: state.profilePage.userInfo,
-  status: state.profilePage.status,
-  currUserId: state.auth.userId,
-  followInProgress: state.usersPage.followInProgress,
-  isFollowingUser: state.usersPage.isFollowingUser,
-  followedUsersId: state.usersPage.followedUsersId,
+  profile: getProfileSelector(state),
+  userInfo: getUserInfoSelector(state),
+  status: getStatusSelector(state),
+  currUserId: getUserIdSelector(state),
+  followInProgress: getFollowInProgressSelector(state),
+  isFollowingUser: getIsFollowingUserSelector(state),
+  followedUsersId: getFollowedUsersIdSelector(state),
 });
 
 export default compose(

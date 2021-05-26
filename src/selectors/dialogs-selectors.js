@@ -1,4 +1,5 @@
-export const getPeopleData = (state) => state.messagesPage.peopleData;
-export const getConversationData = (state) =>
+export const getPeopleDataSelector = (state) => state.messagesPage.peopleData;
+export const getConversationDataSelector = (state) =>
   state.messagesPage.conversationData;
-export const getNewMessageText = (state) => state.messagesPage.newMessageText;
+export const getNewMessageTextSelector = (state) =>
+  state.messagesPage.newMessageText;

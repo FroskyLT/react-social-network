@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router";
 
 import { authenticateMe, login } from "../../redux/reducers/authReducer";
+import {
+  getErrorSelector,
+  getIsLoggedSelector,
+} from "../../selectors/login-selectors";
 import Login from "./Login";
 
 class LoginContainer extends React.Component {
@@ -20,8 +24,8 @@ class LoginContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  error: state.auth.error,
-  isLogged: state.auth.isLogged,
+  error: getErrorSelector(state),
+  isLogged: getIsLoggedSelector(state),
 });
 
 export default connect(mapStateToProps, { authenticateMe, login })(
