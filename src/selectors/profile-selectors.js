@@ -8,3 +8,5 @@ export const getIsFollowingUserSelector = (state) =>
   state.usersPage.isFollowingUser;
 export const getFollowedUsersIdSelector = (state) =>
   state.usersPage.followedUsersId;
+export const getProfileIsFetchingSelector = (state) =>
+  state.profilePage.profileIsFetching;

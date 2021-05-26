@@ -1,9 +1,12 @@
 import { ProfileAPI } from "../../api/api";
+import { checkIsFollowingSelectedUser } from "./usersReducer";
 
 const ADD_POST = "ADD_NEW_POST";
 const UPDATE_POST = "UPDATE_NEW_POST_ELEMENT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
+const START_PROFILE_FETCH = "START_PROFILE_FETCH";
+const END_PROFILE_FETCH = "END_PROFILE_FETCH";
 
 let initialState = {
   postData: [
@@ -113,10 +116,23 @@ let initialState = {
   // },
   totalPosts: 4,
   status: "",
+  profileIsFetching: true,
 };
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
+    case START_PROFILE_FETCH: {
+      return {
+        ...state,
+        profileIsFetching: true,
+      };
+    }
+    case END_PROFILE_FETCH: {
+      return {
+        ...state,
+        profileIsFetching: false,
+      };
+    }
     case ADD_POST: {
       let newPost = {
         id: state.totalPosts + 1,
@@ -166,11 +182,19 @@ export const updateNewPostElement = (text) => ({
   newText: text,
 });
 export const setStatus = (status) => ({ type: SET_STATUS, status });
+export const startProfileFetch = () => ({ type: START_PROFILE_FETCH });
+export const endProfileFetch = () => ({ type: END_PROFILE_FETCH });
 
 //TC
-export const getUserProfile = (userId) => (dispatch) => {
-  ProfileAPI.getSelectedUserProfile(userId).then((data) => {
+const getUserProfile = (userId) => (dispatch) => {
+  return ProfileAPI.getSelectedUserProfile(userId).then((data) => {
     dispatch(setUserProfile(data));
+  });
+};
+
+const getCurrentUserStatus = (userId) => (dispatch) => {
+  return ProfileAPI.getCurrentUserStatus(userId).then((data) => {
+    dispatch(setStatus(data));
   });
 };
 
@@ -182,10 +206,13 @@ export const setCurrentUserStatus = (updatedStatus) => (dispatch) => {
   });
 };
 
-export const getCurrentUserStatus = (userId) => (dispatch) => {
-  ProfileAPI.getCurrentUserStatus(userId).then((data) => {
-    dispatch(setStatus(data));
-  });
+export const initProfile = (currUserId, userId) => async (dispatch) => {
+  dispatch(startProfileFetch());
+  await dispatch(getUserProfile(userId));
+  await dispatch(getCurrentUserStatus(userId));
+  if (currUserId && userId !== currUserId)
+    await dispatch(checkIsFollowingSelectedUser(userId));
+  dispatch(endProfileFetch());
 };
 
 export default profileReducer;

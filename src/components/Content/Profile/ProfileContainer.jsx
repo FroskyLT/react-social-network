@@ -2,8 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
 import {
-  getUserProfile,
-  getCurrentUserStatus,
+  initProfile,
   setCurrentUserStatus,
 } from "../../../redux/reducers/profileReducer";
 import {
@@ -18,28 +17,27 @@ import {
   getFollowedUsersIdSelector,
   getFollowInProgressSelector,
   getIsFollowingUserSelector,
+  getProfileIsFetchingSelector,
   getProfileSelector,
   getStatusSelector,
   getUserIdSelector,
   getUserInfoSelector,
 } from "../../../selectors/profile-selectors";
+import LoaderSpinner from "../../common/LoaderSpinner/LoaderSpinner";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
     const userId = this.props.match.params.userId || this.props.currUserId; // "2";
     if (userId) {
-      this.props.getUserProfile(userId);
-      this.props.getCurrentUserStatus(userId);
-
-      if (userId !== this.props.currUserId) {
-        this.props.checkIsFollowingSelectedUser(userId);
-      }
+      this.props.initProfile(this.props.currUserId, userId);
     } else {
       this.props.history.push("/login");
     }
   }
 
   render() {
+    if (this.props.profileIsFetching) return <LoaderSpinner />;
+
     return (
       <Profile
         profile={this.props.profile}
@@ -64,12 +62,12 @@ const mapStateToProps = (state) => ({
   followInProgress: getFollowInProgressSelector(state),
   isFollowingUser: getIsFollowingUserSelector(state),
   followedUsersId: getFollowedUsersIdSelector(state),
+  profileIsFetching: getProfileIsFetchingSelector(state),
 });
 
 export default compose(
   connect(mapStateToProps, {
-    getUserProfile,
-    getCurrentUserStatus,
+    initProfile,
     setCurrentUserStatus,
     followUser,
     unfollowUser,

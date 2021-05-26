@@ -210,7 +210,7 @@ export const unfollowUser = (userId) => (dispatch) => {
 };
 
 export const checkIsFollowingSelectedUser = (userId) => (dispatch) => {
-  FollowAPI.checkIsFollowingUser(userId).then((data) => {
+  return FollowAPI.checkIsFollowingUser(userId).then((data) => {
     dispatch(setIsFollowingUser(data));
   });
 };

@@ -16,6 +16,7 @@ import {
   getTotalUsersCountSelector,
   getUsersSelector,
 } from "../../../selectors/users-selectors";
+import LoaderSpinner from "../../common/LoaderSpinner/LoaderSpinner";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -27,6 +28,8 @@ class UsersContainer extends React.Component {
   };
 
   render() {
+    if (this.props.isFetching) return <LoaderSpinner />;
+
     return (
       <Users
         users={this.props.users}

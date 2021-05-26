@@ -1,5 +1,4 @@
 import React from "react";
-import LoaderSpinner from "../../common/LoaderSpinner/LoaderSpinner";
 import SingleUser from "./SingleUser/SingleUser";
 import styles from "./users.module.scss";
 
@@ -30,57 +29,50 @@ export const Users = (props) => {
   ));
 
   return (
-    <>
-      {props.isFetching ? (
-        <LoaderSpinner />
-      ) : (
-        <div className={styles.users}>
-          <div className={styles.users__pagination}>
-            {props.currentPage > 1 && (
-              <div
-                className={styles.users__paginationItem}
-                onClick={() => props.onPageChanged(props.currentPage - 1)}
-              >
-                {"❮"}
-              </div>
-            )}
-            {pages.map((page) => {
-              if (
-                (props.currentPage - 4 < page &&
-                  page < props.currentPage + 4) ||
-                (props.currentPage === 1 && page === 3) ||
-                (props.currentPage === pagesCount && page === pagesCount - 3)
-              ) {
-                return (
-                  <div
-                    key={page}
-                    className={
-                      props.currentPage === page
-                        ? `${styles.users__paginationItem} ${styles.users__paginationItem_selected}`
-                        : styles.users__paginationItem
-                    }
-                    onClick={() => props.onPageChanged(page)}
-                  >
-                    {page}
-                  </div>
-                );
-              } else {
-                return null;
-              }
-            })}
-            {props.currentPage < pagesCount && (
-              <div
-                className={styles.users__paginationItem}
-                onClick={() => props.onPageChanged(props.currentPage + 1)}
-              >
-                {"❯"}
-              </div>
-            )}
+    <div className={styles.users}>
+      <div className={styles.users__pagination}>
+        {props.currentPage > 1 && (
+          <div
+            className={styles.users__paginationItem}
+            onClick={() => props.onPageChanged(props.currentPage - 1)}
+          >
+            {"❮"}
           </div>
-          <div className={styles.users__container}>{singleUser}</div>
-        </div>
-      )}
-    </>
+        )}
+        {pages.map((page) => {
+          if (
+            (props.currentPage - 4 < page && page < props.currentPage + 4) ||
+            (props.currentPage === 1 && page === 3) ||
+            (props.currentPage === pagesCount && page === pagesCount - 3)
+          ) {
+            return (
+              <div
+                key={page}
+                className={
+                  props.currentPage === page
+                    ? `${styles.users__paginationItem} ${styles.users__paginationItem_selected}`
+                    : styles.users__paginationItem
+                }
+                onClick={() => props.onPageChanged(page)}
+              >
+                {page}
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
+        {props.currentPage < pagesCount && (
+          <div
+            className={styles.users__paginationItem}
+            onClick={() => props.onPageChanged(props.currentPage + 1)}
+          >
+            {"❯"}
+          </div>
+        )}
+      </div>
+      <div className={styles.users__container}>{singleUser}</div>
+    </div>
   );
 };
 
