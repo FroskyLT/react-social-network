@@ -4,10 +4,10 @@ import People from "./People/People";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-  const peopleElements = props.messagesPage.peopleData.map((d) => (
+  const peopleElements = props.peopleData.map((d) => (
     <People id={d.id} name={d.name} imgUrl={d.imgUrl} key={d.id} />
   ));
-  const conversationElements = props.messagesPage.conversationData.map((c) =>
+  const conversationElements = props.conversationData.map((c) =>
     c.id ? (
       <div className={styles.right} key={c.key}>
         <Message name={c.name} text={c.text} imgUrl={c.imgUrl} />
@@ -40,7 +40,7 @@ const Dialogs = (props) => {
             <div className={styles.textarea__container}>
               <div className={styles.textarea__body}>
                 <textarea
-                  value={props.messagesPage.newMessageText}
+                  value={props.newMessageText}
                   onChange={onMessageChange}
                 />
                 <button onClick={newMessage}>send</button>

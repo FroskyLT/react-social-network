@@ -6,10 +6,17 @@ import {
 import { connect } from "react-redux";
 import { withAuthRedirect } from "../../../hoc/withAuthRedirect";
 import { compose } from "redux";
+import {
+  getConversationData,
+  getNewMessageText,
+  getPeopleData,
+} from "../../../selectors/dialogs-selectors";
 
 const mapStateToProps = (state) => {
   return {
-    messagesPage: state.messagesPage,
+    peopleData: getPeopleData(state),
+    conversationData: getConversationData(state),
+    newMessageText: getNewMessageText(state),
   };
 };
 
