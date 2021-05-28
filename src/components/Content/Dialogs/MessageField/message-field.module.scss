@@ -1,0 +1,19 @@
+@import "../../../../styles/base/_base.scss";
+
+.messageField {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+
+  &__field {
+    background-color: $color-tuna;
+    border: none;
+    width: 100%;
+    color: $color-white;
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 15px;
+  }
+}
