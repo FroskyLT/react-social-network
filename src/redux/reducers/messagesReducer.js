@@ -4,33 +4,39 @@ let initialState = {
   peopleData: [
     {
       id: "1",
-      name: "Dmitry",
-      imgUrl: "https://image.flaticon.com/icons/svg/3135/3135715.svg",
+      name: "Johnny",
+      imgUrl:
+        "https://www.pngkit.com/png/full/115-1150342_user-avatar-icon-iconos-de-mujeres-a-color.png",
     },
     {
       id: "2",
-      name: "Sasha",
-      imgUrl: "https://image.flaticon.com/icons/svg/3135/3135715.svg",
+      name: "Tom",
+      imgUrl:
+        "https://www.pngkit.com/png/full/115-1150342_user-avatar-icon-iconos-de-mujeres-a-color.png",
     },
     {
       id: "3",
-      name: "Andrew",
-      imgUrl: "https://image.flaticon.com/icons/svg/3135/3135715.svg",
+      name: "Leonardo",
+      imgUrl:
+        "https://www.pngkit.com/png/full/115-1150342_user-avatar-icon-iconos-de-mujeres-a-color.png",
     },
     {
       id: "4",
-      name: "Sveta",
-      imgUrl: "https://image.flaticon.com/icons/svg/3135/3135715.svg",
+      name: "Nicolas",
+      imgUrl:
+        "https://www.pngkit.com/png/full/115-1150342_user-avatar-icon-iconos-de-mujeres-a-color.png",
     },
     {
       id: "5",
-      name: "Valera",
-      imgUrl: "https://image.flaticon.com/icons/svg/3135/3135715.svg",
+      name: "Keanu",
+      imgUrl:
+        "https://www.pngkit.com/png/full/115-1150342_user-avatar-icon-iconos-de-mujeres-a-color.png",
     },
     {
       id: "6",
-      name: "Viktor",
-      imgUrl: "https://image.flaticon.com/icons/svg/3135/3135715.svg",
+      name: "Keira",
+      imgUrl:
+        "https://www.pngkit.com/png/full/115-1150342_user-avatar-icon-iconos-de-mujeres-a-color.png",
     },
   ],
   conversationData: [

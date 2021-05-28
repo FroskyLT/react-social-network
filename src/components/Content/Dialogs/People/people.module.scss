@@ -1,0 +1,49 @@
+@import "../../../../styles/base/_base.scss";
+
+.people {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  gap: 5px;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  text-decoration: none;
+  color: $color-white;
+  gap: 15px;
+  border-radius: 10px;
+  transition: linear 300ms;
+
+  &__active {
+    background-color: $color-monarch;
+  }
+
+  &__image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+
+  &__name {
+    font-weight: $weight-semibold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  &:hover {
+    background-color: $color-tuna;
+  }
+
+  &:active {
+    background-color: $color-shark;
+  }
+
+  &__active:hover {
+    background-color: $color-crown-of-thorns;
+  }
+}

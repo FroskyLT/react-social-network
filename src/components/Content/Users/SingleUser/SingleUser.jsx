@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../users.module.scss";
-import userImg from "../../../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
 import Button from "../../../common/Button/Button";
 
@@ -29,7 +28,7 @@ const SingleUser = (props) => {
         <NavLink to={`/profile/${props.id}`}>
           <img
             className={styles.singleUser__avatarImage}
-            src={props.imgUrl || userImg}
+            src={props.imgUrl}
             alt=""
           />
         </NavLink>

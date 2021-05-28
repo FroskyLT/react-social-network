@@ -1,20 +1,17 @@
 import React from "react";
-import styles from "./../dialogs.module.scss";
-import { NavLink } from "react-router-dom";
+import styles from "./people.module.scss";
+import Person from "./Person";
 
-const People = (props) => {
-  let path = "/dialogs/" + props.id;
-
-  return (
-    <div className={styles.people__body_item}>
-      <img src={props.imgUrl} alt="" />
-      <li>
-        <NavLink to={path} activeClassName={styles.active}>
-          {props.name}
-        </NavLink>
-      </li>
-    </div>
-  );
+const People = ({ peopleData }) => {
+  const peopleElements = peopleData.map((person) => (
+    <Person
+      id={person.id}
+      name={person.name}
+      imgUrl={person.imgUrl}
+      key={person.id}
+    />
+  ));
+  return <div className={styles.people}>{peopleElements}</div>;
 };
 
 export default People;

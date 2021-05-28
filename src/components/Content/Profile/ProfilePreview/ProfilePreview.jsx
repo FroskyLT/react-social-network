@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./profile-preview.module.scss";
-import profileBG from "../../../../assets/images/profileBG.png";
 import Button from "../../../common/Button/Button";
 
 class ProfilePreview extends React.Component {
@@ -38,8 +37,7 @@ class ProfilePreview extends React.Component {
         <div className={styles.wallpaper}>
           <img
             src={
-              "https://images.hdqwalls.com/wallpapers/red-lake-mountains-minimal-4k-1u.jpg" ||
-              profileBG
+              "https://images.hdqwalls.com/wallpapers/red-lake-mountains-minimal-4k-1u.jpg"
             }
             alt=""
           />

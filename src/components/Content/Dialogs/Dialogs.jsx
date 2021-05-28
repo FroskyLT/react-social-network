@@ -23,6 +23,7 @@ const MessageForm = (props) => {
             name="message"
             className={styles.form__field}
             required
+            autocomplete="off"
           />
           <button
             type="submit"
@@ -38,9 +39,8 @@ const MessageForm = (props) => {
 };
 
 const Dialogs = (props) => {
-  const peopleElements = props.peopleData.map((d) => (
-    <People id={d.id} name={d.name} imgUrl={d.imgUrl} key={d.id} />
-  ));
+  const { peopleData } = props;
+
   const conversationElements = props.conversationData.map((c) =>
     c.id ? (
       <div className={styles.right} key={c.key}>
@@ -52,8 +52,13 @@ const Dialogs = (props) => {
   );
 
   return (
-    <div className={styles.dialogs}>
-      <div className={styles.main}>
+    <div className={styles.dialogPage}>
+      <div className={styles.dialogPage__people}>
+        <People peopleData={peopleData} />
+      </div>
+      <div className={styles.dialogPage__messages}>messages</div>
+      <div className={styles.dialogPage__field}>field</div>
+      {/* <div className={styles.main}>
         <div className={styles.people}>
           <div className={styles.people__container}>
             <div className={styles.people__body}>
@@ -67,7 +72,7 @@ const Dialogs = (props) => {
             <MessageForm sendMessage={props.addMessage} />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
