@@ -4,7 +4,7 @@ import People from "./People/People";
 import Messages from "./Messages/Messages";
 import { Formik, Form, Field } from "formik";
 
-const MessageForm = (props) => {
+const MessageField = (props) => {
   return (
     <Formik
       initialValues={{ message: "" }}
@@ -15,23 +15,17 @@ const MessageForm = (props) => {
         setSubmitting(false);
       }}
     >
-      {({ isSubmitting }) => (
-        <Form className={styles.form}>
+      {() => (
+        <Form className={styles.messageField}>
           <Field
             id="message"
             type="message"
             name="message"
-            className={styles.form__field}
+            className={styles.messageField__field}
             required
-            autocomplete="off"
+            autoComplete="off"
+            placeholder="type new message..."
           />
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className={styles.form__submit}
-          >
-            send
-          </button>
         </Form>
       )}
     </Formik>
@@ -39,7 +33,7 @@ const MessageForm = (props) => {
 };
 
 const Dialogs = (props) => {
-  const { peopleData, conversationData } = props;
+  const { peopleData, conversationData, addMessage } = props;
 
   return (
     <div className={styles.dialogPage}>
@@ -49,22 +43,9 @@ const Dialogs = (props) => {
       <div className={styles.dialogPage__messages}>
         <Messages conversationData={conversationData} />
       </div>
-      <div className={styles.dialogPage__field}>field</div>
-      {/* <div className={styles.main}>
-        <div className={styles.people}>
-          <div className={styles.people__container}>
-            <div className={styles.people__body}>
-              <ul>{peopleElements}</ul>
-            </div>
-          </div>
-        </div>
-        <div className={styles.conversation}>
-          <div className={styles.message__wrapper}>{conversationElements}</div>
-          <div className={styles.textarea}>
-            <MessageForm sendMessage={props.addMessage} />
-          </div>
-        </div>
-      </div> */}
+      <div className={styles.dialogPage__field}>
+        <MessageField sendMessage={addMessage} />
+      </div>
     </div>
   );
 };
