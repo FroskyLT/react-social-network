@@ -6,18 +6,18 @@
     "people messages"
     "people field";
   grid-template-columns: 3fr 7fr;
-  grid-template-rows: 12fr 80px;
+  grid-template-rows: calc(100vh - 160px) 80px; // 160px = 80px(header height) + 80px(field height)
   color: $color-white;
   height: 100%;
 
   &__people {
     grid-area: people;
-    position: sticky;
-    top: 0;
+    overflow-y: scroll;
   }
 
   &__messages {
     grid-area: messages;
+    overflow-y: scroll;
   }
 
   &__field {
