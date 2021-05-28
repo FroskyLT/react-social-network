@@ -4,8 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Person = (props) => {
   const { id, name, imgUrl } = props;
-
-  let path = "/dialogs/" + id;
+  const path = `/dialogs/${id}`;
 
   return (
     <NavLink

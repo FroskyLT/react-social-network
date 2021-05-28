@@ -1,0 +1,54 @@
+@import "../../../../styles/base/_base.scss";
+
+.messages {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  gap: 5px;
+}
+
+.message {
+  $this: &;
+
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  flex-direction: row-reverse;
+  gap: 15px;
+  padding: 5px 10px;
+
+  &__user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__userPhoto {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    object-fit: cover;
+  }
+
+  &__userName {
+    font-size: 0.9rem;
+  }
+
+  &__text {
+    padding: 10px;
+    border-radius: 20px 20px 0 20px;
+    border: 1px solid $color-white;
+  }
+
+  &__friend {
+    align-self: flex-start;
+    flex-direction: row;
+
+    #{$this}__text {
+      background-color: $color-crown-of-thorns;
+      border-color: $color-crown-of-thorns;
+      border-radius: 20px 20px 20px 0;
+    }
+  }
+}

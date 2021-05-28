@@ -46,7 +46,7 @@ let initialState = {
       name: "Dmitry",
       text: "Hello David",
       imgUrl:
-        "https://cdn.icon-icons.com/icons2/1736/PNG/512/4043260-avatar-male-man-portrait_113269.png",
+        "https://www.pngkit.com/png/full/115-1150342_user-avatar-icon-iconos-de-mujeres-a-color.png",
     },
     {
       key: 2,
@@ -54,7 +54,7 @@ let initialState = {
       name: "David",
       text: "Hello Dmitry.",
       imgUrl:
-        "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
+        "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png",
     },
     {
       key: 3,
@@ -62,7 +62,7 @@ let initialState = {
       name: "Dmitry",
       text: "How are you?",
       imgUrl:
-        "https://cdn.icon-icons.com/icons2/1736/PNG/512/4043260-avatar-male-man-portrait_113269.png",
+        "https://www.pngkit.com/png/full/115-1150342_user-avatar-icon-iconos-de-mujeres-a-color.png",
     },
     {
       key: 4,
@@ -70,7 +70,7 @@ let initialState = {
       name: "David",
       text: "I am good, and how are you?",
       imgUrl:
-        "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
+        "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png",
     },
   ],
 };
@@ -83,7 +83,7 @@ const messagesReducer = (state = initialState, action) => {
         id: 1,
         name: "David",
         imgUrl:
-          "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
+          "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png",
         text: action.newMessageText,
       };
 

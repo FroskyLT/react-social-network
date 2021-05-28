@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./dialogs.module.scss";
 import People from "./People/People";
-import Message from "./Message/Message";
+import Messages from "./Messages/Messages";
 import { Formik, Form, Field } from "formik";
 
 const MessageForm = (props) => {
@@ -39,24 +39,16 @@ const MessageForm = (props) => {
 };
 
 const Dialogs = (props) => {
-  const { peopleData } = props;
-
-  const conversationElements = props.conversationData.map((c) =>
-    c.id ? (
-      <div className={styles.right} key={c.key}>
-        <Message name={c.name} text={c.text} imgUrl={c.imgUrl} />
-      </div>
-    ) : (
-      <Message key={c.key} name={c.name} text={c.text} imgUrl={c.imgUrl} />
-    )
-  );
+  const { peopleData, conversationData } = props;
 
   return (
     <div className={styles.dialogPage}>
       <div className={styles.dialogPage__people}>
         <People peopleData={peopleData} />
       </div>
-      <div className={styles.dialogPage__messages}>messages</div>
+      <div className={styles.dialogPage__messages}>
+        <Messages conversationData={conversationData} />
+      </div>
       <div className={styles.dialogPage__field}>field</div>
       {/* <div className={styles.main}>
         <div className={styles.people}>

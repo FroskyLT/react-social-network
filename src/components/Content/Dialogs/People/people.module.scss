@@ -19,7 +19,7 @@
   transition: linear 300ms;
 
   &__active {
-    background-color: $color-monarch;
+    background-color: $color-crown-of-thorns;
   }
 
   &__image {
@@ -30,9 +30,7 @@
   }
 
   &__name {
-    font-weight: $weight-semibold;
     font-size: 1.2rem;
-    letter-spacing: 1px;
   }
 
   &:hover {
