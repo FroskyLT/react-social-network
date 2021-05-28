@@ -1,5 +1,4 @@
 const ADD_MESSAGE = "ADD_NEW_MESSAGE";
-const UPDATE_MESSAGE = "UPDATE_NEW_MESSAGE_ELEMENT";
 
 let initialState = {
   peopleData: [
@@ -68,30 +67,23 @@ let initialState = {
         "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
     },
   ],
-  newMessageText: "Hello world!",
 };
 
 const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGE: {
       let newMessage = {
+        key: state.conversationData[state.conversationData.length - 1].key + 1,
         id: 1,
         name: "David",
         imgUrl:
           "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
-        text: state.newMessageText,
+        text: action.newMessageText,
       };
 
       return {
         ...state,
         conversationData: [...state.conversationData, newMessage],
-        newMessageText: "",
-      };
-    }
-    case UPDATE_MESSAGE: {
-      return {
-        ...state,
-        newMessageText: action.newText,
       };
     }
     default:
@@ -100,10 +92,9 @@ const messagesReducer = (state = initialState, action) => {
 };
 
 // AC
-export const addMessage = () => ({ type: ADD_MESSAGE });
-export const updateNewMessageElement = (text) => ({
-  type: UPDATE_MESSAGE,
-  newText: text,
+export const addMessage = (newMessageText) => ({
+  type: ADD_MESSAGE,
+  newMessageText,
 });
 
 export default messagesReducer;

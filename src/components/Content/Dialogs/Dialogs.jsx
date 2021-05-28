@@ -2,6 +2,40 @@ import React from "react";
 import styles from "./dialogs.module.scss";
 import People from "./People/People";
 import Message from "./Message/Message";
+import { Formik, Form, Field } from "formik";
+
+const MessageForm = (props) => {
+  return (
+    <Formik
+      initialValues={{ message: "" }}
+      onSubmit={(values, { setSubmitting, resetForm }) => {
+        debugger;
+        props.sendMessage(values.message);
+        resetForm({});
+        setSubmitting(false);
+      }}
+    >
+      {({ isSubmitting }) => (
+        <Form className={styles.form}>
+          <Field
+            id="message"
+            type="message"
+            name="message"
+            className={styles.form__field}
+            required
+          />
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={styles.form__submit}
+          >
+            send
+          </button>
+        </Form>
+      )}
+    </Formik>
+  );
+};
 
 const Dialogs = (props) => {
   const peopleElements = props.peopleData.map((d) => (
@@ -16,13 +50,6 @@ const Dialogs = (props) => {
       <Message key={c.key} name={c.name} text={c.text} imgUrl={c.imgUrl} />
     )
   );
-  const newMessage = () => {
-    props.addMessage();
-  };
-  const onMessageChange = (e) => {
-    const text = e.target.value;
-    props.updateNewMessageElement(text);
-  };
 
   return (
     <div className={styles.dialogs}>
@@ -37,15 +64,7 @@ const Dialogs = (props) => {
         <div className={styles.conversation}>
           <div className={styles.message__wrapper}>{conversationElements}</div>
           <div className={styles.textarea}>
-            <div className={styles.textarea__container}>
-              <div className={styles.textarea__body}>
-                <textarea
-                  value={props.newMessageText}
-                  onChange={onMessageChange}
-                />
-                <button onClick={newMessage}>send</button>
-              </div>
-            </div>
+            <MessageForm sendMessage={props.addMessage} />
           </div>
         </div>
       </div>
