@@ -7,7 +7,6 @@ const MessageField = ({ sendMessage }) => {
     <Formik
       initialValues={{ message: "" }}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        debugger;
         sendMessage(values.message);
         resetForm({});
         setSubmitting(false);

@@ -12,7 +12,7 @@
   $this: &;
 
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   align-self: flex-end;
   flex-direction: row-reverse;
   gap: 15px;
@@ -39,6 +39,8 @@
     padding: 10px;
     border-radius: 20px 20px 0 20px;
     border: 1px solid $color-white;
+    margin-bottom: 15px;
+    max-width: 500px;
   }
 
   &__friend {
