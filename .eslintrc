@@ -1,6 +1,8 @@
 {
-  "extends": ["react-app", "plugin:prettier/recommended"],
+  "extends": ["react-app", "plugin:prettier/recommended", "pluhin:react-hooks"],
   "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "prettier/prettier": [
       "error",
       {
