@@ -1,7 +1,8 @@
 import { ProfileAPI } from "../../api/api";
 import { checkIsFollowingSelectedUser } from "./usersReducer";
 
-const ADD_POST = "ADD_NEW_POST";
+const ADD_POST = "ADD_POST";
+const DELETE_POST = "DELETE_POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const START_PROFILE_FETCH = "START_PROFILE_FETCH";
@@ -131,16 +132,33 @@ const profileReducer = (state = initialState, action) => {
       };
     }
     case ADD_POST: {
+      const today = new Date();
+      const currMonth =
+        today.getMonth() < 9
+          ? `0${today.getMonth() + 1}`
+          : today.getMonth() + 1;
+      const currDay =
+        today.getDate() < 10 ? `0${today.getMonth()}` : today.getMonth();
+      const dateCreated = `${today.getFullYear()}-${currMonth}-${currDay}`;
+
       const newPost = {
         id: state.postData[state.postData.length - 1] + 1,
         content: action.postText,
         likesCount: 0,
+        dateCreated: dateCreated,
+        comments: null,
         imgUrl:
           "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
       };
       return {
         ...state,
         postData: [...state.postData, newPost],
+      };
+    }
+    case DELETE_POST: {
+      return {
+        ...state,
+        postData: state.postData.filter((post) => post.id !== action.postId),
       };
     }
     case SET_USER_PROFILE: {
@@ -162,6 +180,7 @@ const profileReducer = (state = initialState, action) => {
 
 // AC
 export const addPost = (postText) => ({ type: ADD_POST, postText });
+export const deletePost = (postId) => ({ type: DELETE_POST, postId });
 export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,
