@@ -34,6 +34,11 @@ body > div,
   height: 100%;
 }
 
+::selection {
+  color: $color-white;
+  background: $color-monarch;
+}
+
 ::-webkit-scrollbar {
   width: 15px;
 }
