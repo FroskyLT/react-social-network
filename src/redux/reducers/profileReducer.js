@@ -2,7 +2,6 @@ import { ProfileAPI } from "../../api/api";
 import { checkIsFollowingSelectedUser } from "./usersReducer";
 
 const ADD_POST = "ADD_NEW_POST";
-const UPDATE_POST = "UPDATE_NEW_POST_ELEMENT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const START_PROFILE_FETCH = "START_PROFILE_FETCH";
@@ -89,7 +88,6 @@ let initialState = {
       comments: null,
     },
   ],
-  newPostText: "Hello world!",
   profile: null,
   // profile: {
   // userId: required(integer)
@@ -114,7 +112,6 @@ let initialState = {
   //     photos: {small: null, large: null},
   //     userId: 14984,
   // },
-  totalPosts: 4,
   status: "",
   profileIsFetching: true,
 };
@@ -134,9 +131,9 @@ const profileReducer = (state = initialState, action) => {
       };
     }
     case ADD_POST: {
-      let newPost = {
-        id: state.totalPosts + 1,
-        content: state.newPostText,
+      const newPost = {
+        id: state.postData[state.postData.length - 1] + 1,
+        content: action.postText,
         likesCount: 0,
         imgUrl:
           "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
@@ -144,14 +141,6 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         postData: [...state.postData, newPost],
-        newPostText: "",
-        totalPosts: state.totalPosts + 1,
-      };
-    }
-    case UPDATE_POST: {
-      return {
-        ...state,
-        newPostText: action.newText,
       };
     }
     case SET_USER_PROFILE: {
@@ -172,14 +161,10 @@ const profileReducer = (state = initialState, action) => {
 };
 
 // AC
-export const addPost = () => ({ type: ADD_POST });
+export const addPost = (postText) => ({ type: ADD_POST, postText });
 export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,
-});
-export const updateNewPostElement = (text) => ({
-  type: UPDATE_POST,
-  newText: text,
 });
 export const setStatus = (status) => ({ type: SET_STATUS, status });
 export const startProfileFetch = () => ({ type: START_PROFILE_FETCH });

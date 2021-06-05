@@ -1,8 +1,5 @@
 import { connect } from "react-redux";
-import {
-  addPost,
-  updateNewPostElement,
-} from "../../../../redux/reducers/profileReducer";
+// import { addPost } from "../../../../redux/reducers/profileReducer";
 import {
   getPostDataSelector,
   getProfileSelector,
@@ -18,6 +15,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addPost, updateNewPostElement })(
-  Posts
-);
+export default connect(mapStateToProps, {})(Posts);
