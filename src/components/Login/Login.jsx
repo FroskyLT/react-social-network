@@ -3,22 +3,14 @@ import CardContainer from "../common/CardContainer/CardContainer";
 import styles from "./login.module.scss";
 import video from "../../assets/videos/Samurai.webm";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { email, required } from "../../utils/validators/validators";
 
 const LoginForm = (props) => {
   const validate = (values) => {
     const errors = {};
 
-    if (!values.email) {
-      errors.email = "Required";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = "Invalid email address";
-    }
-
-    if (!values.password) {
-      errors.password = "Required";
-    }
+    errors.email = required(values.email) || email(values.email);
+    errors.password = required(values.password);
 
     return errors;
   };
