@@ -9,8 +9,9 @@ const LoginForm = (props) => {
   const validate = (values) => {
     const errors = {};
 
-    errors.email = required(values.email) || email(values.email);
-    errors.password = required(values.password);
+    if (required(values.email) || email(values.email))
+      errors.email = required(values.email) || email(values.email);
+    if (required(values.password)) errors.password = required(values.password);
 
     return errors;
   };

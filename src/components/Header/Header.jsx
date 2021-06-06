@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./header.module.scss";
 import { NavLink } from "react-router-dom";
-import NavbarContainer from "../Navbar/NavbarContainer";
+import Navbar from "../Navbar/Navbar";
 
 const useClickOutside = (handler) => {
   const domNode = useRef();
@@ -40,7 +40,7 @@ const Header = (props) => {
         <NavLink to="/">FroskyLT</NavLink>
       </div>
       <div className={styles.navbar}>
-        <NavbarContainer />
+        <Navbar />
       </div>
       <div className={styles.menu}>
         {props.isLogged ? (

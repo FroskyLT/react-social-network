@@ -1,12 +1,12 @@
 import { ProfileAPI } from "../../api/api";
 import { checkIsFollowingSelectedUser } from "./usersReducer";
 
-const ADD_POST = "ADD_POST";
-const DELETE_POST = "DELETE_POST";
-const SET_USER_PROFILE = "SET_USER_PROFILE";
-const SET_STATUS = "SET_STATUS";
-const START_PROFILE_FETCH = "START_PROFILE_FETCH";
-const END_PROFILE_FETCH = "END_PROFILE_FETCH";
+const ADD_POST = "profile/ADD_POST";
+const DELETE_POST = "profile/DELETE_POST";
+const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
+const SET_STATUS = "profile/SET_STATUS";
+const START_PROFILE_FETCH = "profile/START_PROFILE_FETCH";
+const END_PROFILE_FETCH = "profile/END_PROFILE_FETCH";
 
 let initialState = {
   postData: [

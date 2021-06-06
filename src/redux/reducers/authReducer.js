@@ -1,8 +1,8 @@
 import { AuthAPI } from "../../api/api";
 
-const SET_USER_DATA = "SET_USER_DATA";
-const CLEAR_USER_DATA = "CLEAR_USER_DATA";
-const SET_ERROR = "SET_ERROR";
+const SET_USER_DATA = "auth/SET_USER_DATA";
+const CLEAR_USER_DATA = "auth/CLEAR_USER_DATA";
+const SET_ERROR = "auth/SET_ERROR";
 
 let initialState = {
   userId: null,

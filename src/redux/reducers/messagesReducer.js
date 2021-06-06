@@ -1,4 +1,4 @@
-const ADD_MESSAGE = "ADD_NEW_MESSAGE";
+const ADD_MESSAGE = "messages/ADD_NEW_MESSAGE";
 
 let initialState = {
   peopleData: [
