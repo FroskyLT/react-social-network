@@ -50,32 +50,32 @@ export const clearAuthUserData = () => ({ type: CLEAR_USER_DATA });
 export const setError = (errorMessage) => ({ type: SET_ERROR, errorMessage });
 
 //TC
-export const authenticateMe = () => (dispatch) => {
-  return AuthAPI.authenticateMe().then((responseData) => {
-    if (responseData.resultCode === 0) {
-      const { email, id, login } = responseData.data;
-      dispatch(setAuthUserData(id, email, login));
-    }
-  });
+export const authenticateMe = () => async (dispatch) => {
+  const response = await AuthAPI.authenticateMe();
+
+  if (response.resultCode === 0) {
+    const { email, id, login } = response.data;
+    dispatch(setAuthUserData(id, email, login));
+  }
 };
 
-export const login = (loginData) => (dispatch) => {
-  AuthAPI.login(loginData.email, loginData.password).then((responseData) => {
-    if (responseData.resultCode === 0) {
-      dispatch(setError(""));
-      dispatch(authenticateMe());
-    } else {
-      dispatch(setError(responseData.messages[0]));
-    }
-  });
+export const login = (loginData) => async (dispatch) => {
+  const response = await AuthAPI.login(loginData.email, loginData.password);
+
+  if (response.resultCode === 0) {
+    dispatch(setError(""));
+    dispatch(authenticateMe());
+  } else {
+    dispatch(setError(response.messages[0]));
+  }
 };
 
-export const logout = () => (dispatch) => {
-  AuthAPI.logout().then((responseData) => {
-    if (responseData.resultCode === 0) {
-      dispatch(clearAuthUserData());
-    }
-  });
+export const logout = () => async (dispatch) => {
+  const response = await AuthAPI.logout();
+
+  if (response.resultCode === 0) {
+    dispatch(clearAuthUserData());
+  }
 };
 
 export default authReducer;

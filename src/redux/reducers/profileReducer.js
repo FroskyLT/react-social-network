@@ -1,4 +1,5 @@
 import { ProfileAPI } from "../../api/api";
+import { currentTime } from "../../utils/date";
 import { checkIsFollowingSelectedUser } from "./usersReducer";
 
 const ADD_POST = "profile/ADD_POST";
@@ -132,14 +133,7 @@ const profileReducer = (state = initialState, action) => {
       };
     }
     case ADD_POST: {
-      const today = new Date();
-      const currMonth =
-        today.getMonth() < 9
-          ? `0${today.getMonth() + 1}`
-          : today.getMonth() + 1;
-      const currDay =
-        today.getDate() < 10 ? `0${today.getMonth()}` : today.getMonth();
-      const dateCreated = `${today.getFullYear()}-${currMonth}-${currDay}`;
+      const dateCreated = currentTime();
 
       const newPost = {
         id: state.postData[state.postData.length - 1] + 1,
@@ -190,32 +184,34 @@ export const startProfileFetch = () => ({ type: START_PROFILE_FETCH });
 export const endProfileFetch = () => ({ type: END_PROFILE_FETCH });
 
 //TC
-const getUserProfile = (userId) => (dispatch) => {
-  return ProfileAPI.getSelectedUserProfile(userId).then((data) => {
-    dispatch(setUserProfile(data));
-  });
+const getUserProfile = (userId) => async (dispatch) => {
+  const data = await ProfileAPI.getSelectedUserProfile(userId);
+
+  dispatch(setUserProfile(data));
 };
 
-const getCurrentUserStatus = (userId) => (dispatch) => {
-  return ProfileAPI.getCurrentUserStatus(userId).then((data) => {
-    dispatch(setStatus(data));
-  });
+const getCurrentUserStatus = (userId) => async (dispatch) => {
+  const data = await ProfileAPI.getCurrentUserStatus(userId);
+
+  dispatch(setStatus(data));
 };
 
-export const setCurrentUserStatus = (updatedStatus) => (dispatch) => {
-  ProfileAPI.updateCurrentUserStatus(updatedStatus).then((data) => {
-    if (data.resultCode === 0) {
-      dispatch(setStatus(updatedStatus));
-    }
-  });
+export const setCurrentUserStatus = (updatedStatus) => async (dispatch) => {
+  const data = await ProfileAPI.updateCurrentUserStatus(updatedStatus);
+
+  if (data.resultCode === 0) {
+    dispatch(setStatus(updatedStatus));
+  }
 };
 
 export const initProfile = (currUserId, userId) => async (dispatch) => {
   dispatch(startProfileFetch());
+
   await dispatch(getUserProfile(userId));
   await dispatch(getCurrentUserStatus(userId));
   if (currUserId && userId !== currUserId)
     await dispatch(checkIsFollowingSelectedUser(userId));
+
   dispatch(endProfileFetch());
 };
 
