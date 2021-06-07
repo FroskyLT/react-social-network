@@ -14,14 +14,13 @@ import { withRouter } from "react-router-dom";
 // import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from "redux";
 import {
-  getFollowedUsersIdSelector,
   getFollowInProgressSelector,
   getIsFollowingUserSelector,
   getProfileIsFetchingSelector,
   getProfileSelector,
   getStatusSelector,
   getUserIdSelector,
-  getUserInfoSelector,
+  getFriendsSelector,
 } from "../../../selectors/profile-selectors";
 import LoaderSpinner from "../../common/LoaderSpinner/LoaderSpinner";
 
@@ -41,6 +40,7 @@ class ProfileContainer extends React.Component {
     return (
       <Profile
         profile={this.props.profile}
+        friends={this.props.friends}
         status={this.props.status}
         currUserId={this.props.currUserId}
         followInProgress={this.props.followInProgress}
@@ -56,12 +56,11 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
   profile: getProfileSelector(state),
-  userInfo: getUserInfoSelector(state),
+  friends: getFriendsSelector(state),
   status: getStatusSelector(state),
   currUserId: getUserIdSelector(state),
   followInProgress: getFollowInProgressSelector(state),
   isFollowingUser: getIsFollowingUserSelector(state),
-  followedUsersId: getFollowedUsersIdSelector(state),
   profileIsFetching: getProfileIsFetchingSelector(state),
 });
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import CardContainer from "../../../common/CardContainer/CardContainer";
 import styles from "./profile-info.module.scss";
+import personImg from "../../../../assets/images/person.png";
 
 // profile:
 // aboutMe: null
@@ -76,8 +78,36 @@ const SectionStatus = ({ status, updateUserStatus, canEdit }) => {
 };
 // const SectionContacts = () => { }
 
+const Friends = ({ friends }) => {
+  const friendCells =
+    friends.length > 9
+      ? friends.slice(9 - friends.length)
+      : [
+          ...friends,
+          ...Array.from({ length: 9 - friends.length }, () => "placeholder"),
+        ];
+
+  return (
+    <div className={styles.friends}>
+      {friendCells.map((item, index) =>
+        item !== "placeholder" ? (
+          <NavLink to={`/profile/${item.id}`} key={index}>
+            <img
+              className={styles.friend}
+              src={item.photos.small || personImg}
+              alt=""
+            />
+          </NavLink>
+        ) : (
+          <div className={styles.friend__placeholder} key={index} />
+        )
+      )}
+    </div>
+  );
+};
+
 const ProfileInfo = (props) => {
-  const { profile, status, currUserId, updateUserStatus } = props;
+  const { profile, friends, status, currUserId, updateUserStatus } = props;
 
   const canEdit = currUserId === profile.userId;
 
@@ -100,17 +130,7 @@ const ProfileInfo = (props) => {
       </CardContainer>
       <CardContainer className={styles.profileInfo}>
         <SectionTitle>{"Friends"}</SectionTitle>
-        <div className={styles.profileInfo__friends}>
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
+        <Friends friends={friends} />
       </CardContainer>
     </>
   );

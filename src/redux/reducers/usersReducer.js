@@ -4,6 +4,7 @@ const FOLLOW_TOGGLE = "users/FOLLOW_TOGGLE";
 const CHECK_IS_FOLLOWING_USER = "users/CHECK_IS_FOLLOWING_USER";
 const SET_IS_FOLLOWING_USER = "users/SET_IS_FOLLOWING_USER";
 const SET_USERS = "users/SET_USERS";
+const SET_FRIENDS = "users/SET_FRIENDS";
 const SET_CURRENT_PAGE = "users/SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "users/SET_TOTAL_USERS_COUNT";
 const TOGGLE_IS_FETCH = "users/TOGGLE_IS_FETCH";
@@ -11,6 +12,7 @@ const TOGGLE_FOLLOW_IN_PROGRESS = "users/TOGGLE_FOLLOW_IN_PROGRESS";
 
 let initialState = {
   users: [],
+  friends: [],
   totalUsersCount: 0,
   isFollowingUser: null,
 
@@ -48,6 +50,12 @@ const usersReducer = (state = initialState, action) => {
         users: action.users,
       };
     }
+    case SET_FRIENDS: {
+      return {
+        ...state,
+        friends: action.users,
+      };
+    }
     case SET_CURRENT_PAGE: {
       return {
         ...state,
@@ -81,6 +89,7 @@ const usersReducer = (state = initialState, action) => {
 
 //Action creators
 export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setFriends = (users) => ({ type: SET_FRIENDS, users });
 export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
@@ -118,6 +127,15 @@ export const getUsers = (currentPage, pageSize) => async (dispatch) => {
   dispatch(toggleIsFetching(false));
   dispatch(setUsers(data.items));
   dispatch(setTotalUsersCount(data.totalCount));
+};
+
+export const getFriends = () => async (dispatch) => {
+  dispatch(toggleIsFetching(true));
+
+  const data = await UsersAPI.getFollowedUsers();
+
+  dispatch(toggleIsFetching(false));
+  dispatch(setFriends(data.items));
 };
 
 export const getUsersOnPageChange =

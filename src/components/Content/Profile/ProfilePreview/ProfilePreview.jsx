@@ -3,26 +3,36 @@ import styles from "./profile-preview.module.scss";
 import Button from "../../../common/Button/Button";
 
 const ProfilePreview = (props) => {
-  const profileId = props.profileData.userId;
-  const isFollowInProgress = props.followInProgress.some(
+  const {
+    profileData,
+    currUserId,
+    followInProgress,
+    onFollow,
+    onUnfollow,
+    isFollowingUser,
+    isFollowing,
+  } = props;
+
+  const profileId = profileData.userId;
+  const isFollowInProgress = followInProgress.some(
     (userId) => userId === profileId
   );
-  const currUserProfile = props.currUserId === profileId;
-  const isFollowed = props.isFollowingUser;
+  const currUserProfile = currUserId === profileId;
+  const isFollowed = isFollowingUser;
 
-  if (props.currUserId && !currUserProfile) props.isFollowing(profileId);
+  if (currUserId && !currUserProfile) isFollowing(profileId);
 
   const followButton = () => {
     return isFollowed ? (
       <Button
-        clickHandler={() => props.onUnfollow(profileId)}
+        clickHandler={() => onUnfollow(profileId)}
         disabled={isFollowInProgress}
       >
         {"unfollow"}
       </Button>
     ) : (
       <Button
-        clickHandler={() => props.onFollow(profileId)}
+        clickHandler={() => onFollow(profileId)}
         disabled={isFollowInProgress}
       >
         {"follow"}
@@ -43,16 +53,16 @@ const ProfilePreview = (props) => {
       <div className={styles.about}>
         <img
           src={
-            props.profileData.photos.large ||
+            profileData.photos.large ||
             "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"
           }
           alt=""
         />
         <div className={styles.about__description}>
           <div className={styles.about__name}>
-            {props.profileData.fullName ?? "No Name"}
+            {profileData.fullName ?? "No Name"}
           </div>
-          {!props.currUserId || currUserProfile ? (
+          {!currUserId || currUserProfile ? (
             <div className={styles.about__followPlaceholder} />
           ) : (
             followButton()

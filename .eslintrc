@@ -10,7 +10,7 @@
         "endOfLine": "auto"
       }
     ],
-    "quotes": ["error", "double"],
-    "indent": ["error", 2, { "SwitchCase": 1 }]
+    "quotes": ["error", "double"]
+    // "indent": ["error", 2, { "SwitchCase": 1 }]
   }
 }

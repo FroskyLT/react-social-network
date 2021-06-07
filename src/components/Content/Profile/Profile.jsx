@@ -20,7 +20,13 @@ const Profile = (props) => {
         />
       </div>
       <div className={styles.main}>
-        <ProfileMain {...props} />
+        <ProfileMain
+          profile={props.profile}
+          friends={props.friends}
+          status={props.status}
+          currUserId={props.currUserId}
+          updateUserStatus={props.updateUserStatus}
+        />
       </div>
     </div>
   );
