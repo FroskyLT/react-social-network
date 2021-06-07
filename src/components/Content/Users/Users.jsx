@@ -4,7 +4,19 @@ import SingleUser from "./SingleUser/SingleUser";
 import styles from "./users.module.scss";
 
 export const Users = (props) => {
-  const singleUser = props.users.map((user) => (
+  const {
+    users,
+    totalUsersCount,
+    pageSize,
+    onFollow,
+    onUnfollow,
+    currentPage,
+    onPageChanged,
+    followInProgress,
+  } = props;
+
+  const pagesCount = Math.ceil(totalUsersCount / pageSize);
+  const singleUser = users.map((user) => (
     <SingleUser
       key={user.id}
       id={user.id}
@@ -14,21 +26,18 @@ export const Users = (props) => {
       country={user.country}
       city={user.city}
       isFollowed={user.followed}
-      onFollow={props.onFollow}
-      onUnfollow={props.onUnfollow}
-      isFollowInProgress={props.followInProgress.some(
-        (userId) => userId === user.id
-      )}
+      onFollow={onFollow}
+      onUnfollow={onUnfollow}
+      isFollowInProgress={followInProgress.some((userId) => userId === user.id)}
     />
   ));
 
   return (
     <div className={styles.users}>
       <Pagination
-        totalUsersCount={props.totalUsersCount}
-        pageSize={props.pageSize}
-        currentPage={props.currentPage}
-        pageChangeHandler={props.onPageChanged}
+        pagesCount={pagesCount}
+        currentPage={currentPage}
+        pageChangeHandler={onPageChanged}
       />
       <div className={styles.users__container}>{singleUser}</div>
     </div>

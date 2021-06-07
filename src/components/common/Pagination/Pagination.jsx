@@ -2,11 +2,9 @@ import React from "react";
 import styles from "./pagination.module.scss";
 
 export const Pagination = (props) => {
-  const { totalUsersCount, pageSize, currentPage, pageChangeHandler } = props;
+  const { pagesCount, currentPage, pageChangeHandler } = props;
 
-  const pagesCount = Math.ceil(totalUsersCount / pageSize);
   const pages = [];
-
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
@@ -18,15 +16,11 @@ export const Pagination = (props) => {
           className={styles.pagination__item}
           onClick={() => pageChangeHandler(currentPage - 1)}
         >
-          {"❮"}
+          &#10094;
         </div>
       )}
       {pages.map((page) => {
-        if (
-          (currentPage - 4 < page && page < currentPage + 4) ||
-          (currentPage === 1 && page === 3) ||
-          (currentPage === pagesCount && page === pagesCount - 3)
-        ) {
+        if (currentPage - 4 < page && page < currentPage + 4) {
           return (
             <div
               key={page}
@@ -49,7 +43,7 @@ export const Pagination = (props) => {
           className={styles.pagination__item}
           onClick={() => pageChangeHandler(currentPage + 1)}
         >
-          {"❯"}
+          &#10095;
         </div>
       )}
     </div>
