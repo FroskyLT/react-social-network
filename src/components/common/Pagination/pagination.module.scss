@@ -1,0 +1,38 @@
+@import "../../../styles/base/base";
+
+.pagination {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    background-color: $color-tuna;
+    border-radius: 5px;
+    border: 2px solid $color-tuna;
+    font-weight: $weight-bold;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    user-select: none;
+
+    &_selected {
+      background-color: $color-monarch;
+      color: $color-white;
+      border-color: $color-monarch;
+    }
+
+    &:active {
+      background-color: $color-shiraz;
+      border-color: $color-shiraz;
+    }
+  }
+}

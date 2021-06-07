@@ -66,8 +66,7 @@ const Header = (props) => {
           </div>
         ) : (
           <NavLink to="/login" className={styles.menu__login}>
-            {" "}
-            {"sign in"}{" "}
+            {"sign in"}
           </NavLink>
         )}
       </div>

@@ -1,76 +1,35 @@
 import React from "react";
+import Pagination from "../../common/Pagination/Pagination";
 import SingleUser from "./SingleUser/SingleUser";
 import styles from "./users.module.scss";
 
 export const Users = (props) => {
-  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-  let pages = [];
-
-  for (let i = 1; i <= pagesCount; i++) {
-    pages.push(i);
-  }
-
-  let singleUser = props.users.map((u) => (
+  const singleUser = props.users.map((user) => (
     <SingleUser
-      key={u.id}
-      id={u.id}
-      imgUrl={u.photos.small}
-      name={u.name}
-      status={u.status}
-      country={u.country}
-      city={u.city}
-      isFollowed={u.followed}
+      key={user.id}
+      id={user.id}
+      imgUrl={user.photos.small}
+      name={user.name}
+      status={user.status}
+      country={user.country}
+      city={user.city}
+      isFollowed={user.followed}
       onFollow={props.onFollow}
       onUnfollow={props.onUnfollow}
       isFollowInProgress={props.followInProgress.some(
-        (userId) => userId === u.id
+        (userId) => userId === user.id
       )}
     />
   ));
 
   return (
     <div className={styles.users}>
-      <div className={styles.users__pagination}>
-        {props.currentPage > 1 && (
-          <div
-            className={styles.users__paginationItem}
-            onClick={() => props.onPageChanged(props.currentPage - 1)}
-          >
-            {"❮"}
-          </div>
-        )}
-        {pages.map((page) => {
-          if (
-            (props.currentPage - 4 < page && page < props.currentPage + 4) ||
-            (props.currentPage === 1 && page === 3) ||
-            (props.currentPage === pagesCount && page === pagesCount - 3)
-          ) {
-            return (
-              <div
-                key={page}
-                className={
-                  props.currentPage === page
-                    ? `${styles.users__paginationItem} ${styles.users__paginationItem_selected}`
-                    : styles.users__paginationItem
-                }
-                onClick={() => props.onPageChanged(page)}
-              >
-                {page}
-              </div>
-            );
-          } else {
-            return null;
-          }
-        })}
-        {props.currentPage < pagesCount && (
-          <div
-            className={styles.users__paginationItem}
-            onClick={() => props.onPageChanged(props.currentPage + 1)}
-          >
-            {"❯"}
-          </div>
-        )}
-      </div>
+      <Pagination
+        totalUsersCount={props.totalUsersCount}
+        pageSize={props.pageSize}
+        currentPage={props.currentPage}
+        pageChangeHandler={props.onPageChanged}
+      />
       <div className={styles.users__container}>{singleUser}</div>
     </div>
   );
