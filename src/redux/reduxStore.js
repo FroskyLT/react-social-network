@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import profileReducer from "./reducers/profileReducer";
 import messagesReducer from "./reducers/messagesReducer";
 import usersReducer from "./reducers/usersReducer";
@@ -14,7 +14,12 @@ const reducers = combineReducers({
   app: appReducer,
 });
 
-const store = createStore(reducers, applyMiddleware(ThunkMiddleware));
+// Redux DevTools in Chrome
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(ThunkMiddleware))
+);
 
 window.store = store;
 
