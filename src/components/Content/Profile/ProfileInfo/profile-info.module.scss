@@ -1,6 +1,8 @@
 @import "../../../../styles/base/base";
 @import "../../../../styles/mixins/mixins";
 
+$_color-shark-transparent-50: #1a1a1d80;
+
 .sectionTitle {
   font-size: 1.3rem;
   font-weight: $weight-semibold;
@@ -38,7 +40,7 @@
     position: absolute;
     top: 0;
     width: 0;
-    background-color: $color-transparent-black-50;
+    background-color: $_color-shark-transparent-50;
     height: 100%;
     width: 100%;
     border-radius: 5px;
