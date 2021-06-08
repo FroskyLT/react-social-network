@@ -78,7 +78,7 @@ const SectionStatus = ({ status, updateUserStatus, canEdit }) => {
 };
 // const SectionContacts = () => { }
 
-const Friends = ({ friends }) => {
+const Friends = ({ friends, currUserPage }) => {
   const friendCells =
     friends.length > 9
       ? friends.slice(9 - friends.length)
@@ -99,8 +99,20 @@ const Friends = ({ friends }) => {
             />
           </NavLink>
         ) : (
-          <div className={styles.friend__placeholder} key={index} />
+          <div
+            className={
+              currUserPage
+                ? styles.friend__placeholder
+                : `${styles.friend__placeholder} ${styles.friend__placeholder_bloored}`
+            }
+            key={index}
+          />
         )
+      )}
+      {!currUserPage && (
+        <div className={styles.friends__overlay}>
+          {"Friends avalible only for logged user profile"}
+        </div>
       )}
     </div>
   );
@@ -109,7 +121,7 @@ const Friends = ({ friends }) => {
 const ProfileInfo = (props) => {
   const { profile, friends, status, currUserId, updateUserStatus } = props;
 
-  const canEdit = currUserId === profile.userId;
+  const currUserPage = currUserId === profile.userId;
 
   return (
     <>
@@ -124,13 +136,13 @@ const ProfileInfo = (props) => {
           <SectionStatus
             status={status}
             updateUserStatus={updateUserStatus}
-            canEdit={canEdit}
+            canEdit={currUserPage}
           />
         </div>
       </CardContainer>
       <CardContainer className={styles.profileInfo}>
         <SectionTitle>{"Friends"}</SectionTitle>
-        <Friends friends={friends} />
+        <Friends friends={friends} currUserPage={currUserPage} />
       </CardContainer>
     </>
   );

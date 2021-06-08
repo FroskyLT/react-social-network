@@ -1,4 +1,5 @@
 @import "../../../../styles/base/base";
+@import "../../../../styles/mixins/mixins";
 
 .sectionTitle {
   font-size: 1.3rem;
@@ -30,6 +31,19 @@
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    width: 0;
+    background-color: $color-transparent-black-50;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    @include flexCenter;
+  }
 
   .friend {
     width: 110px;
@@ -42,6 +56,10 @@
       height: 110px;
       border-radius: 5px;
       background-color: $color-shark;
+
+      &_bloored {
+        filter: blur(5px);
+      }
     }
   }
 }
