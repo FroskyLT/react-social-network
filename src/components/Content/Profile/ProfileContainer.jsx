@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
 import {
@@ -24,35 +24,34 @@ import {
 } from "../../../selectors/profile-selectors";
 import LoaderSpinner from "../../common/LoaderSpinner/LoaderSpinner";
 
-class ProfileContainer extends React.Component {
-  componentDidMount() {
-    const userId = this.props.match.params.userId || this.props.currUserId; // "2";
+const ProfileContainer = (props) => {
+  useEffect(() => {
+    const userId = props.match.params.userId || props.currUserId; // "2";
     if (userId) {
-      this.props.initProfile(this.props.currUserId, userId);
+      props.initProfile(props.currUserId, userId);
     } else {
-      this.props.history.push("/login");
+      props.history.push("/login");
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.match.params.userId]);
 
-  render() {
-    if (this.props.profileIsFetching) return <LoaderSpinner />;
+  if (props.profileIsFetching) return <LoaderSpinner />;
 
-    return (
-      <Profile
-        profile={this.props.profile}
-        friends={this.props.friends}
-        status={this.props.status}
-        currUserId={this.props.currUserId}
-        followInProgress={this.props.followInProgress}
-        updateUserStatus={this.props.setCurrentUserStatus}
-        isFollowingUser={this.props.isFollowingUser}
-        onFollow={this.props.followUser}
-        onUnfollow={this.props.unfollowUser}
-        isFollowing={this.props.checkIsFollowingSelectedUser}
-      />
-    );
-  }
-}
+  return (
+    <Profile
+      profile={props.profile}
+      friends={props.friends}
+      status={props.status}
+      currUserId={props.currUserId}
+      followInProgress={props.followInProgress}
+      updateUserStatus={props.setCurrentUserStatus}
+      isFollowingUser={props.isFollowingUser}
+      onFollow={props.followUser}
+      onUnfollow={props.unfollowUser}
+      isFollowing={props.checkIsFollowingSelectedUser}
+    />
+  );
+};
 
 const mapStateToProps = (state) => ({
   profile: getProfileSelector(state),
