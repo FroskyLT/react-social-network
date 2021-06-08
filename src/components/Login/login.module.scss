@@ -1,11 +1,10 @@
 @import "../../styles/base/base";
+@import "../../styles/mixins/mixins";
 
 .login {
   position: relative;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
   // overflow: hidden;
 
   &__background {

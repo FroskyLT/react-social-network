@@ -1,7 +1,7 @@
+@import "../../../styles/mixins/mixins";
+
 .home {
   height: 100%;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexCenter;
 }

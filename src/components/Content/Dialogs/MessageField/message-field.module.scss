@@ -1,10 +1,9 @@
 @import "../../../../styles/base/_base.scss";
+@import "../../../../styles/mixins/mixins";
 
 .messageField {
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
   padding: 10px;
 
   &__field {

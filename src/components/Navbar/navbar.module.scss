@@ -1,4 +1,5 @@
 @import "../../styles/base/base";
+@import "../../styles/mixins/mixins";
 
 .navigation {
   height: 100%;
@@ -12,10 +13,8 @@
   margin: 0 5px 3px;
   padding: 0 15px;
   text-decoration: none;
-  display: flex;
+  @include flexCenter;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   transition: linear 300ms;
 }

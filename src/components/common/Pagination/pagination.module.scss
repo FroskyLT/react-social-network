@@ -1,16 +1,13 @@
 @import "../../../styles/base/base";
+@import "../../../styles/mixins/mixins";
 
 .pagination {
   margin-bottom: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
   gap: 5px;
 
   &__item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexCenter;
     color: $color-white;
     background-color: $color-tuna;
     border-radius: 5px;

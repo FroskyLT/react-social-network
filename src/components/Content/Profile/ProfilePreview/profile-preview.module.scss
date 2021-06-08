@@ -1,11 +1,10 @@
 @import "../../../../styles/base/base";
+@import "../../../../styles/mixins/mixins";
 
 .profilePreview {
   position: relative;
   height: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexCenter;
 }
 
 .wallpaper {
@@ -37,10 +36,8 @@
 .about {
   color: $color-white;
   z-index: $z-index-inner-core;
-  display: flex;
+  @include flexCenter;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   object-fit: cover;
 }
 
