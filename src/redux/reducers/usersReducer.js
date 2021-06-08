@@ -124,9 +124,9 @@ export const getUsers = (currentPage, pageSize) => async (dispatch) => {
 
   const data = await UsersAPI.getUsers(currentPage, pageSize);
 
-  dispatch(toggleIsFetching(false));
   dispatch(setUsers(data.items));
   dispatch(setTotalUsersCount(data.totalCount));
+  dispatch(toggleIsFetching(false));
 };
 
 export const getFriends = () => async (dispatch) => {

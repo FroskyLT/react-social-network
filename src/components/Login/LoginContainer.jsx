@@ -9,19 +9,17 @@ import {
 } from "../../selectors/login-selectors";
 import Login from "./Login";
 
-class LoginContainer extends React.Component {
-  render() {
-    if (this.props.isLogged) return <Redirect to="/" />;
+const LoginContainer = ({ isLogged, error, login, authenticateMe }) => {
+  if (isLogged) return <Redirect to="/" />;
 
-    return (
-      <Login
-        error={this.props.error}
-        loginHandler={this.props.login}
-        authenticateHandler={this.props.authenticateMe}
-      />
-    );
-  }
-}
+  return (
+    <Login
+      error={error}
+      loginHandler={login}
+      authenticateHandler={authenticateMe}
+    />
+  );
+};
 
 const mapStateToProps = (state) => ({
   error: getErrorSelector(state),

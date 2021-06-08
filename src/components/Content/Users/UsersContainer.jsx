@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import Users from "./Users";
@@ -18,32 +18,31 @@ import {
 } from "../../../selectors/users-selectors";
 import LoaderSpinner from "../../common/LoaderSpinner/LoaderSpinner";
 
-class UsersContainer extends React.Component {
-  componentDidMount() {
-    this.props.getUsers(this.props.currentPage, this.props.pageSize);
-  }
+const UsersContainer = (props) => {
+  useEffect(() => {
+    props.getUsers(props.currentPage, props.pageSize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  onPageChanged = (pageNumber) => {
-    this.props.getUsersOnPageChange(pageNumber, this.props.pageSize);
+  const onPageChanged = (pageNumber) => {
+    props.getUsersOnPageChange(pageNumber, props.pageSize);
   };
 
-  render() {
-    if (this.props.isFetching) return <LoaderSpinner />;
+  if (props.isFetching) return <LoaderSpinner />;
 
-    return (
-      <Users
-        users={this.props.users}
-        totalUsersCount={this.props.totalUsersCount}
-        pageSize={this.props.pageSize}
-        onFollow={this.props.followUser}
-        onUnfollow={this.props.unfollowUser}
-        currentPage={this.props.currentPage}
-        onPageChanged={this.onPageChanged}
-        followInProgress={this.props.followInProgress}
-      />
-    );
-  }
-}
+  return (
+    <Users
+      users={props.users}
+      totalUsersCount={props.totalUsersCount}
+      pageSize={props.pageSize}
+      onFollow={props.followUser}
+      onUnfollow={props.unfollowUser}
+      currentPage={props.currentPage}
+      onPageChanged={onPageChanged}
+      followInProgress={props.followInProgress}
+    />
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
