@@ -1,9 +1,9 @@
-/* eslint-disable prettier/prettier */
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./post.module.scss";
 import CardContainer from "../../../../common/CardContainer/CardContainer";
 import Divider from "../../../../common/Divider/Divider";
 import { Link } from "react-router-dom";
+import { FaHeart, FaComment } from "react-icons/fa";
 
 const PostHeader = ({ authorPhoto, authorName, dateCreated }) => {
   const imageUrl =
@@ -71,6 +71,7 @@ const PostFooter = ({ likesCount, commentsData }) => {
   const handleSubmit = (e) => {
     if (e.key === "Enter" && newComment) {
       setNewComment("");
+      // prettier-ignore
       alert("\"comment posting\" feature is still under development");
     }
   };
@@ -79,45 +80,51 @@ const PostFooter = ({ likesCount, commentsData }) => {
     commentsData == null
       ? []
       : commentsData.map((comment) => (
-        <div key={comment.id} className={styles.postFooter__comment}>
-          <Link to="/profile" className={styles.postFooter__commentLink}>
-            <img
-              className={styles.postFooter__commentImage}
-              src={comment.userPhoto}
-              alt=""
-            />
-          </Link>
-          <div className={styles.postFooter__commentContainer}>
-            <div className={styles.postFooter__commentTitle}>
-              {comment.userName}
-            </div>
-            <div className={styles.postFooter__commentContent}>
-              {comment.text}
+          <div key={comment.id} className={styles.postFooter__comment}>
+            <Link to="/profile" className={styles.postFooter__commentLink}>
+              <img
+                className={styles.postFooter__commentImage}
+                src={comment.userPhoto}
+                alt=""
+              />
+            </Link>
+            <div className={styles.postFooter__commentContainer}>
+              <div className={styles.postFooter__commentTitle}>
+                {comment.userName}
+              </div>
+              <div className={styles.postFooter__commentContent}>
+                {comment.text}
+              </div>
             </div>
           </div>
-        </div>
-      ));
+        ));
 
   return (
     <div className={styles.postFooter}>
       {likes > 0 && (
         <>
-          <div className={styles.postFooter__likes}> {likes} likes </div>
+          <div className={styles.postFooter__likes}>
+            {likes} <FaHeart className={styles.postFooter__likesIcon} />
+          </div>
           <Divider noMargin />
         </>
       )}
       <div className={styles.postFooter__buttons}>
         <button
-          className={styles.postFooter__singleButton}
+          className={
+            isLiked
+              ? ` ${styles.postFooter__singleButton} ${styles.postFooter__singleButton_active}`
+              : styles.postFooter__singleButton
+          }
           onClick={handleLikes}
         >
-          {isLiked ? "unlike" : "like"}
+          <FaHeart className={styles.singleButton__icon} /> like
         </button>
         <button
           className={styles.postFooter__singleButton}
           onClick={handleFocus}
         >
-          comment
+          <FaComment className={styles.singleButton__icon} /> comment
         </button>
       </div>
       <Divider noMargin />

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./header.module.scss";
 import { NavLink } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import { IoMdHelp, IoMdLogOut, IoMdPerson, IoMdSettings } from "react-icons/io";
 
 const useClickOutside = (handler) => {
   const domNode = useRef();
@@ -49,16 +50,29 @@ const Header = (props) => {
               src={
                 "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"
               }
-              className={styles.login__image}
+              className={styles.loginImage}
               alt=""
               onClick={() => setDropdownOpen((dropdownOpen) => !dropdownOpen)}
             />
             {dropdownOpen && (
-              <ul className={styles.menu__dropdown}>
-                <li className={styles.dropdown__item}>{"Profile"}</li>
-                <li className={styles.dropdown__item}>{"Settings"}</li>
-                <li className={styles.dropdown__item}>{"Help"}</li>
-                <li className={styles.dropdown__item} onClick={logoutHandler}>
+              <ul className={styles.dropdown}>
+                <li className={styles.dropdown__item}>
+                  <IoMdPerson className={styles.dropdown__itemIcon} />
+                  {"Profile"}
+                </li>
+                <li className={styles.dropdown__item}>
+                  <IoMdSettings className={styles.dropdown__itemIcon} />
+                  {"Settings"}
+                </li>
+                <li className={styles.dropdown__item}>
+                  <IoMdHelp className={styles.dropdown__itemIcon} />
+                  {"Help"}
+                </li>
+                <li
+                  className={`${styles.dropdown__item} ${styles.dropdown__item_active}`}
+                  onClick={logoutHandler}
+                >
+                  <IoMdLogOut className={styles.dropdown__itemIcon} />
                   {"Log out"}
                 </li>
               </ul>

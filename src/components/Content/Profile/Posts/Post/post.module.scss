@@ -1,4 +1,5 @@
 @import "../../../../../styles/base/base";
+@import "../../../../../styles/mixins/mixins";
 
 .post {
   padding: 0;
@@ -55,8 +56,13 @@
     display: flex;
     align-items: center;
     padding: 5px 0;
-    font-size: 0.9rem;
-    color: $color-bombay;
+    gap: 5px;
+    color: $color-alto;
+    font-weight: $weight-semibold;
+  }
+
+  &__likesIcon {
+    color: $color-shiraz;
   }
 
   &__buttons {
@@ -71,12 +77,19 @@
     flex: 0 1 50%;
     background-color: $color-tuna;
     border: none;
-    color: $color-bombay;
+    color: $color-alto;
     font-family: $main-font;
     font-size: 1rem;
     cursor: pointer;
     transition: linear 300ms;
     border-radius: 5px;
+    font-weight: $weight-semibold;
+    gap: 5px;
+    @include flexCenter();
+
+    &_active {
+      color: $color-shiraz;
+    }
 
     &:hover {
       background-color: $color-abbey;
@@ -110,7 +123,7 @@
     display: flex;
     flex-direction: column;
     font-size: 0.8rem;
-    color: $color-bombay;
+    color: $color-alto;
     background-color: $color-abbey;
   }
 
@@ -143,5 +156,13 @@
     padding: 0 10px;
     color: $color-white;
     border: none;
+
+    &::placeholder {
+      color: $color-bombay;
+    }
   }
+}
+
+.singleButton__icon {
+  font-size: 1.1rem;
 }

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import CardContainer from "../../../common/CardContainer/CardContainer";
 import styles from "./profile-info.module.scss";
 import personImg from "../../../../assets/images/person.png";
+import { AiFillFire } from "react-icons/ai";
 
 // profile:
 // aboutMe: null
@@ -26,7 +27,12 @@ const SectionAboutMe = ({ aboutMe }) => {
 };
 const SectionJob = ({ isOpenToWork, description }) => {
   if (!isOpenToWork || description == null) return null;
-  return <div>{`#OPENTOWORK ${description}`}</div>;
+  return (
+    <div>
+      <AiFillFire />
+      {`#OPENTOWORK ${description}`}
+    </div>
+  );
 };
 const SectionStatus = ({ status, updateUserStatus, canEdit }) => {
   const [editMode, setEditMode] = useState(false);
@@ -127,18 +133,16 @@ const ProfileInfo = (props) => {
     <>
       <CardContainer className={styles.profileInfo}>
         <SectionTitle>{"Intro"}</SectionTitle>
-        <div className={styles.profileInfo__intro}>
-          <SectionAboutMe aboutMe={profile.aboutMe} />
-          <SectionJob
-            isOpenToWork={profile.lookingForAJob}
-            description={profile.lookingForAJobDescription}
-          />
-          <SectionStatus
-            status={status}
-            updateUserStatus={updateUserStatus}
-            canEdit={currUserPage}
-          />
-        </div>
+        <SectionAboutMe aboutMe={profile.aboutMe} />
+        <SectionJob
+          isOpenToWork={profile.lookingForAJob}
+          description={profile.lookingForAJobDescription}
+        />
+        <SectionStatus
+          status={status}
+          updateUserStatus={updateUserStatus}
+          canEdit={currUserPage}
+        />
       </CardContainer>
       <CardContainer className={styles.profileInfo}>
         <SectionTitle>{"Friends"}</SectionTitle>
