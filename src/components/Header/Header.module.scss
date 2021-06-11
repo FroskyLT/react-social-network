@@ -26,6 +26,7 @@ $_color-shark-transparent-50: #1a1a1d80;
 
 .brand {
   min-width: 200px;
+  user-select: none;
 
   a {
     font-weight: $weight-light;
