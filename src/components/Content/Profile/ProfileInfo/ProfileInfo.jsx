@@ -56,7 +56,7 @@ const SectionStatus = ({ status, updateUserStatus, canEdit }) => {
   };
 
   return (
-    <>
+    <div className={styles.sectionStatus}>
       {editMode ? (
         <input
           type="text"
@@ -79,7 +79,7 @@ const SectionStatus = ({ status, updateUserStatus, canEdit }) => {
           {status ? status : canEdit ? "double click me!" : ""}
         </div>
       )}
-    </>
+    </div>
   );
 };
 // const SectionContacts = () => { }
@@ -133,15 +133,15 @@ const ProfileInfo = (props) => {
     <>
       <CardContainer className={styles.profileInfo}>
         <SectionTitle>{"Intro"}</SectionTitle>
-        <SectionAboutMe aboutMe={profile.aboutMe} />
-        <SectionJob
-          isOpenToWork={profile.lookingForAJob}
-          description={profile.lookingForAJobDescription}
-        />
         <SectionStatus
           status={status}
           updateUserStatus={updateUserStatus}
           canEdit={currUserPage}
+        />
+        <SectionAboutMe aboutMe={profile.aboutMe} />
+        <SectionJob
+          isOpenToWork={profile.lookingForAJob}
+          description={profile.lookingForAJobDescription}
         />
       </CardContainer>
       <CardContainer className={styles.profileInfo}>

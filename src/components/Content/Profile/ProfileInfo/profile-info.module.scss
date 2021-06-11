@@ -10,22 +10,31 @@ $_color-shark-transparent-50: #1a1a1d80;
   margin-bottom: 10px;
 }
 
-.sectionStatus__textfield {
-  background-color: $color-tuna;
-  font-family: $main-font;
-  color: $color-white;
-  border: none;
-  font-size: 0.95rem;
-  line-height: 1.2rem;
-  padding: 0 2px;
-}
-
-.sectionStatus__text {
-  cursor: pointer;
-
-  &_nonEditable {
-    cursor: default;
+.sectionStatus {
+  margin-bottom: 10px;
+  color: $color-manatee;
+  line-height: 1.5rem;
+  font-size: 0.9rem;
+  
+  &__textfield {
+    background-color: $color-abbey;
+    font-family: $main-font;
+    line-height: 1.5rem;
+    color: $color-alto;
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 0.9rem;
   }
+  
+  &__text {
+    cursor: pointer;  
+  
+    &_nonEditable {
+      cursor: default;
+    }
+  }
+
 }
 
 .friends {
