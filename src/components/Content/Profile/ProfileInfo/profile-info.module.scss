@@ -37,6 +37,20 @@ $_color-shark-transparent-50: #1a1a1d80;
 
 }
 
+.sectionAboutMe {
+  color: $color-alto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  &__header {
+    font-weight: $weight-bold;
+    color: $color-manatee;
+    margin-right: 7px;
+    font-size: 1.1rem;
+  }
+}
+
 .friends {
   display: flex;
   flex-wrap: wrap;

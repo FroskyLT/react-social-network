@@ -21,19 +21,6 @@ const SectionTitle = ({ children }) => (
   <h2 className={styles.sectionTitle}>{children}</h2>
 );
 
-const SectionAboutMe = ({ aboutMe }) => {
-  if (!aboutMe) return null;
-  return <div>{`About me: ${aboutMe}`}</div>;
-};
-const SectionJob = ({ isOpenToWork, description }) => {
-  if (!isOpenToWork || description == null) return null;
-  return (
-    <div>
-      <AiFillFire />
-      {`#OPENTOWORK ${description}`}
-    </div>
-  );
-};
 const SectionStatus = ({ status, updateUserStatus, canEdit }) => {
   const [editMode, setEditMode] = useState(false);
   const [localStatus, setLocalStatus] = useState(status);
@@ -82,6 +69,26 @@ const SectionStatus = ({ status, updateUserStatus, canEdit }) => {
     </div>
   );
 };
+
+const SectionAboutMe = ({ aboutMe }) => {
+  if (!aboutMe) return null;
+  return (
+    <div className={styles.sectionAboutMe}>
+      <div className={styles.sectionAboutMe__header}>{"About me:"}</div>
+      <div className={styles.sectionAboutMe__content}>{aboutMe}</div>
+    </div>
+  );
+};
+const SectionJob = ({ isOpenToWork, description }) => {
+  if (!isOpenToWork || description == null) return null;
+  return (
+    <div>
+      <AiFillFire />
+      {`#OPENTOWORK ${description}`}
+    </div>
+  );
+};
+
 // const SectionContacts = () => { }
 
 const Friends = ({ friends, currUserPage }) => {
@@ -143,6 +150,7 @@ const ProfileInfo = (props) => {
           isOpenToWork={profile.lookingForAJob}
           description={profile.lookingForAJobDescription}
         />
+        {/* <SectionContacts /> */}
       </CardContainer>
       <CardContainer className={styles.profileInfo}>
         <SectionTitle>{"Friends"}</SectionTitle>
