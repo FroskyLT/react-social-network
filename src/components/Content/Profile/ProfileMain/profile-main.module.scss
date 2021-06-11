@@ -6,10 +6,15 @@ $_gap-size: 15px;
   color: $color-white;
   display: flex;
   gap: $_gap-size;
+  position: relative;
 }
 
 .profileMain__info {
   flex: 0 0 40%;
+  align-self: flex-start;
+  position: sticky;
+  top: 95px; // 80px - header height 15px - margin
+  left: 0;
 }
 
 .profileMain__posts {
