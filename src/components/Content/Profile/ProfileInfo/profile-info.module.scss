@@ -41,13 +41,31 @@ $_color-shark-transparent-50: #1a1a1d80;
   color: $color-alto;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
 
   &__header {
     font-weight: $weight-bold;
     color: $color-manatee;
-    margin-right: 7px;
     font-size: 1.1rem;
+  }
+
+  &__content {
+    margin-bottom: 5px;
+  }
+}
+
+.sectionJob {
+  color: $color-alto;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    font-weight: $weight-bold;
+    color: $color-shiraz;
+    font-size: 1.2rem;
+  }
+
+  &__content {
+    margin-bottom: 5px;
   }
 }
 

@@ -82,9 +82,9 @@ const SectionAboutMe = ({ aboutMe }) => {
 const SectionJob = ({ isOpenToWork, description }) => {
   if (!isOpenToWork || description == null) return null;
   return (
-    <div>
-      <AiFillFire />
-      {`#OPENTOWORK ${description}`}
+    <div className={styles.sectionJob}>
+      <div className={styles.sectionJob__header}>{"#OPENTOWORK"}</div>
+      <div className={styles.sectionJob__content}>{description}</div>
     </div>
   );
 };
