@@ -1,4 +1,5 @@
-@import "../../../../styles/base/_base.scss";
+@import "../../../../styles/base/base.scss";
+@import "../../../../styles/mixins/mixins";
 
 .people {
   height: 100%;
@@ -16,7 +17,7 @@
   color: $color-white;
   gap: 15px;
   border-radius: 10px;
-  transition: linear 300ms;
+  @include mainTransition;
 
   &__active {
     background-color: $color-crown-of-thorns;

@@ -59,7 +59,7 @@
     padding: 10px 0;
     color: $color-white;
     border-bottom: 2px solid $color-manatee;
-    transition: 300ms;
+    @include mainTransition;
 
     &::placeholder {
       color: transparent;
@@ -73,7 +73,7 @@
     display: block;
     font-size: 1rem;
     cursor: pointer;
-    transition: 300ms;
+    @include mainTransition;
   }
 
   &__field:focus {
@@ -105,7 +105,7 @@
     font-size: 1.1rem;
     background-color: $color-monarch;
     color: $color-white;
-    transition: 300ms linear;
+    @include mainTransition;
     width: 100%;
 
     &:hover {

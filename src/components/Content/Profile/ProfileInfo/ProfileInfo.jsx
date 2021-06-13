@@ -3,11 +3,20 @@ import { NavLink } from "react-router-dom";
 import CardContainer from "../../../common/CardContainer/CardContainer";
 import styles from "./profile-info.module.scss";
 import personImg from "../../../../assets/images/person.png";
-import { AiFillFire } from "react-icons/ai";
+import {
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaLink,
+  FaTwitter,
+  FaVk,
+  FaGlobeAmericas,
+  FaYoutube,
+} from "react-icons/fa";
 
 // profile:
 // aboutMe: null
-// contacts: {facebook: null, website: null, vk: null, twitter: null, instagram: null, …}
+// contacts: { facebook, github, instagram, mainLink, twitter, vk, website, youtube }
 // fullName: "1234samurai"
 // lookingForAJob: false
 // lookingForAJobDescription: null
@@ -89,7 +98,20 @@ const SectionJob = ({ isOpenToWork, description }) => {
   );
 };
 
-// const SectionContacts = () => { }
+const SectionContacts = ({ contacts }) => {
+  return (
+    <div className={styles.sectionContacts}>
+      <FaFacebook className={styles.sectionContacts__icon} />
+      <FaGithub className={styles.sectionContacts__icon} />
+      <FaInstagram className={styles.sectionContacts__icon} />
+      <FaLink className={styles.sectionContacts__icon} />
+      <FaTwitter className={styles.sectionContacts__icon} />
+      <FaVk className={styles.sectionContacts__icon} />
+      <FaGlobeAmericas className={styles.sectionContacts__icon} />
+      <FaYoutube className={styles.sectionContacts__icon} />
+    </div>
+  );
+};
 
 const Friends = ({ friends, currUserPage }) => {
   const friendCells =
@@ -150,7 +172,7 @@ const ProfileInfo = (props) => {
           isOpenToWork={profile.lookingForAJob}
           description={profile.lookingForAJobDescription}
         />
-        {/* <SectionContacts /> */}
+        <SectionContacts />
       </CardContainer>
       <CardContainer className={styles.profileInfo}>
         <SectionTitle>{"Friends"}</SectionTitle>

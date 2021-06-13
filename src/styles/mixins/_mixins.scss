@@ -13,3 +13,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@mixin mainTransition {
+  transition: 300ms linear;
+}

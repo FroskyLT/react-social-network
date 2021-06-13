@@ -46,7 +46,7 @@
     color: $color-manatee;
     font-size: 1.5rem;
     background-color: $color-tuna;
-    transition: 300ms linear;
+    @include mainTransition;
     border: none;
 
     &:hover {

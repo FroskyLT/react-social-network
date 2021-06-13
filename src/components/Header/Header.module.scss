@@ -1,4 +1,5 @@
 @import "../../styles/base/base";
+@import "../../styles/mixins/mixins";
 
 $_color-shark-transparent-50: #1a1a1d80;
 
@@ -35,7 +36,7 @@ $_color-shark-transparent-50: #1a1a1d80;
     display: inline-flex;
     align-items: center;
     text-decoration: none;
-    transition: linear 300ms;
+    @include mainTransition;
 
     &:hover {
       color: $color-shiraz;
@@ -57,7 +58,7 @@ $_color-shark-transparent-50: #1a1a1d80;
     border: 1px solid $color-shiraz;
     border-radius: 5px;
     cursor: pointer;
-    transition: linear 300ms;
+    @include mainTransition;
     letter-spacing: 2px;
     display: flex;
     padding: 8px 20px;
@@ -96,7 +97,7 @@ $_color-shark-transparent-50: #1a1a1d80;
     border-radius: 5px;
     display: flex;
     align-items: center;
-    transition: 300ms linear;
+    @include mainTransition;
     
     &:hover {
       background-color: $color-abbey;

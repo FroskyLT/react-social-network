@@ -81,7 +81,7 @@
     font-family: $main-font;
     font-size: 1rem;
     cursor: pointer;
-    transition: linear 300ms;
+    @include mainTransition;
     border-radius: 5px;
     font-weight: $weight-semibold;
     gap: 5px;

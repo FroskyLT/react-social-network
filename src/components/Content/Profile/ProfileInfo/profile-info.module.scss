@@ -65,7 +65,23 @@ $_color-shark-transparent-50: #1a1a1d80;
   }
 
   &__content {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+  }
+}
+
+.sectionContacts {
+  display: flex;
+  justify-content: space-around;
+
+  &__icon {
+    color: $color-manatee;
+    font-size: 1.8rem;
+    cursor: pointer;
+    @include mainTransition;
+
+    &:hover {
+      color: $color-alto;
+    }
   }
 }
 
