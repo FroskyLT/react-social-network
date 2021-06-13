@@ -3,7 +3,13 @@ import styles from "./card-container.module.scss";
 
 export const CardContainer = (props) => {
   return (
-    <div className={`${styles.containerBlock} ${props.className}`}>
+    <div
+      className={
+        props.className
+          ? `${styles.containerBlock} ${props.className}`
+          : styles.containerBlock
+      }
+    >
       {props.children}
     </div>
   );

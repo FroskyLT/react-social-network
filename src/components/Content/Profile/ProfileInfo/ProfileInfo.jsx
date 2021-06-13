@@ -99,16 +99,46 @@ const SectionJob = ({ isOpenToWork, description }) => {
 };
 
 const SectionContacts = ({ contacts }) => {
+  const keys = Object.keys(contacts);
+
+  if (keys.every((key) => contacts[key] === null || !contacts[key]))
+    return null;
+
+  const contactsMap = new Map([
+    ["facebook", <FaFacebook className={styles.sectionContacts__icon} />],
+    ["github", <FaGithub className={styles.sectionContacts__icon} />],
+    ["instagram", <FaInstagram className={styles.sectionContacts__icon} />],
+    ["mainLink", <FaLink className={styles.sectionContacts__icon} />],
+    ["twitter", <FaTwitter className={styles.sectionContacts__icon} />],
+    ["vk", <FaVk className={styles.sectionContacts__icon} />],
+    ["website", <FaGlobeAmericas className={styles.sectionContacts__icon} />],
+    ["youtube", <FaYoutube className={styles.sectionContacts__icon} />],
+  ]);
+
+  const getLink = (link) => {
+    return link.startsWith("http://") || link.startsWith("https://")
+      ? link
+      : `http://${link}`;
+  };
+
   return (
     <div className={styles.sectionContacts}>
-      <FaFacebook className={styles.sectionContacts__icon} />
-      <FaGithub className={styles.sectionContacts__icon} />
-      <FaInstagram className={styles.sectionContacts__icon} />
-      <FaLink className={styles.sectionContacts__icon} />
-      <FaTwitter className={styles.sectionContacts__icon} />
-      <FaVk className={styles.sectionContacts__icon} />
-      <FaGlobeAmericas className={styles.sectionContacts__icon} />
-      <FaYoutube className={styles.sectionContacts__icon} />
+      {keys.map((key) => {
+        if (contacts[key] && contacts[key] !== null) {
+          console.log(contacts[key]);
+          return (
+            <a
+              href={getLink(contacts[key])}
+              target="_blank"
+              rel="noreferrer"
+              key={key}
+            >
+              {contactsMap.get(key)}
+            </a>
+          );
+        }
+        return null;
+      })}
     </div>
   );
 };
@@ -160,7 +190,7 @@ const ProfileInfo = (props) => {
 
   return (
     <>
-      <CardContainer className={styles.profileInfo}>
+      <CardContainer>
         <SectionTitle>{"Intro"}</SectionTitle>
         <SectionStatus
           status={status}
@@ -172,9 +202,9 @@ const ProfileInfo = (props) => {
           isOpenToWork={profile.lookingForAJob}
           description={profile.lookingForAJobDescription}
         />
-        <SectionContacts />
+        <SectionContacts contacts={profile.contacts} />
       </CardContainer>
-      <CardContainer className={styles.profileInfo}>
+      <CardContainer>
         <SectionTitle>{"Friends"}</SectionTitle>
         <Friends friends={friends} currUserPage={currUserPage} />
       </CardContainer>
