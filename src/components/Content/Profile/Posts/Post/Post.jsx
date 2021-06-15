@@ -5,7 +5,7 @@ import Divider from "../../../../common/Divider/Divider";
 import { Link } from "react-router-dom";
 import { FaHeart, FaComment } from "react-icons/fa";
 
-const PostHeader = ({ authorPhoto, authorName, dateCreated }) => {
+export const PostHeader = ({ authorPhoto, authorName, dateCreated }) => {
   const imageUrl =
     authorPhoto ??
     "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png";
@@ -21,7 +21,7 @@ const PostHeader = ({ authorPhoto, authorName, dateCreated }) => {
   );
 };
 
-const PostContent = ({ content }) => {
+export const PostContent = ({ content }) => {
   const { text, image } = content;
   const textStyles =
     text && text.length < 50 && !image
@@ -30,7 +30,6 @@ const PostContent = ({ content }) => {
 
   return (
     <div className={styles.postContent}>
-      <div className={styles.postContent}></div>
       {text && <div className={textStyles}>{text}</div>}
       {image && (
         <img src={image} alt="content" className={styles.postContent__photo} />
@@ -40,7 +39,7 @@ const PostContent = ({ content }) => {
   );
 };
 
-const PostFooter = ({ likesCount, commentsData }) => {
+export const PostFooter = ({ likesCount, commentsData }) => {
   const [likes, setLikes] = useState(1);
   const [isLiked, setIsLiked] = useState(false);
   const [newComment, setNewComment] = useState("");
