@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import "./app.scss";
 
 import { Route, withRouter } from "react-router-dom";
@@ -8,13 +8,26 @@ import { init } from "./redux/reducers/appReducer";
 
 import Home from "./components/Content/Home/Home";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import ProfileContainer from "./components/Content/Profile/ProfileContainer";
-import DialogsContainer from "./components/Content/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Content/Users/UsersContainer";
+// import ProfileContainer from "./components/Content/Profile/ProfileContainer";
+// import DialogsContainer from "./components/Content/Dialogs/DialogsContainer";
+// import UsersContainer from "./components/Content/Users/UsersContainer";
 import Music from "./components/Content/Music/Music";
 import Settings from "./components/Content/Settings/Settings";
-import LoginContainer from "./components/Login/LoginContainer";
+// import LoginContainer from "./components/Login/LoginContainer";
 import LoaderSpinner from "./components/common/LoaderSpinner/LoaderSpinner";
+
+const ProfileContainer = React.lazy(() =>
+  import("./components/Content/Profile/ProfileContainer")
+);
+const DialogsContainer = React.lazy(() =>
+  import("./components/Content/Dialogs/DialogsContainer")
+);
+const UsersContainer = React.lazy(() =>
+  import("./components/Content/Users/UsersContainer")
+);
+const LoginContainer = React.lazy(() =>
+  import("./components/Login/LoginContainer")
+);
 
 const App = ({ initialized, init }) => {
   useEffect(() => {
@@ -26,15 +39,22 @@ const App = ({ initialized, init }) => {
   return (
     <div className="app">
       <HeaderContainer />
-      <div className="content">
-        <Route exact path="/" render={() => <Home />} />
-        <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-        <Route path="/dialogs" render={() => <DialogsContainer />} />
-        <Route path="/users" render={() => <UsersContainer />} />
-        <Route path="/music" render={() => <Music />} />
-        <Route path="/settings" render={() => <Settings />} />
-        <Route path="/login" render={() => <LoginContainer />} />
-      </div>
+      <Suspense fallback={<LoaderSpinner />}>
+        <div className="content">
+          <Route exact path="/" render={() => <Home />} />
+          <Suspense fallback={<LoaderSpinner />}>
+            <Route
+              path="/profile/:userId?"
+              render={() => <ProfileContainer />}
+            />
+            <Route path="/dialogs" render={() => <DialogsContainer />} />
+            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/login" render={() => <LoginContainer />} />
+          </Suspense>
+          <Route path="/music" render={() => <Music />} />
+          <Route path="/settings" render={() => <Settings />} />
+        </div>
+      </Suspense>
     </div>
   );
 };
