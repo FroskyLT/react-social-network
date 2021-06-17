@@ -15,7 +15,6 @@ export const Users = (props) => {
     followInProgress,
   } = props;
 
-  const pagesCount = Math.ceil(totalUsersCount / pageSize);
   const singleUser = users.map((user) => (
     <SingleUser
       key={user.id}
@@ -35,7 +34,8 @@ export const Users = (props) => {
   return (
     <div className={styles.users}>
       <Pagination
-        pagesCount={pagesCount}
+        totalItemsCount={totalUsersCount}
+        pageSize={pageSize}
         currentPage={currentPage}
         pageChangeHandler={onPageChanged}
       />
