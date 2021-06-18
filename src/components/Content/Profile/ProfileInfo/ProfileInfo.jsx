@@ -145,7 +145,7 @@ const SectionContacts = ({ contacts }) => {
 const Friends = ({ friends, currUserPage }) => {
   const friendCells =
     friends.length > 9
-      ? friends.slice(9 - friends.length)
+      ? friends.slice(0, 9)
       : [
           ...friends,
           ...Array.from({ length: 9 - friends.length }, () => "placeholder"),
