@@ -8,12 +8,8 @@ import { init } from "./redux/reducers/appReducer";
 
 import Home from "./components/Content/Home/Home";
 import HeaderContainer from "./components/Header/HeaderContainer";
-// import ProfileContainer from "./components/Content/Profile/ProfileContainer";
-// import DialogsContainer from "./components/Content/Dialogs/DialogsContainer";
-// import UsersContainer from "./components/Content/Users/UsersContainer";
 import Music from "./components/Content/Music/Music";
 import Settings from "./components/Content/Settings/Settings";
-// import LoginContainer from "./components/Login/LoginContainer";
 import LoaderSpinner from "./components/common/LoaderSpinner/LoaderSpinner";
 
 const ProfileContainer = React.lazy(() =>

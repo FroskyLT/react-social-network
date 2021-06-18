@@ -125,12 +125,11 @@ const SectionContacts = ({ contacts }) => {
     <div className={styles.sectionContacts}>
       {keys.map((key) => {
         if (contacts[key] && contacts[key] !== null) {
-          console.log(contacts[key]);
           return (
             <a
               href={getLink(contacts[key])}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               key={key}
             >
               {contactsMap.get(key)}
