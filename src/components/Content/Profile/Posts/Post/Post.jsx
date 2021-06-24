@@ -33,12 +33,13 @@ export const PostContent = ({ content }) => {
       {image && (
         <img src={image} alt="content" className={styles.postContent__photo} />
       )}
-      <Divider noMargin />
+      {/* <Divider noMargin /> */}
     </div>
   );
 };
 
-export const PostFooter = ({ likesCount, commentsData, userPhotos }) => {
+export const PostFooter = (props) => {
+  const { likesCount, commentsData, userPhotos, isLogged } = props;
   const [likes, setLikes] = useState(1);
   const [isLiked, setIsLiked] = useState(false);
   const [newComment, setNewComment] = useState("");
@@ -103,58 +104,70 @@ export const PostFooter = ({ likesCount, commentsData, userPhotos }) => {
     <div className={styles.postFooter}>
       {likes > 0 && (
         <>
+          <Divider noMargin />
           <div className={styles.postFooter__likes}>
             {likes} <FaHeart className={styles.postFooter__likesIcon} />
           </div>
-          <Divider noMargin />
         </>
       )}
-      <div className={styles.postFooter__buttons}>
-        <button
-          className={
-            isLiked
-              ? ` ${styles.postFooter__singleButton} ${styles.postFooter__singleButton_active}`
-              : styles.postFooter__singleButton
-          }
-          onClick={handleLikes}
-        >
-          <FaHeart className={styles.singleButton__icon} /> like
-        </button>
-        <button
-          className={styles.postFooter__singleButton}
-          onClick={handleFocus}
-        >
-          <FaComment className={styles.singleButton__icon} /> comment
-        </button>
-      </div>
-      <Divider noMargin />
-      {commentsData != null && (
-        <div className={styles.postFooter__comments}>{comments}</div>
+      {isLogged && (
+        <>
+          <Divider noMargin />
+          <div className={styles.postFooter__buttons}>
+            <button
+              className={
+                isLiked
+                  ? ` ${styles.postFooter__singleButton} ${styles.postFooter__singleButton_active}`
+                  : styles.postFooter__singleButton
+              }
+              onClick={handleLikes}
+            >
+              <FaHeart className={styles.singleButton__icon} /> like
+            </button>
+            <button
+              className={styles.postFooter__singleButton}
+              onClick={handleFocus}
+            >
+              <FaComment className={styles.singleButton__icon} /> comment
+            </button>
+          </div>
+        </>
       )}
-      <div className={styles.postFooter__newComment}>
-        <Link to="/profile" className={styles.postFooter__newCommentLink}>
-          <img
-            className={styles.postFooter__newCommentImage}
-            src={profileImage}
-            alt="profile"
-          />
-        </Link>
-        <input
-          type="text"
-          ref={commentInput}
-          value={newComment}
-          onKeyUp={handleSubmit}
-          onChange={handleCommentChange}
-          placeholder="What's on your mind?"
-          className={styles.postFooter__newCommentTextfield}
-        />
-      </div>
+      {commentsData != null && (
+        <>
+          <Divider noMargin />
+          <div className={styles.postFooter__comments}>{comments}</div>
+        </>
+      )}
+      {isLogged && (
+        <>
+          <Divider noMargin />
+          <div className={styles.postFooter__newComment}>
+            <Link to="/profile" className={styles.postFooter__newCommentLink}>
+              <img
+                className={styles.postFooter__newCommentImage}
+                src={profileImage}
+                alt="profile"
+              />
+            </Link>
+            <input
+              type="text"
+              ref={commentInput}
+              value={newComment}
+              onKeyUp={handleSubmit}
+              onChange={handleCommentChange}
+              placeholder="What's on your mind?"
+              className={styles.postFooter__newCommentTextfield}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
 const Post = (props) => {
-  const { post, profile, userPhotos } = props;
+  const { post, profile, userPhotos, isLogged } = props;
 
   return (
     <CardContainer className={styles.post}>
@@ -168,6 +181,7 @@ const Post = (props) => {
         likesCount={post.likesCount}
         commentsData={post.comments}
         userPhotos={userPhotos}
+        isLogged={isLogged}
       />
     </CardContainer>
   );

@@ -42,6 +42,7 @@ const Posts = (props) => {
         post={post}
         profile={props.profile}
         userPhotos={props.userPhotos}
+        isLogged={props.isLogged}
         key={post.id}
       />
     ));

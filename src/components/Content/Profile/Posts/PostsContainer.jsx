@@ -5,6 +5,7 @@ import {
   getProfileSelector,
   getUserIdSelector,
   getCurrUserPhotosSelector,
+  getIsLoggedSelector,
 } from "../../../../selectors/posts-selectors";
 import Posts from "./Posts";
 
@@ -13,6 +14,7 @@ const mapStateToProps = (state) => {
     postData: getPostDataSelector(state),
     profile: getProfileSelector(state),
     currUserId: getUserIdSelector(state),
+    isLogged: getIsLoggedSelector(state),
     userPhotos: getCurrUserPhotosSelector(state),
   };
 };
