@@ -19,7 +19,7 @@ export const Users = (props) => {
     <SingleUser
       key={user.id}
       id={user.id}
-      imgUrl={user.photos.small}
+      imgUrl={user.photos.large}
       name={user.name}
       status={user.status}
       country={user.country}
