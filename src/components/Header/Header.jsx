@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./header.module.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import userPlaceholder from "../../assets/images/person.png";
 import { IoMdHelp, IoMdLogOut, IoMdPerson, IoMdSettings } from "react-icons/io";
@@ -60,9 +60,11 @@ const Header = ({ isLogged, userPhotos, logoutHandler }) => {
             )}
             {dropdownOpen && (
               <ul className={styles.dropdown}>
-                <li className={styles.dropdown__item}>
-                  <IoMdPerson className={styles.dropdown__itemIcon} />
-                  {"Profile"}
+                <li>
+                  <Link to="/profile" className={styles.dropdown__item}>
+                    <IoMdPerson className={styles.dropdown__itemIcon} />
+                    {"Profile"}
+                  </Link>
                 </li>
                 <li className={styles.dropdown__item}>
                   <IoMdSettings className={styles.dropdown__itemIcon} />

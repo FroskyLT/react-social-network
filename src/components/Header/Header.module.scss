@@ -93,6 +93,8 @@ $_color-shark-transparent-50: #1a1a1d80;
 
   &__item {
     padding: 15px 15px 15px 10px;
+    color: $color-white;
+    text-decoration: none;
     cursor: pointer;
     border-radius: 5px;
     display: flex;
