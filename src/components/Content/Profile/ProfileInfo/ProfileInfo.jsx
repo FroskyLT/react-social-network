@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import CardContainer from "../../../common/CardContainer/CardContainer";
 import styles from "./profile-info.module.scss";
-import personImg from "../../../../assets/images/person.png";
+import userPlaceholder from "../../../../assets/images/person.png";
 import {
   FaFacebook,
   FaGithub,
@@ -158,7 +158,7 @@ const Friends = ({ friends, currUserPage }) => {
           <NavLink to={`/profile/${item.id}`} key={index}>
             <img
               className={styles.friend}
-              src={item.photos.small || personImg}
+              src={item.photos.small || userPlaceholder}
               alt=""
             />
           </NavLink>

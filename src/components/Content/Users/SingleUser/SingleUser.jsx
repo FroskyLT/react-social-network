@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../users.module.scss";
 import { NavLink } from "react-router-dom";
-import personImg from "../../../../assets/images/person.png";
+import userPlaceholder from "../../../../assets/images/person.png";
 import Button from "../../../common/Button/Button";
 
 const SingleUser = (props) => {
@@ -29,7 +29,7 @@ const SingleUser = (props) => {
         <NavLink to={`/profile/${props.id}`}>
           <img
             className={styles.singleUser__avatarImage}
-            src={props.imgUrl || personImg}
+            src={props.imgUrl || userPlaceholder}
             alt=""
           />
         </NavLink>

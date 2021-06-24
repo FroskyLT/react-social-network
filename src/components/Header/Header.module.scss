@@ -122,3 +122,13 @@ $_color-shark-transparent-50: #1a1a1d80;
   width: 50px;
   border-radius: 25px;
 }
+
+.loginPlaceholder {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  background-color: $color-shark;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}

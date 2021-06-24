@@ -3,21 +3,20 @@ import { Link } from "react-router-dom";
 import styles from "./posts.module.scss";
 import Modal from "../../../common/Modal/Modal";
 import Post from "./Post/Post";
+import userPlaceholder from "../../../../assets/images/person.png";
 
-export const PostTextfield = () => {
+export const PostTextfield = ({ userPhotos }) => {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
     setShowModal((prev) => !prev);
   };
+
+  const userImage = userPhotos?.large || userPlaceholder;
   return (
     <div className={styles.postTextField}>
-      <Link to="/profile" className={styles.postTextfield__link}>
-        <img
-          className={styles.postTextField__image}
-          src="https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"
-          alt="profile"
-        />
+      <Link to="/profile">
+        <img className={styles.postTextField__image} src={userImage} alt="" />
       </Link>
       <button onClick={toggleModal} className={styles.postTextField__button}>
         {"What's on your mind?"}
@@ -38,19 +37,22 @@ const Posts = (props) => {
   const postElements = props.postData
     .slice(0)
     .reverse()
-    .map((post) => <Post post={post} profile={props.profile} key={post.id} />);
+    .map((post) => (
+      <Post
+        post={post}
+        profile={props.profile}
+        userPhotos={props.userPhotos}
+        key={post.id}
+      />
+    ));
 
   // const NewPost = () => {
   //     props.addPost();
-  // }S
-  // const onPostChange = (e) => {
-  //     const text = e.target.value;
-  //     props.updateNewPostElement(text);
   // }
 
   return (
     <div className={styles.posts}>
-      {currUserProfile && <PostTextfield />}
+      {currUserProfile && <PostTextfield userPhotos={props.userPhotos} />}
       <div className={styles.posts__content}>{postElements}</div>
     </div>
   );

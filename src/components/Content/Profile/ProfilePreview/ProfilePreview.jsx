@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./profile-preview.module.scss";
 import Button from "../../../common/Button/Button";
+import userPlaceholder from "../../../../assets/images/person.png";
 import { FaImage } from "react-icons/fa";
 
 const ProfilePreview = (props) => {
@@ -60,13 +61,7 @@ const ProfilePreview = (props) => {
       </div>
       <div className={styles.about}>
         <div className={styles.about__image}>
-          <img
-            src={
-              profileData.photos.large ||
-              "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"
-            }
-            alt=""
-          />
+          <img src={profileData.photos.large || userPlaceholder} alt="" />
           {currUserProfile && (
             <div className={styles.about__loadImage}>
               <input

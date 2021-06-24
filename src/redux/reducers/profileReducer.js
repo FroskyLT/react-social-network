@@ -2,8 +2,8 @@ import { ProfileAPI } from "../../api/api";
 import { currentTime } from "../../utils/date";
 import {
   checkIsFollowingSelectedUser,
+  clearFriends,
   getFriends,
-  setFriends,
 } from "./usersReducer";
 
 const ADD_POST = "profile/ADD_POST";
@@ -231,7 +231,7 @@ export const initProfile = (currUserId, userId) => async (dispatch) => {
   await dispatch(getCurrentUserStatus(userId));
   if (currUserId && userId !== currUserId) {
     await dispatch(checkIsFollowingSelectedUser(userId));
-    dispatch(setFriends([]));
+    dispatch(clearFriends());
   } else if (userId === currUserId) {
     await dispatch(getFriends());
   }

@@ -1,17 +1,14 @@
 @import "../../../../styles/base/base";
 
-.postTextField,
-.postTextField__image,
-.postTextField__button {
-  height: 50px;
-}
-
 .postTextField {
   display: flex;
   gap: 10px;
+  height: 50px;
 
   &__image {
     width: 50px;
+    border-radius: 25px;
+    border: 1px solid $color-tuna;
   }
 
   &__button {
@@ -41,11 +38,6 @@
     background-color: $color-shark;
     border: none;
   }
-}
-
-.postTextfield__link {
-  display: flex;
-  align-items: center;
 }
 
 .posts {

@@ -1,7 +1,10 @@
-import { AuthAPI } from "../../api/api";
+import { AuthAPI, ProfileAPI } from "../../api/api";
+import { clearFriends } from "./usersReducer";
 
 const SET_USER_DATA = "auth/SET_USER_DATA";
 const CLEAR_USER_DATA = "auth/CLEAR_USER_DATA";
+const SET_USER_PHOTOS = "auth/SET_USER_PHOTOS";
+const CLEAR_USER_PHOTOS = "auth/CLEAR_USER_PHOTOS";
 const SET_ERROR = "auth/SET_ERROR";
 
 let initialState = {
@@ -9,6 +12,7 @@ let initialState = {
   email: null,
   login: null,
   isLogged: false,
+  userPhotos: null,
   error: "",
 };
 
@@ -30,6 +34,18 @@ const authReducer = (state = initialState, action) => {
         isLogged: false,
       };
     }
+    case SET_USER_PHOTOS: {
+      return {
+        ...state,
+        userPhotos: action.photos,
+      };
+    }
+    case CLEAR_USER_PHOTOS: {
+      return {
+        ...state,
+        userPhotos: null,
+      };
+    }
     case SET_ERROR: {
       return {
         ...state,
@@ -47,15 +63,20 @@ export const setAuthUserData = (userId, email, login) => ({
   userData: { userId, email, login },
 });
 export const clearAuthUserData = () => ({ type: CLEAR_USER_DATA });
+export const setUserPhotos = (photos) => ({ type: SET_USER_PHOTOS, photos });
+export const clearUserPhotos = () => ({ type: CLEAR_USER_PHOTOS });
 export const setError = (errorMessage) => ({ type: SET_ERROR, errorMessage });
 
 //TC
 export const authenticateMe = () => async (dispatch) => {
-  const response = await AuthAPI.authenticateMe();
+  const authResponse = await AuthAPI.authenticateMe();
 
-  if (response.resultCode === 0) {
-    const { email, id, login } = response.data;
+  if (authResponse.resultCode === 0) {
+    const { email, id, login } = authResponse.data;
     dispatch(setAuthUserData(id, email, login));
+
+    const profileResponse = await ProfileAPI.getSelectedUserProfile(id);
+    dispatch(setUserPhotos(profileResponse.photos));
   }
 };
 
@@ -75,6 +96,8 @@ export const logout = () => async (dispatch) => {
 
   if (response.resultCode === 0) {
     dispatch(clearAuthUserData());
+    dispatch(clearUserPhotos());
+    dispatch(clearFriends());
   }
 };
 

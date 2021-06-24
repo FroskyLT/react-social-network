@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./header.module.scss";
 import { NavLink } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import userPlaceholder from "../../assets/images/person.png";
 import { IoMdHelp, IoMdLogOut, IoMdPerson, IoMdSettings } from "react-icons/io";
-
 const useClickOutside = (handler) => {
   const domNode = useRef();
 
@@ -24,16 +24,18 @@ const useClickOutside = (handler) => {
   return domNode;
 };
 
-const Header = (props) => {
+const Header = ({ isLogged, userPhotos, logoutHandler }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownNode = useClickOutside(() => {
     setDropdownOpen(false);
   });
 
-  const logoutHandler = () => {
-    props.logoutHandler();
+  const onLogout = () => {
+    logoutHandler();
     setDropdownOpen(false);
   };
+
+  const profileImage = userPhotos?.large || userPlaceholder;
 
   return (
     <div className={styles.header}>
@@ -44,16 +46,18 @@ const Header = (props) => {
         <Navbar />
       </div>
       <div className={styles.menu}>
-        {props.isLogged ? (
+        {isLogged ? (
           <div ref={dropdownNode} className={styles.menu__buttons}>
-            <img
-              src={
-                "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"
-              }
-              className={styles.loginImage}
-              alt=""
-              onClick={() => setDropdownOpen((dropdownOpen) => !dropdownOpen)}
-            />
+            {userPhotos !== null ? (
+              <img
+                src={profileImage}
+                className={styles.loginImage}
+                alt=""
+                onClick={() => setDropdownOpen((dropdownOpen) => !dropdownOpen)}
+              />
+            ) : (
+              <div className={styles.loginPlaceholder} />
+            )}
             {dropdownOpen && (
               <ul className={styles.dropdown}>
                 <li className={styles.dropdown__item}>
@@ -70,7 +74,7 @@ const Header = (props) => {
                 </li>
                 <li
                   className={`${styles.dropdown__item} ${styles.dropdown__item_active}`}
-                  onClick={logoutHandler}
+                  onClick={onLogout}
                 >
                   <IoMdLogOut className={styles.dropdown__itemIcon} />
                   {"Log out"}

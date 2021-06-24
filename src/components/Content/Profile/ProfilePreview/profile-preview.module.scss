@@ -49,8 +49,9 @@ $_color-shark-transparent-50: #1a1a1d80;
     position: relative;
     overflow: hidden;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-
+    
     img {
+      object-fit: cover;
       height: 100%;
       width: 100%;
     }

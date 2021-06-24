@@ -4,11 +4,10 @@ import CardContainer from "../../../../common/CardContainer/CardContainer";
 import Divider from "../../../../common/Divider/Divider";
 import { Link } from "react-router-dom";
 import { FaHeart, FaComment } from "react-icons/fa";
+import userPlaceholder from "../../../../../assets/images/person.png";
 
 export const PostHeader = ({ authorPhoto, authorName, dateCreated }) => {
-  const imageUrl =
-    authorPhoto ??
-    "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png";
+  const imageUrl = authorPhoto ?? userPlaceholder;
 
   return (
     <div className={styles.postHeader}>
@@ -39,7 +38,7 @@ export const PostContent = ({ content }) => {
   );
 };
 
-export const PostFooter = ({ likesCount, commentsData }) => {
+export const PostFooter = ({ likesCount, commentsData, userPhotos }) => {
   const [likes, setLikes] = useState(1);
   const [isLiked, setIsLiked] = useState(false);
   const [newComment, setNewComment] = useState("");
@@ -83,7 +82,7 @@ export const PostFooter = ({ likesCount, commentsData }) => {
             <Link to="/profile" className={styles.postFooter__commentLink}>
               <img
                 className={styles.postFooter__commentImage}
-                src={comment.userPhoto}
+                src={comment.userPhoto || userPlaceholder}
                 alt=""
               />
             </Link>
@@ -97,6 +96,8 @@ export const PostFooter = ({ likesCount, commentsData }) => {
             </div>
           </div>
         ));
+
+  const profileImage = userPhotos?.large || userPlaceholder;
 
   return (
     <div className={styles.postFooter}>
@@ -134,7 +135,7 @@ export const PostFooter = ({ likesCount, commentsData }) => {
         <Link to="/profile" className={styles.postFooter__newCommentLink}>
           <img
             className={styles.postFooter__newCommentImage}
-            src="https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"
+            src={profileImage}
             alt="profile"
           />
         </Link>
@@ -153,7 +154,7 @@ export const PostFooter = ({ likesCount, commentsData }) => {
 };
 
 const Post = (props) => {
-  const { post, profile } = props;
+  const { post, profile, userPhotos } = props;
 
   return (
     <CardContainer className={styles.post}>
@@ -163,7 +164,11 @@ const Post = (props) => {
         dateCreated={post.dateCreated}
       />
       <PostContent content={post.content} />
-      <PostFooter likesCount={post.likesCount} commentsData={post.comments} />
+      <PostFooter
+        likesCount={post.likesCount}
+        commentsData={post.comments}
+        userPhotos={userPhotos}
+      />
     </CardContainer>
   );
 };

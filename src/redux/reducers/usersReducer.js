@@ -5,6 +5,7 @@ const CHECK_IS_FOLLOWING_USER = "users/CHECK_IS_FOLLOWING_USER";
 const SET_IS_FOLLOWING_USER = "users/SET_IS_FOLLOWING_USER";
 const SET_USERS = "users/SET_USERS";
 const SET_FRIENDS = "users/SET_FRIENDS";
+const CLEAR_FRIENDS = "users/CLEAR_FRIENDS";
 const SET_CURRENT_PAGE = "users/SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "users/SET_TOTAL_USERS_COUNT";
 const TOGGLE_IS_FETCH = "users/TOGGLE_IS_FETCH";
@@ -56,6 +57,12 @@ const usersReducer = (state = initialState, action) => {
         friends: action.users,
       };
     }
+    case CLEAR_FRIENDS: {
+      return {
+        ...state,
+        friends: [],
+      };
+    }
     case SET_CURRENT_PAGE: {
       return {
         ...state,
@@ -90,6 +97,7 @@ const usersReducer = (state = initialState, action) => {
 //Action creators
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setFriends = (users) => ({ type: SET_FRIENDS, users });
+export const clearFriends = () => ({ type: CLEAR_FRIENDS });
 export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
