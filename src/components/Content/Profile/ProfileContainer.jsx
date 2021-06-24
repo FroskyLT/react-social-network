@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import {
   initProfile,
   setCurrentUserStatus,
+  saveImage,
 } from "../../../redux/reducers/profileReducer";
 import {
   followUser,
@@ -49,6 +50,7 @@ const ProfileContainer = (props) => {
       onFollow={props.followUser}
       onUnfollow={props.unfollowUser}
       isFollowing={props.checkIsFollowingSelectedUser}
+      saveImage={props.saveImage}
     />
   );
 };
@@ -70,6 +72,7 @@ export default compose(
     followUser,
     unfollowUser,
     checkIsFollowingSelectedUser,
+    saveImage,
   }),
   withRouter
   // withAuthRedirect

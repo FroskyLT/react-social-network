@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./profile-preview.module.scss";
 import Button from "../../../common/Button/Button";
+import { FaImage } from "react-icons/fa";
 
 const ProfilePreview = (props) => {
   const {
@@ -11,6 +12,7 @@ const ProfilePreview = (props) => {
     onUnfollow,
     isFollowingUser,
     isFollowing,
+    saveImage,
   } = props;
 
   const profileId = profileData.userId;
@@ -40,6 +42,12 @@ const ProfilePreview = (props) => {
     );
   };
 
+  const onImageChange = (event) => {
+    if (event.target.files.length) {
+      saveImage(event.target.files[0]);
+    }
+  };
+
   return (
     <div className={styles.profilePreview}>
       <div className={styles.wallpaper}>
@@ -51,13 +59,30 @@ const ProfilePreview = (props) => {
         />
       </div>
       <div className={styles.about}>
-        <img
-          src={
-            profileData.photos.large ||
-            "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"
-          }
-          alt=""
-        />
+        <div className={styles.about__image}>
+          <img
+            src={
+              profileData.photos.large ||
+              "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png"
+            }
+            alt=""
+          />
+          {currUserProfile && (
+            <div className={styles.about__loadImage}>
+              <input
+                type="file"
+                id="file"
+                accept="image/*"
+                className={styles.about__file}
+                onChange={onImageChange}
+              />
+              <label htmlFor="file" className={styles.about__fileLabel}>
+                <FaImage />
+                {"Choose a photo"}
+              </label>
+            </div>
+          )}
+        </div>
         <div className={styles.about__description}>
           <div className={styles.about__name}>
             {profileData.fullName ?? "No Name"}

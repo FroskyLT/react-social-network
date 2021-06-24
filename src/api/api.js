@@ -57,6 +57,14 @@ export const ProfileAPI = {
       })
       .then((response) => response.data);
   },
+  saveImage(imageFile) {
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    return instance
+      .put("profile/photo", formData)
+      .then((response) => response.data);
+  },
 };
 
 export const FollowAPI = {
