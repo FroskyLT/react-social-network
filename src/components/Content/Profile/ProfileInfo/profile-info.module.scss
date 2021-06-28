@@ -123,6 +123,28 @@ $_color-shark-transparent-50: #1a1a1d80;
   }
 }
 
+.editMode {
+  &__contacts {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  &__contact {
+    color: $color-abbey;
+    font-size: 1.8rem;
+    cursor: pointer;
+    @include mainTransition;
+
+    &:hover {
+      color: $color-manatee;
+    }
+
+    &_selected {
+      color: $color-bombay;
+    }
+  }
+}
+
 .editInfo {
   position: absolute;
   top: 15px;
