@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./profile-preview.module.scss";
 import Button from "../../../common/Button/Button";
+import wallpaper from "../../../../assets/images/wallpaper.jpg";
 import userPlaceholder from "../../../../assets/images/person.png";
 import { FaImage } from "react-icons/fa";
 
@@ -52,12 +53,7 @@ const ProfilePreview = (props) => {
   return (
     <div className={styles.profilePreview}>
       <div className={styles.wallpaper}>
-        <img
-          src={
-            "https://images.hdqwalls.com/wallpapers/red-lake-mountains-minimal-4k-1u.jpg"
-          }
-          alt=""
-        />
+        <img src={wallpaper} alt="" />
       </div>
       <div className={styles.about}>
         <div className={styles.about__image}>

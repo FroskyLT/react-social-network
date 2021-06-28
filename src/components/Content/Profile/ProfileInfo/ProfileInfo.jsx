@@ -12,19 +12,9 @@ import {
   FaVk,
   FaGlobeAmericas,
   FaYoutube,
+  FaEdit,
 } from "react-icons/fa";
-
-// profile:
-// aboutMe: null
-// contacts: { facebook, github, instagram, mainLink, twitter, vk, website, youtube }
-// fullName: "1234samurai"
-// lookingForAJob: false
-// lookingForAJobDescription: null
-// photos: {small: null, large: null}
-// userId: 14984
-// __proto__: Object
-// status: "Hey !"
-// updateUserStatus: ƒ ()
+import Modal from "../../../common/Modal/Modal";
 
 const SectionTitle = ({ children }) => (
   <h2 className={styles.sectionTitle}>{children}</h2>
@@ -182,6 +172,27 @@ const Friends = ({ friends, currUserPage }) => {
   );
 };
 
+const EditMode = ({ currUserPage }) => {
+  const [showModal, setShowModal] = useState(false);
+  return (
+    <>
+      {currUserPage && (
+        <FaEdit
+          className={styles.editInfo}
+          onClick={() => setShowModal(true)}
+        />
+      )}
+      <Modal
+        showModal={showModal}
+        title="Edit Mode"
+        closeModal={() => setShowModal(false)}
+      >
+        {"test"}
+      </Modal>
+    </>
+  );
+};
+
 const ProfileInfo = (props) => {
   const { profile, friends, status, currUserId, updateUserStatus } = props;
 
@@ -190,6 +201,7 @@ const ProfileInfo = (props) => {
   return (
     <>
       <CardContainer>
+        <EditMode currUserPage={currUserPage} />
         <SectionTitle>{"Intro"}</SectionTitle>
         <SectionStatus
           status={status}

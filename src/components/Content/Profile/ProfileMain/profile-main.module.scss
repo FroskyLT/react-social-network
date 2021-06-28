@@ -13,6 +13,7 @@ $_gap-size: 15px;
   flex: 0 0 40%;
   align-self: flex-start;
   position: sticky;
+  z-index: $z-index-oceanic-crust;
   top: 95px; // 80px - header height 15px - margin
   left: 0;
 }

@@ -123,9 +123,20 @@ $_color-shark-transparent-50: #1a1a1d80;
   }
 }
 
-.profileInfo__intro {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  font-size: 0.95rem;
+.editInfo {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: $color-manatee;
+  @include mainTransition();
+
+  &:hover {
+    color: $color-alto;
+  }
+
+  &:active {
+    color: $color-white;
+  }
 }

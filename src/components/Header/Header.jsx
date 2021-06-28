@@ -4,6 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import userPlaceholder from "../../assets/images/person.png";
 import { IoMdHelp, IoMdLogOut, IoMdPerson, IoMdSettings } from "react-icons/io";
+
 const useClickOutside = (handler) => {
   const domNode = useRef();
 
