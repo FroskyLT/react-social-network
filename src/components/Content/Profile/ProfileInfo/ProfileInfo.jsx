@@ -13,6 +13,7 @@ import {
   FaGlobeAmericas,
   FaYoutube,
   FaEdit,
+  FaCheck,
 } from "react-icons/fa";
 import Modal from "../../../common/Modal/Modal";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -184,8 +185,7 @@ const EditMode = ({ currUserPage, profile }) => {
         />
       )}
       <Modal
-        // showModal={showModal}
-        showModal={true}
+        showModal={showModal}
         title="Edit Mode"
         closeModal={() => setShowModal(false)}
       >
@@ -197,7 +197,7 @@ const EditMode = ({ currUserPage, profile }) => {
           }}
         >
           {({ isSubmitting, values }) => (
-            <Form>
+            <Form className={styles.editMode}>
               <div className={styles.editMode__contacts}>
                 <FaFacebook
                   className={`${styles.editMode__contact} ${styles.editMode__contact_selected}`}
@@ -210,91 +210,100 @@ const EditMode = ({ currUserPage, profile }) => {
                 <FaGlobeAmericas className={styles.editMode__contact} />
                 <FaYoutube className={styles.editMode__contact} />
               </div>
-              <div className={styles.form__group}>
-                <label
-                  htmlFor="fullName"
-                  className={
-                    values.email
-                      ? styles.form__label
-                      : `${styles.form__label} ${styles.form__label_big}`
-                  }
-                >
-                  Full Name
-                </label>
-                <Field
-                  id="fullName"
-                  type="text"
-                  name="fullName"
-                  className={styles.form__field}
-                  required
-                />
-                <div className={styles.form__error}>
-                  <ErrorMessage
+              <div className={styles.editMode__fieldGroups}>
+                <div className={styles.group}>
+                  <label htmlFor="fullName" className={styles.group__label}>
+                    Full Name
+                  </label>
+                  <Field
+                    id="fullName"
+                    type="text"
                     name="fullName"
-                    component="div"
-                    className={styles.form__error}
+                    className={styles.group__field}
+                    required
                   />
+                  <div className={styles.group__error}>
+                    <ErrorMessage
+                      name="fullName"
+                      component="div"
+                      className={styles.group__error}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className={styles.form__group}>
-                <label
-                  htmlFor="lookingForAJob"
-                  className={
-                    values.password
-                      ? styles.form__label
-                      : `${styles.form__label} ${styles.form__label_big}`
-                  }
-                >
-                  Are you open to new opportunities?
-                </label>
-                <Field
-                  id="lookingForAJob"
-                  type="checkbox"
-                  name="lookingForAJob"
-                  className={styles.form__field}
-                  required
-                />
-                <div className={styles.form__error}>
-                  <ErrorMessage
-                    name="lookingForAJob"
-                    component="div"
-                    className={styles.form__error}
+                <div className={styles.group}>
+                  <label htmlFor="aboutMe" className={styles.group__label}>
+                    About Me
+                  </label>
+                  <Field
+                    id="aboutMe"
+                    type="text"
+                    name="aboutMe"
+                    className={styles.group__field}
                   />
+                  <div className={styles.group__error}>
+                    <ErrorMessage
+                      name="aboutMe"
+                      component="div"
+                      className={styles.group__error}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className={styles.form__group}>
-                <label
-                  htmlFor="lookingForAJobDescription"
-                  className={
-                    values.email
-                      ? styles.form__label
-                      : `${styles.form__label} ${styles.form__label_big}`
-                  }
-                >
-                  Hard Skills
-                </label>
-                <Field
-                  id="lookingForAJobDescription"
-                  type="text"
-                  name="lookingForAJobDescription"
-                  className={styles.form__field}
-                  required
-                />
-                <div className={styles.form__error}>
-                  <ErrorMessage
+                <div className={styles.group}>
+                  <div className={styles.checkbox}>
+                    <label
+                      htmlFor="lookingForAJob"
+                      className={styles.checkbox__label}
+                    >
+                      Are you open to new opportunities?
+                    </label>
+                    <div className={styles.checkbox__field}>
+                      <Field
+                        id="lookingForAJob"
+                        type="checkbox"
+                        name="lookingForAJob"
+                        className={styles.checkbox__original}
+                      />
+                      <span className={styles.checkbox__custom} />
+                      <FaCheck className={styles.checkbox__check} />
+                    </div>
+                  </div>
+                  <div className={styles.group__error}>
+                    <ErrorMessage
+                      name="lookingForAJob"
+                      component="div"
+                      className={styles.group__error}
+                    />
+                  </div>
+                </div>
+                <div className={styles.group}>
+                  <label
+                    htmlFor="lookingForAJobDescription"
+                    className={styles.group__label}
+                  >
+                    Hard Skills
+                  </label>
+                  <Field
+                    id="lookingForAJobDescription"
+                    type="text"
                     name="lookingForAJobDescription"
-                    component="div"
-                    className={styles.form__error}
+                    className={styles.group__field}
                   />
+                  <div className={styles.group__error}>
+                    <ErrorMessage
+                      name="lookingForAJobDescription"
+                      component="div"
+                      className={styles.group__error}
+                    />
+                  </div>
                 </div>
               </div>
-              {/* <div className={styles.form__error}>
+              {/* <div className={styles.editMode__error}>
                 {props.error && props.error}
               </div> */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={styles.form__submit}
+                className={styles.editMode__submit}
               >
                 Edit
               </button>
