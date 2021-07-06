@@ -1,0 +1,63 @@
+@import "../../../styles/base/base";
+@import "../../../styles/mixins/mixins";
+
+.dialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color-transparent-black-75;
+  z-index: $z-index-continental-crust;
+  @include flexCenter;
+}
+
+.dialog {
+  position: relative;
+  width: 300px;
+  max-height: 200px;
+  overflow: auto;
+  background-color: #1a1a1d;
+  border-radius: 5px;
+  padding: 10px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__headerTitle {
+    flex-grow: 1;
+    @include flexCenter;
+    font-size: 1.1rem;
+    font-weight: $weight-semibold;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+  }
+
+  &__closeIcon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    color: $color-manatee;
+    font-size: 1.2rem;
+    background-color: $color-tuna;
+    @include mainTransition;
+    border: none;
+
+    &:hover {
+      background-color: $color-abbey;
+      color: $color-bombay;
+    }
+
+    &:active {
+      color: $color-manatee;
+      background-color: $color-tuna;
+    }
+  }
+}

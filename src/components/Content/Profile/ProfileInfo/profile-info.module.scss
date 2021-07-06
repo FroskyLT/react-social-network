@@ -151,8 +151,14 @@ $_color-shark-transparent-50: #1a1a1d80;
     gap: 10px;
   }
 
-  &__submit {
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
     margin-top: 15px;
+  }
+
+  &__submit {
     padding: 5px 30px;
     background-color: $color-monarch;
     color: $color-white;
@@ -166,85 +172,6 @@ $_color-shark-transparent-50: #1a1a1d80;
 
     &:hover {
       background-color: $color-crown-of-thorns;
-    }
-  }
-
-  .group {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-
-    &__label {
-      font-weight: $weight-semibold;
-      color: $color-alto;
-      cursor: pointer;
-      flex-basis: 85px;
-    }
-
-    &__field {
-      background-color: $color-tuna;
-      border: none;
-      font-size: 1.2rem;
-      padding: 5px;
-      border-radius: 2px;
-      color: $color-white;
-      flex-grow: 1;
-    }
-
-    .checkbox {
-      display: flex;
-      align-items: center;
-
-      &__label {
-        padding-right: 30px;
-        z-index: $z-index-inner-core;
-      }
-      
-      &__field {
-        position: relative;
-        left: -20px;
-        display: flex;
-        align-items: center;
-      }
-      
-      &__original {
-        opacity: 0;
-        width: 20px;
-        height: 20px;
-      }
-
-      &__custom {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        height: 20px;
-        border-radius: 4px;
-        border: 2px solid $color-monarch;
-        @include mainTransition();
-      }
-
-      &__check {
-        opacity: 0;
-        transform: scale(0);
-        position: absolute;
-        top: -5px;
-        left: -5px;
-        font-size: 0.8rem;
-
-        @include mainTransition();
-      }
-
-      &__original:checked ~ .checkbox__custom {
-        background-color: $color-monarch;
-      }
-
-      &__original:checked ~ .checkbox__check {
-        opacity: 1;
-        transform: scale(1);
-        top: 3.5px;
-        left: 3.5px;
-      }
     }
   }
 }

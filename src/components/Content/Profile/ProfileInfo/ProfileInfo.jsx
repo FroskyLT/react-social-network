@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import CardContainer from "../../../common/CardContainer/CardContainer";
 import styles from "./profile-info.module.scss";
-import userPlaceholder from "../../../../assets/images/person.png";
+
+import { NavLink } from "react-router-dom";
+import { Formik, Form } from "formik";
 import {
   FaFacebook,
   FaGithub,
@@ -13,10 +13,14 @@ import {
   FaGlobeAmericas,
   FaYoutube,
   FaEdit,
-  FaCheck,
 } from "react-icons/fa";
+
 import Modal from "../../../common/Modal/Modal";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import userPlaceholder from "../../../../assets/images/person.png";
+import CardContainer from "../../../common/CardContainer/CardContainer";
+import TextField from "../../../common/EditModeFields/TextField/TextField";
+import ContactField from "../../../common/EditModeFields/ContactField/ContactField";
+import CheckBoxField from "../../../common/EditModeFields/CheckBoxField/CheckBoxField";
 
 const SectionTitle = ({ children }) => (
   <h2 className={styles.sectionTitle}>{children}</h2>
@@ -176,6 +180,35 @@ const Friends = ({ friends, currUserPage }) => {
 
 const EditMode = ({ currUserPage, profile }) => {
   const [showModal, setShowModal] = useState(false);
+  const [selectedContact, setSelectedContact] = useState(null);
+
+  const initialValues = {
+    aboutMe: profile.aboutMe !== null ? profile.aboutMe : "",
+    contacts: {
+      facebook:
+        profile.contacts.facebook !== null ? profile.contacts.facebook : "",
+      github: profile.contacts.github !== null ? profile.contacts.github : "",
+      instagram:
+        profile.contacts.instagram !== null ? profile.contacts.instagram : "",
+      mainLink:
+        profile.contacts.mainLink !== null ? profile.contacts.mainLink : "",
+      twitter:
+        profile.contacts.twitter !== null ? profile.contacts.twitter : "",
+      vk: profile.contacts.vk !== null ? profile.contacts.vk : "",
+      website:
+        profile.contacts.website !== null ? profile.contacts.website : "",
+      youtube:
+        profile.contacts.youtube !== null ? profile.contacts.youtube : "",
+    },
+    lookingForAJob:
+      profile.lookingForAJob !== null ? profile.lookingForAJob : "",
+    lookingForAJobDescription:
+      profile.lookingForAJobDescription !== null
+        ? profile.lookingForAJobDescription
+        : "",
+    fullName: profile.fullName,
+  };
+
   return (
     <>
       {currUserPage && (
@@ -186,13 +219,15 @@ const EditMode = ({ currUserPage, profile }) => {
       )}
       <Modal
         showModal={showModal}
+        // showModal={true}
         title="Edit Mode"
         closeModal={() => setShowModal(false)}
       >
         <Formik
-          initialValues={{ email: "", password: "" }}
+          initialValues={{ ...initialValues }}
           onSubmit={(values, { setSubmitting }) => {
             // props.loginHandler(values);
+            console.log(values);
             setSubmitting(false);
           }}
         >
@@ -200,113 +235,95 @@ const EditMode = ({ currUserPage, profile }) => {
             <Form className={styles.editMode}>
               <div className={styles.editMode__contacts}>
                 <FaFacebook
-                  className={`${styles.editMode__contact} ${styles.editMode__contact_selected}`}
+                  className={
+                    values.contacts.facebook
+                      ? `${styles.editMode__contact} ${styles.editMode__contact_selected}`
+                      : styles.editMode__contact
+                  }
+                  onClick={() => setSelectedContact("facebook")}
                 />
-                <FaGithub className={styles.editMode__contact} />
-                <FaInstagram className={styles.editMode__contact} />
-                <FaLink className={styles.editMode__contact} />
-                <FaTwitter className={styles.editMode__contact} />
-                <FaVk className={styles.editMode__contact} />
-                <FaGlobeAmericas className={styles.editMode__contact} />
-                <FaYoutube className={styles.editMode__contact} />
+                <FaGithub
+                  className={
+                    values.contacts.github
+                      ? `${styles.editMode__contact} ${styles.editMode__contact_selected}`
+                      : styles.editMode__contact
+                  }
+                  onClick={() => setSelectedContact("github")}
+                />
+                <FaInstagram
+                  className={
+                    values.contacts.instagram
+                      ? `${styles.editMode__contact} ${styles.editMode__contact_selected}`
+                      : styles.editMode__contact
+                  }
+                  onClick={() => setSelectedContact("instagram")}
+                />
+                <FaLink
+                  className={
+                    values.contacts.mainLink
+                      ? `${styles.editMode__contact} ${styles.editMode__contact_selected}`
+                      : styles.editMode__contact
+                  }
+                  onClick={() => setSelectedContact("mainLink")}
+                />
+                <FaTwitter
+                  className={
+                    values.contacts.twitter
+                      ? `${styles.editMode__contact} ${styles.editMode__contact_selected}`
+                      : styles.editMode__contact
+                  }
+                  onClick={() => setSelectedContact("twitter")}
+                />
+                <FaVk
+                  className={
+                    values.contacts.vk
+                      ? `${styles.editMode__contact} ${styles.editMode__contact_selected}`
+                      : styles.editMode__contact
+                  }
+                  onClick={() => setSelectedContact("vk")}
+                />
+                <FaGlobeAmericas
+                  className={
+                    values.contacts.website
+                      ? `${styles.editMode__contact} ${styles.editMode__contact_selected}`
+                      : styles.editMode__contact
+                  }
+                  onClick={() => setSelectedContact("website")}
+                />
+                <FaYoutube
+                  className={
+                    values.contacts.youtube
+                      ? `${styles.editMode__contact} ${styles.editMode__contact_selected}`
+                      : styles.editMode__contact
+                  }
+                  onClick={() => setSelectedContact("youtube")}
+                />
               </div>
               <div className={styles.editMode__fieldGroups}>
-                <div className={styles.group}>
-                  <label htmlFor="fullName" className={styles.group__label}>
-                    Full Name
-                  </label>
-                  <Field
-                    id="fullName"
-                    type="text"
-                    name="fullName"
-                    className={styles.group__field}
-                    required
-                  />
-                  <div className={styles.group__error}>
-                    <ErrorMessage
-                      name="fullName"
-                      component="div"
-                      className={styles.group__error}
-                    />
-                  </div>
-                </div>
-                <div className={styles.group}>
-                  <label htmlFor="aboutMe" className={styles.group__label}>
-                    About Me
-                  </label>
-                  <Field
-                    id="aboutMe"
-                    type="text"
-                    name="aboutMe"
-                    className={styles.group__field}
-                  />
-                  <div className={styles.group__error}>
-                    <ErrorMessage
-                      name="aboutMe"
-                      component="div"
-                      className={styles.group__error}
-                    />
-                  </div>
-                </div>
-                <div className={styles.group}>
-                  <div className={styles.checkbox}>
-                    <label
-                      htmlFor="lookingForAJob"
-                      className={styles.checkbox__label}
-                    >
-                      Are you open to new opportunities?
-                    </label>
-                    <div className={styles.checkbox__field}>
-                      <Field
-                        id="lookingForAJob"
-                        type="checkbox"
-                        name="lookingForAJob"
-                        className={styles.checkbox__original}
-                      />
-                      <span className={styles.checkbox__custom} />
-                      <FaCheck className={styles.checkbox__check} />
-                    </div>
-                  </div>
-                  <div className={styles.group__error}>
-                    <ErrorMessage
-                      name="lookingForAJob"
-                      component="div"
-                      className={styles.group__error}
-                    />
-                  </div>
-                </div>
-                <div className={styles.group}>
-                  <label
-                    htmlFor="lookingForAJobDescription"
-                    className={styles.group__label}
-                  >
-                    Hard Skills
-                  </label>
-                  <Field
-                    id="lookingForAJobDescription"
-                    type="text"
-                    name="lookingForAJobDescription"
-                    className={styles.group__field}
-                  />
-                  <div className={styles.group__error}>
-                    <ErrorMessage
-                      name="lookingForAJobDescription"
-                      component="div"
-                      className={styles.group__error}
-                    />
-                  </div>
-                </div>
+                <ContactField
+                  selectedContact={selectedContact}
+                  closeDialog={() => setSelectedContact(null)}
+                />
+                <TextField name="fullName" title="Full Name" required />
+                <TextField name="aboutMe" title="About Me" />
+                <CheckBoxField
+                  name="lookingForAJob"
+                  title="Are you open to new opportunities?"
+                />
+                <TextField
+                  name="lookingForAJobDescription"
+                  title="Hard Skills"
+                />
               </div>
-              {/* <div className={styles.editMode__error}>
-                {props.error && props.error}
-              </div> */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={styles.editMode__submit}
-              >
-                Edit
-              </button>
+              <div className={styles.editMode__footer}>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={styles.editMode__submit}
+                >
+                  Edit
+                </button>
+              </div>
             </Form>
           )}
         </Formik>

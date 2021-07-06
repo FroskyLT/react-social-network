@@ -1,0 +1,25 @@
+@import "../../../../styles/base/base";
+
+
+.group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  &__label {
+    font-weight: $weight-semibold;
+    color: $color-alto;
+    cursor: pointer;
+    flex-basis: 85px;
+  }
+
+  &__field {
+    background-color: $color-tuna;
+    border: none;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 2px;
+    color: $color-white;
+    flex-grow: 1;
+  }
+}
