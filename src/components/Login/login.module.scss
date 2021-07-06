@@ -111,7 +111,17 @@
     &:hover {
       background-color: $color-shiraz;
     }
+
+    &_disabled {
+      background-color: $color-manatee;
+      cursor: auto;
+
+      &:hover {
+        background-color: $color-manatee;
+      }
+    }
   }
+
 
   &__error {
     display: flex;

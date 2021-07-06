@@ -180,6 +180,15 @@ $_color-shark-transparent-50: #1a1a1d80;
     &:hover {
       background-color: $color-crown-of-thorns;
     }
+
+    &_disabled {
+      background-color: $color-manatee;
+      cursor: auto;
+
+      &:hover {
+        background-color: $color-manatee;
+      }
+    }
   }
 }
 

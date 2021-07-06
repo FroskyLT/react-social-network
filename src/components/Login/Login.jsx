@@ -83,7 +83,11 @@ const LoginForm = (props) => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={styles.form__submit}
+            className={
+              !isSubmitting
+                ? styles.form__submit
+                : `${styles.form__submit} ${styles.form__submit_disabled}`
+            }
           >
             sign in
           </button>

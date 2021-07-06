@@ -336,7 +336,11 @@ const EditMode = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={styles.editMode__submit}
+                  className={
+                    !isSubmitting
+                      ? styles.editMode__submit
+                      : `${styles.editMode__submit} ${styles.editMode__submit_disabled}`
+                  }
                 >
                   Edit
                 </button>
