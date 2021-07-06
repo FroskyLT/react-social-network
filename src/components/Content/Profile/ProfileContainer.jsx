@@ -23,6 +23,7 @@ import {
   getStatusSelector,
   getUserIdSelector,
   getFriendsSelector,
+  getProfileUpdatingErrors,
 } from "../../../selectors/profile-selectors";
 import LoaderSpinner from "../../common/LoaderSpinner/LoaderSpinner";
 
@@ -48,6 +49,7 @@ const ProfileContainer = (props) => {
       followInProgress={props.followInProgress}
       updateUserStatus={props.setCurrentUserStatus}
       isFollowingUser={props.isFollowingUser}
+      profileUpdatingErrors={props.profileUpdatingErrors}
       onFollow={props.followUser}
       onUnfollow={props.unfollowUser}
       isFollowing={props.checkIsFollowingSelectedUser}
@@ -65,6 +67,7 @@ const mapStateToProps = (state) => ({
   followInProgress: getFollowInProgressSelector(state),
   isFollowingUser: getIsFollowingUserSelector(state),
   profileIsFetching: getProfileIsFetchingSelector(state),
+  profileUpdatingErrors: getProfileUpdatingErrors(state),
 });
 
 export default compose(

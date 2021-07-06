@@ -11,6 +11,7 @@ const DELETE_POST = "profile/DELETE_POST";
 const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
 const SET_STATUS = "profile/SET_STATUS";
 const SET_PHOTO = "profile/SET_PHOTO";
+const SET_PROFILE_UPDATING_ERRORS = "profile/SET_PROFILE_UPDATING_ERRORS";
 const START_PROFILE_FETCH = "profile/START_PROFILE_FETCH";
 const END_PROFILE_FETCH = "profile/END_PROFILE_FETCH";
 
@@ -121,6 +122,7 @@ let initialState = {
   // },
   status: "",
   profileIsFetching: true,
+  profileUpdatingErrors: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -178,6 +180,12 @@ const profileReducer = (state = initialState, action) => {
         profile: { ...state.profile, photos: action.photos },
       };
     }
+    case SET_PROFILE_UPDATING_ERRORS: {
+      return {
+        ...state,
+        profileUpdatingErrors: action.errors,
+      };
+    }
     default:
       return state;
   }
@@ -192,6 +200,10 @@ export const setUserProfile = (profile) => ({
 });
 export const setStatus = (status) => ({ type: SET_STATUS, status });
 export const setUserPhoto = (photos) => ({ type: SET_PHOTO, photos });
+export const setProfileUpdatingErrors = (errors) => ({
+  type: SET_PROFILE_UPDATING_ERRORS,
+  errors,
+});
 export const startProfileFetch = () => ({ type: START_PROFILE_FETCH });
 export const endProfileFetch = () => ({ type: END_PROFILE_FETCH });
 
@@ -246,7 +258,12 @@ export const updateProfile = (updatedProfile) => async (dispatch, getState) => {
     const userId = getState().auth.userId;
 
     dispatch(getUserProfile(userId));
+    dispatch(setProfileUpdatingErrors(null));
+  } else {
+    dispatch(setProfileUpdatingErrors(response.messages));
   }
+
+  return response.resultCode;
 };
 
 export default profileReducer;

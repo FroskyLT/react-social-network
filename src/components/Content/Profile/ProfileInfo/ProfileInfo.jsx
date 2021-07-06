@@ -178,7 +178,12 @@ const Friends = ({ friends, currUserPage }) => {
   );
 };
 
-const EditMode = ({ currUserPage, profile, updateProfile }) => {
+const EditMode = ({
+  currUserPage,
+  profile,
+  profileUpdatingErrors: errors,
+  updateProfile,
+}) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedContact, setSelectedContact] = useState(null);
 
@@ -224,10 +229,13 @@ const EditMode = ({ currUserPage, profile, updateProfile }) => {
       >
         <Formik
           initialValues={{ ...initialValues }}
-          onSubmit={(values, { setSubmitting }) => {
-            updateProfile(values);
-            console.log(values);
-            setSubmitting(false);
+          onSubmit={async (values, { setSubmitting }) => {
+            const resultCode = await updateProfile(values);
+
+            if (resultCode === 0) {
+              setSubmitting(false);
+              setShowModal(false);
+            }
           }}
         >
           {({ isSubmitting, values }) => (
@@ -315,6 +323,15 @@ const EditMode = ({ currUserPage, profile, updateProfile }) => {
                   required
                 />
               </div>
+              {errors && (
+                <ul className={styles.editMode__errors}>
+                  {errors.map((error, index) => (
+                    <li key={index} className={styles.editMode__error}>
+                      {error}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <div className={styles.editMode__footer}>
                 <button
                   type="submit"
@@ -338,6 +355,7 @@ const ProfileInfo = (props) => {
     friends,
     status,
     currUserId,
+    profileUpdatingErrors,
     updateUserStatus,
     updateProfile,
   } = props;
@@ -350,6 +368,7 @@ const ProfileInfo = (props) => {
         <EditMode
           currUserPage={currUserPage}
           profile={profile}
+          profileUpdatingErrors={profileUpdatingErrors}
           updateProfile={updateProfile}
         />
         <SectionTitle>{"Intro"}</SectionTitle>

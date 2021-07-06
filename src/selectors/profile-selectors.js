@@ -8,3 +8,5 @@ export const getIsFollowingUserSelector = (state) =>
   state.usersPage.isFollowingUser;
 export const getProfileIsFetchingSelector = (state) =>
   state.profilePage.profileIsFetching;
+export const getProfileUpdatingErrors = (state) =>
+  state.profilePage.profileUpdatingErrors;

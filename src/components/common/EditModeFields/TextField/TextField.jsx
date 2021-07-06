@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./text-field.module.scss";
 
-import { Field, ErrorMessage } from "formik";
+import { Field } from "formik";
 
 const TextField = (props) => {
   const { name, title, required, styleName } = props;
@@ -21,13 +21,6 @@ const TextField = (props) => {
         autoComplete="off"
         required={required}
       />
-      <div className={styles.group__error}>
-        <ErrorMessage
-          name={name}
-          component="div"
-          className={styles.group__error}
-        />
-      </div>
     </div>
   );
 };
