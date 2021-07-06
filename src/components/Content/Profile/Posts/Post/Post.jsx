@@ -170,7 +170,7 @@ const Post = (props) => {
   const { post, profile, userPhotos, isLogged } = props;
 
   return (
-    <CardContainer className={styles.post}>
+    <CardContainer>
       <PostHeader
         authorPhoto={profile.photos.large}
         authorName={profile.fullName}

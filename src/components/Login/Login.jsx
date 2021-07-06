@@ -18,7 +18,7 @@ const LoginForm = (props) => {
 
   return (
     <Formik
-      initialValues={{ email: "", password: "" }}
+      initialValues={{ email: "", password: "", captcha: "" }}
       validate={validate}
       onSubmit={(values, { setSubmitting }) => {
         props.loginHandler(values);
@@ -32,6 +32,7 @@ const LoginForm = (props) => {
               id="email"
               type="email"
               name="email"
+              autoComplete="off"
               className={styles.form__field}
               required
             />
@@ -79,6 +80,33 @@ const LoginForm = (props) => {
               />
             </div>
           </div>
+          {props.captchaUrl && (
+            <div className={styles.form__group}>
+              <Field
+                id="captcha"
+                type="text"
+                name="captcha"
+                autoComplete="off"
+                className={styles.form__field}
+                required
+              />
+              <label
+                htmlFor="captcha"
+                className={
+                  values.captcha
+                    ? styles.form__label
+                    : `${styles.form__label} ${styles.form__label_big}`
+                }
+              >
+                {"captcha"}
+              </label>
+              <img
+                src={props.captchaUrl}
+                alt=""
+                className={styles.form__captcha}
+              />
+            </div>
+          )}
           <div className={styles.form__error}>{props.error && props.error}</div>
           <button
             type="submit"
@@ -106,10 +134,14 @@ const Login = (props) => {
       </video>
       <CardContainer className={styles.login__form}>
         <h1 className={styles.login__heading}>
-          Welcome home{" "}
+          {"Welcome home "}
           <span className={styles.login__heading_colored}>samurai</span>
         </h1>
-        <LoginForm loginHandler={props.loginHandler} error={props.error} />
+        <LoginForm
+          loginHandler={props.loginHandler}
+          error={props.error}
+          captchaUrl={props.captchaUrl}
+        />
       </CardContainer>
     </div>
   );

@@ -44,6 +44,8 @@
   padding: 15px 0 0;
 
   &__group {
+    display: flex;
+    flex-direction: column;
     position: relative;
     padding: 15px 0 0;
   }
@@ -90,6 +92,10 @@
   &__label_big {
     top: 25px;
     font-size: 1.3rem;
+  }
+
+  &__captcha {
+    margin-top: 10px;
   }
 
   &__submit {
