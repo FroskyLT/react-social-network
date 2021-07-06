@@ -178,7 +178,7 @@ const Friends = ({ friends, currUserPage }) => {
   );
 };
 
-const EditMode = ({ currUserPage, profile }) => {
+const EditMode = ({ currUserPage, profile, updateProfile }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedContact, setSelectedContact] = useState(null);
 
@@ -219,14 +219,13 @@ const EditMode = ({ currUserPage, profile }) => {
       )}
       <Modal
         showModal={showModal}
-        // showModal={true}
         title="Edit Mode"
         closeModal={() => setShowModal(false)}
       >
         <Formik
           initialValues={{ ...initialValues }}
           onSubmit={(values, { setSubmitting }) => {
-            // props.loginHandler(values);
+            updateProfile(values);
             console.log(values);
             setSubmitting(false);
           }}
@@ -313,6 +312,7 @@ const EditMode = ({ currUserPage, profile }) => {
                 <TextField
                   name="lookingForAJobDescription"
                   title="Hard Skills"
+                  required
                 />
               </div>
               <div className={styles.editMode__footer}>
@@ -333,14 +333,25 @@ const EditMode = ({ currUserPage, profile }) => {
 };
 
 const ProfileInfo = (props) => {
-  const { profile, friends, status, currUserId, updateUserStatus } = props;
+  const {
+    profile,
+    friends,
+    status,
+    currUserId,
+    updateUserStatus,
+    updateProfile,
+  } = props;
 
   const currUserPage = currUserId === profile.userId;
 
   return (
     <>
       <CardContainer>
-        <EditMode currUserPage={currUserPage} profile={profile} />
+        <EditMode
+          currUserPage={currUserPage}
+          profile={profile}
+          updateProfile={updateProfile}
+        />
         <SectionTitle>{"Intro"}</SectionTitle>
         <SectionStatus
           status={status}

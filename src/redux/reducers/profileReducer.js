@@ -239,4 +239,14 @@ export const initProfile = (currUserId, userId) => async (dispatch) => {
   dispatch(endProfileFetch());
 };
 
+export const updateProfile = (updatedProfile) => async (dispatch, getState) => {
+  const response = await ProfileAPI.updateProfile(updatedProfile);
+
+  if (response.resultCode === 0) {
+    const userId = getState().auth.userId;
+
+    dispatch(getUserProfile(userId));
+  }
+};
+
 export default profileReducer;

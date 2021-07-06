@@ -18,6 +18,7 @@ const TextField = (props) => {
         type="text"
         name={name}
         className={styles.group__field}
+        autoComplete="off"
         required={required}
       />
       <div className={styles.group__error}>

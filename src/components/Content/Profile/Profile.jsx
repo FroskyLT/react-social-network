@@ -27,6 +27,7 @@ const Profile = (props) => {
           status={props.status}
           currUserId={props.currUserId}
           updateUserStatus={props.updateUserStatus}
+          updateProfile={props.updateProfile}
         />
       </div>
     </div>
