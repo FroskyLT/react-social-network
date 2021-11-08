@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./profile-preview.module.scss";
 import Button from "../../../common/Button/Button";
-import wallpaper from "../../../../assets/images/wallpaper.jpg";
+import wallpaper from "../../../../assets/images/wallpaper.webp";
 import userPlaceholder from "../../../../assets/images/person.png";
 import { FaImage } from "react-icons/fa";
 
